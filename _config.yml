@@ -21,7 +21,7 @@ timezone: Asia/Jakarta
 title: Ridopandi # the main title
 
 tagline:
-  My Tech-thingy & Journal 🚀
+  Sharing Tech-thingy & Journal 🚀
   # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
@@ -34,7 +34,7 @@ github:
   username: ridopandiSinaga # change to your github username
 
 twitter:
-  username: ridopandi # change to your twitter username
+  username: ridopandi__ # change to your twitter username
 
 social:
   # Change to your full name.
@@ -43,8 +43,8 @@ social:
   email: ridosinaga037@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/ridopandi__ # change to your twitter homepage
     - https://github.com/ridopandiSinaga # change to your github homepage
+    - https://twitter.com/ridopandi__ # change to your twitter homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     - https://www.linkedin.com/in/ridopandi-sinaga
