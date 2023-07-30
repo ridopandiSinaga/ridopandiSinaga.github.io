@@ -4,7 +4,7 @@ date: 2023-07-29
 tags: [machine learning, sklearn decision tree, irish, klasifikasi]
 category: Supervised & unsupervised
 layout: post
-# image: https://miro.medium.com/v2/resize:fit:786/format:webp/0*h4YQEuVi4xnzvHms.jpg
+# image: https://miro.medium.com/v2/resize:fit:3840/format:webp/1*ff6FquwFWnrFeZJWfvsiag.jpeg
 ---
 
 ![dino](/assets/dinosaur.gif)

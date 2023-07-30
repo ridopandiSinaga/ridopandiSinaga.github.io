@@ -5,7 +5,7 @@ tags: [batak, jawa]
 category: Insights
 pin: true
 layout: post
-# image: 
+# image: https://img.itch.zone/aW1nLzQ3ODQxNDcuZ2lm/original/Q7k885.gif
 ---
 
 > Tulisan ini lanjutan dari *Asep Rules Bumi Pasundan*🙆‍♂️, sok atuh dibaca yang belum😉
