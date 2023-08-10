@@ -8,7 +8,7 @@ order: 4
 
 Hi!👋 I'm **Ridopandi Sinaga**.
 
-Currently an IT undergraduate student at the university of North Sumatra. I am interested in *Machine Learning*. I *classify* large amounts of documents by *training models* to *automate repetitive tasks*. Additionally, I *optimize data pipelines* for clients by *designing and building ETL pipelines* to ensure they run efficiently. I *explore and analyze data* and randomly *scrape data* from the internet. I am also responsible for *visualizing* some of our POC projects. I spend a lot of my time *researching new technologies* that can *help me* reduce manual labor.
+Currently an  undergraduate IT student at the university of North Sumatra. I am interested in *Machine Learning* and *backend dev*. I *classify* large amounts of documents by *training models* to *automate repetitive tasks*. Additionally, I *optimize data pipelines* for excercise by *designing and building ETL pipelines* to ensure they run efficiently. I *explore and analyze data* and randomly *scrape data* from the internet. I spend a lot of my time *researching new technologies* that can *help me* reduce manual labor.
 
 # Contact Me🤙
 - Hit me up on [LinkedIn](https://www.linkedin.com/in/ridopandi-sinaga) and let's expand our professional network

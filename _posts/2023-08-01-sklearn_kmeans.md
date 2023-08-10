@@ -9,7 +9,7 @@ image: https://files.realpython.com/media/K-Means-Clustering-in-Python_Watermark
 
 ## Tujuan
 
-Membuat model *unsupervised learning* dengan teknik *K-Means Clusatering*.
+Membuat model *unsupervised learning* dengan teknik *K-Means Clustering*.
 
 ## Tahapan
 
