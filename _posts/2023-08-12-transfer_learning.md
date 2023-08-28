@@ -2,7 +2,7 @@
 title: Transfer Learning
 date: 2023-08-12
 tags: [keras, tensorflow, keras]
-category: Klasigikasi Gambar
+category: Klasifikasi Gambar
 layout: post
 # image: https://files.realpython.com/media/K-Means-Clustering-in-Python_Watermarked.70101a29a2a2.jpg
 ---
@@ -85,7 +85,25 @@ model.layers[0].trainable = False
 Lanjutkan dengan menentukan optimizer, loss, serta metric yang ingin digunakan pada model. 
 
 ```python
-model.compile(
-  optimizer=    
+model.compile(optimizer=tf.optimizers.Adam(),
+              loss='categorical_crossentropy',
+              metrics = ['accuracy'])
+```
+
+Terakhir kita dapat melakukan pelatihan model.
+
+```python
+history = model.fit(
+  train_generator,
+  validation_data=validation_generator,
+  epochs=50,
+  verbose=2
 )
 ```
+
+Tingkat akurasi menunjukkan hasil yang jauh lebih baik dibandingkan ketika melatih model sendiri dari awal. Akurasi dari model meningkat 40% menjadi 70 pada epoch terakhir. Hasil ini sangat luar biasa mengingat setiap kelas pada sampel kita sangat sedikit yatu kurang dari 100 buah sampel.
+
+![](https://d17ivq9b7rppb3.cloudfront.net/original/academy/202008031449025f90bef505f537cd81d6917b2eaef476.jpeg){: .shadow}
+
+Akhirnya, kita telah memahami bagaimana menggunakan transfer learning pada Keras. Dengan menggunakan tranfer learning prediksi model kita menjadi lebih baik, tanpa harus melatih model dari awal sekali untuk mengenali fitur-fitur pada gambar. Jika Anda tertarik mempelajari transfer learning lebih lanjut, kunjungin [tautan](https://www.tensorflow.org/tutorials/images/transfer_learning?hl=id) berikut yah.
+
