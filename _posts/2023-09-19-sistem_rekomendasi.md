@@ -11,7 +11,7 @@ layout: post
 
 Mitchell Kapor, seorang entrepreneur berkewarganegaraan Amerika pernah menyampaikan pernyataan seperti berikut.
 
->“Getting information off the internet is like taking a drink from a fire hydrant”
+>“Getting information off the internet is like taking a drink from a fire hydrantz”
 {: .prompt-tip }
 
 Pernyataan yang dan menarik dan relevan dengan kondisi saat ini, bukan?
