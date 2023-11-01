@@ -52,10 +52,11 @@ Kode diatas menggunakan utils modules, dimana sejauh yang kita praktikan kita be
 
 [**Coba di Sandbox**](https://codesandbox.io/s/kzu02g?file=/generate-prime.js&utm_medium=sandpack)
 
-<video controls>
+<video width="500" height="450" controls>
   <source src="https://github.com/ridopandiSinaga/JavaScript-Beginner-GDSC-USU/assets/89272004/aabc4b21-9caf-4a4b-b332-52a0eda3bf41" type="video/mp4">
   Maaf, browser Anda tidak mendukung pemutaran video.
 </video>
+
 
 Delay terjadi karena proses menjalankan fungsi generatePrimes() berjalan lambat dan bersifat synchronous, hingga pengguna merasakan hal itu. Pengalaman ini akan membuat pengguna risi, terlebih ketika harus melakukan hal lain sembari menunggu proses itu selesai.
 
@@ -63,7 +64,7 @@ Contoh, cobalah Anda tulis sesuatu pada text area selagi menunggu hasilnya muncu
 
 [**Coba di Sandbox**](https://codesandbox.io/s/xe7mwj?file=/generate-prime.js&utm_medium=sandpack)
 
-<video controls>
+<video width="500" height="450" controls>
   <source src="https://github.com/ridopandiSinaga/JavaScript-Beginner-GDSC-USU/assets/89272004/43b01977-652a-46ec-9e5e-19cfe0fff99d" type="video/mp4">
   Maaf, browser Anda tidak mendukung pemutaran video.
 </video>
@@ -338,7 +339,8 @@ Menurut kami, masalah yang terkait dengan kerumitan dalam membaca kode adalah ma
 
 ![](https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:893a1b1fd2a06c32e31f31ce5b01e9be20230317143222.gif)
 
-![](https://i0.wp.com/blog.tedd.no/wp-content/uploads/2020/05/4b91e-0sdgzt038fovslwf4.jpg?w=900)
+<img src="https://i0.wp.com/blog.tedd.no/wp-content/uploads/2020/05/4b91e-0sdgzt038fovslwf4.jpg?w=450" width="250" height="150" alt="Gambar">
+
 
 Pola callback dapat diterapkan dalam berbagai bahasa pemrograman, dan masalah yang dihadirkannya pun sama. Untungnya, dalam JavaScript, terdapat cara yang lebih baik untuk mengatasi proses asynchronous, yaitu dengan menggunakan Promise. Promise dapat membuat kode kita lebih mudah dibaca dibandingkan dengan callback. Berikut adalah contoh kode yang menggunakan Promise dalam proses asynchronous-nya.
 
@@ -368,7 +370,8 @@ Mari kita bahas Promise pada materi selanjutnya
 
 Sejak diperkenalkannya ECMAScript 2015 (ES6), pola callback bukanlah satu-satunya cara untuk menangani proses asynchronous di JavaScript. Pada era ES6, atau yang sering disebut sebagai era JavaScript modern, muncul sebuah fitur yang disebut "Promise" sebagai salah satu konsep dasar untuk mengeksekusi operasi asynchronous. Saat ini, banyak fungsi yang ada dalam Node.js atau Browser API yang menggunakan Promise untuk menangani proses asynchronous daripada pola callback.
 
-![](https://programmerhumor.io/wp-content/uploads/2023/03/programmerhumor-io-programming-memes-24eeb665f9acf14-758x796.jpg)
+<img src="https://programmerhumor.io/wp-content/uploads/2023/03/programmerhumor-io-programming-memes-24eeb665f9acf14-758x796.jpg" width="300" height="250" alt="Gambar">
+
 
 Mungkin Anda bertanya, mengapa disebut "Promise" atau "Janji"? Penamaan ini sebenarnya cukup relevan dan dapat diartikan sebagai sebuah analogi. Jika kita merenung lebih dalam, proses yang berjalan secara asynchronous sebenarnya adalah sebuah janji, karena hasil dari proses tersebut tidak bisa diperoleh secara langsung, melainkan perlu menunggu beberapa waktu, mirip dengan sebuah janji di dunia nyata yang butuh waktu untuk terpenuhi.
 
@@ -904,4 +907,5 @@ Sintaks async dan await memiliki beberapa keuntungan dibandingkan dengan penggun
 
 Dengan demikian, async dan await adalah alat yang berguna dalam mempermudah penanganan operasi asynchronous dalam JavaScript.
 
-![](https://miro.medium.com/v2/resize:fit:1358/1*39VCzgw4wzMlbmefvLI1lg.jpeg)
+<img src="https://miro.medium.com/v2/resize:fit:1358/1*39VCzgw4wzMlbmefvLI1lg.jpeg" width="250" height="250" alt="Gambar">
+
