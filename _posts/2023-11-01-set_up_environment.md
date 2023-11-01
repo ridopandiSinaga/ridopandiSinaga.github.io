@@ -253,3 +253,12 @@ Pada object scripts, tuliskan nilai baru dengan properti bernama **start**, kemu
 Kini kita bisa menjalankan program dengan perintah npm run start seperti di bawah ini
 
 ![image](https://github.com/ridopandiSinaga/JavaScript-Beginner-GDSC-USU/assets/89272004/32a076f1-c3b9-4cce-85a8-7dfbc26a84f3)
+
+
+Reference:
+
+[1] Dicoding, "Corridor: Belajar Dasar Pemrograman JavaScript," Dicoding.com. Diakses pada [Tanggal diakses], dari https://www.dicoding.com/academies/256/corridor.
+
+[2] O'Reilly. "JavaScript: The Definitive Guide - Chapter 1," O'Reilly.com. Diakses pada [Tanggal diakses], dari https://www.oreilly.com/library/view/javascript-the-definitive/9781491952016/ch01.html#idm46198582059640.
+
+[3] Petani Kode. "Node.js dan NVM: Memahami Instalasi Node Versi Manager," PetaniKode.com. Diakses pada [Tanggal diakses], dari https://www.petanikode.com/nodejs-nvm/.
