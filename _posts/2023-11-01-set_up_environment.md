@@ -64,7 +64,7 @@ Seperti yang sudah disebutkan sebelumnya, kita akan memasang NVM, lalu memasang 
 Berikut langkah-langkah dalam memasang NVM di Linux dan macOS.
 1. Buka Terminal di macOS atau Linux
 2. Kemudian jalankan perintah di bawah ini pada Terminal.
-   ```Shell
+   ```Plaintext
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
    ```
 
@@ -86,7 +86,7 @@ Berikut adalah langkah-langkah dalam memasang nvm-windows.
 4. Lakukan proses instalasi secara default dengan menekan tombol **Next** hingga selesai.
 5. Setelah proses instalasi selesai, bukalah Terminal/PowerShell/CMD dalam **mode administrator**.
 6. Pastikan NVM berhasil terpasang dengan menggunakan perintah berikut ini.
-   ```Shell
+   ```Plaintext
    nvm -v
    ```
    Jika NVM berhasil terpasang, akan menampilkan hasil seperti gambar di bawah ini.
@@ -94,7 +94,7 @@ Berikut adalah langkah-langkah dalam memasang nvm-windows.
    ![](https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:1dcd0c36f65c674cb77908d47bd35bdd20221207122359.png)
 
 7. Setelah NVM berhasil terpasang, selanjutnya kita pasang Node.js. Cara memasang Node.js adalah dengan perintah berikut ini.
-   ```Shell
+   ```Plaintext
    nvm install 16
    ```
    Perintah tersebut akan memasang Node.js versi 16 terbaru. Prosesnya membutuhkan waktu yang relatif dengan koneksi internet yang Anda miliki.
@@ -103,25 +103,30 @@ Berikut adalah langkah-langkah dalam memasang nvm-windows.
 
    Nomor versi pada perintah tersebut bisa Anda ubah sesuai dengan versi yang diinginkan. Contoh, jika ingin memasang Node.js versi 18, gunakan perintah `nvm install 18`.
 8. Setelah NVM memasang Node.js, Anda bisa menggunakan Node.js dengan menggunakan perintah berikut ini.
-   ```
+   
+   ```Plaintext
    nvm use 16
    ```
    Hasilnya akan tampak seperti gambar di bawah ini.
 
    ![](https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:fac1cae603f919d9acd37f8af63177e020221207122659.png)
 
-9. Untuk memastikan Node.js terpasang dengan baik, jalankan perintah berikut ini.
-    ```
+9.  Untuk memastikan Node.js terpasang dengan baik, jalankan perintah berikut ini.
+    
+    ```Plaintext
     node -v
     ```
+
     Jika berhasil terpasang, hasilnya akan tampak seperti gambar di bawah ini.
 
     ![](https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:461bb7a1f881994f5e150648ff38691720221207122805.png)
 
 10. Benefit lain yang bisa kita dapatkan dengan menggunakan NVM adalah mudah untuk berpindah-pindah versi Node.js. Untuk pindah versi, Anda cukup tulis perintah berikut ini.
+11. 
     ```Plaintext
     nvm use (versi Node.js)
     ```
+
     Contohnya seperti gambar di bawah ini.
 
     ![](https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:38ac7930bac2e8acdfc0b0040408274620221207122909.png)
@@ -140,7 +145,7 @@ Langkah selanjutnya adalah membuat folder utama proyek di direktori komputer And
 
 Lalu buka terminal/command prompt pada project tersebut dengan memilih menu **Terminal → New Terminal**. Ketika terminal muncul jalankan perintah:
 
-```
+```Plaintext
 npm init
 ```
 
@@ -223,12 +228,12 @@ Untuk coba-coba Anda dapat menggantinya dengan berikut:
 
 Object scripts merupakan objek yang mengandung kumpulan script di dalamnya. Script tersebut dapat dijalankan kapan saja pada proyek kita. Untuk menjalankan script, gunakan perintah `npm run <script-name>` yang dapat Anda tulis seperti di bawah ini:
 
-```
+```Plaintext
 npm run test
 ```
 Dengan menjalankan script test, artinya kita mengeksekusi kode yang berada di dalam nilai test, yaitu:
 
-```
+```Plaintext
 "echo \"Google Developer Students Club USU\""
 ```
 
