@@ -7,19 +7,19 @@ layout: post
 # image: https://files.realpython.com/media/K-Means-Clustering-in-Python_Watermarked.70101a29a2a2.jpg
 ---
 
-# Text Editor dan Terminal
+## Text Editor dan Terminal
 
-## Text Editor
+### Text Editor
 
 Dalam pengembangan aplikasi, kita perlu text editor. Sistem operasi seperti Windows, Linux, dan Mac OS memiliki pilihan bawaan, misalnya Notepad, Text Editors, dan TextEdit, yang dapat digunakan untuk belajar JavaScript. Pastikan text editor bisa menyimpan plain text dengan format .js. Jangan gunakan Microsoft Word karena menghasilkan rich text.
 
 Selain text editor bawaan, ada opsi lain yang dirancang khusus untuk pemrograman, seperti Visual Studio Code. Ini dari Microsoft, gratis, dan punya fitur debugging, Git control, syntax highlighting, code completion, snippets, serta code refactoring. Tersedia untuk Windows, Mac, dan Linux. Untuk mengunduhnya, silakan kunjungi website berikut: https://code.visualstudio.com/.
 
-## Terminal
+### Terminal
 
 Selanjutnya, kita akan sering menggunakan command line untuk menjalankan program dengan Node.js. Anda bisa melakukannya melalui terminal yang sudah ada di sistem operasi seperti "Terminal" untuk Linux dan MacOS, atau "CMD" atau "PowerShell" untuk Windows. Tidak perlu mengunduh aplikasi tambahan karena terminal ini sudah tersedia secara default.
 
-# JavaScript Runtime
+## JavaScript Runtime
 
 JavaScript mulanya hanya digunakan pada lingkungan web browser.Lingkungan web browser memungkinkan kode JavaScript untuk menerima inputan dari mouse dan keyboard pengguna.Sehingga browser menjadi lingkungan eksekusi yang paling umum untuk kode JavaScript [[1]](https://learning.oreilly.com/library/view/javascript-the-definitive/9781491952016/ch01.html#idm46198582059640).
 
@@ -31,7 +31,7 @@ Selain digunakan di browser, JavaScript juga dapat dijalankan di platform lain, 
 
 Node.js memberikan JavaScript akses ke sistem operasi, memungkinkannya untuk membaca dan menulis file, mengirim dan menerima data melalui jaringan, serta melayani permintaan HTTP. Selanjutnya, kita akan fokus pada pengembangan program JavaScript di lingkungan Node, dan untuk memulainya, kita perlu menginstal Node.js terlebih dahulu. Detailnya akan dibahas pada materi selanjutnya.
 
-# Node.js
+## Node.js
 
 Node.js adalah lingkungan runtime JavaScript yang bersifat open-source dan mendukung berbagai platform. Dengan Node.js, kita dapat mengeksekusi kode JavaScript di berbagai tempat, tidak hanya dalam lingkungan browser.
 
@@ -47,7 +47,7 @@ Selain itu, Node.js menyediakan banyak library/modul JavaScript yang mempermudah
 
 Jika Anda ingin mencoba Node.js di perangkat Anda, langkah instalasinya akan dijelaskan pada materi berikutnya.
 
-# Instalasi Node.js dengan NVM
+## Instalasi Node.js dengan NVM
 
 Untuk menjalankan JavaScript di perangkat lokal, Anda perlu menginstal Node.js. Node.js memiliki dua versi yaitu LTS dan Current: LTS (Long Term Support) yaitu yang disarankan karena mendapatkan dukungan jangka panjang, sementara versi Current berisi fitur-fitur baru yang dirilis untuk Node.js.
 
@@ -55,7 +55,7 @@ Aesuai dengan dokumentasi yang diberikan Node.js pada halaman resminya, dan meng
 
 Ikuti panduan berikut untuk memasang Node.js dengan NVM sesuai sistem operasi Anda.
 
-## Linux dan macOS
+### Linux dan macOS
 
 Pada materi ini kita akan memasang Node.js di Linux dan macOS. Untuk Anda pengguna Windows, scroll materi ini ke bawah hingga menuju bagian Windows.
 
@@ -72,7 +72,7 @@ Berikut langkah-langkah dalam memasang NVM di Linux dan macOS.
    **SKIP DULU**
 
 
-## Windows
+### Windows
 
 Sejatinya [NVM](https://github.com/nvm-sh/nvm) merupakan proyek yang dibuat khusus untuk macOS dan Linux. Namun, jika Anda menggunakan Windows, terdapat alternatif yang tool bernama nvm-windows yang bisa digunakan. Walau namanya mirip, nvm-windows tidak sama dengan nvm yang ada di Linux dan macOS.
 
@@ -128,7 +128,7 @@ Berikut adalah langkah-langkah dalam memasang nvm-windows.
 
     Agar bisa berpindah versi, pastikan versi tersebut sudah terpasang sebelumnya melalui perintah `nvm install (versi Node.js)`.
 
-# Membuat Project JavaScript
+## Membuat Project JavaScript
 
 Setelah berhasil menginstal text editor dan Node.js di komputer, berarti peralatan pengembangan kita telah siap.
 
@@ -173,7 +173,7 @@ Jika nilai yang ditampilkan sudah sesuai, tekan tombol **enter**. Nilai tersebut
 
 Berkas tersebut digunakan untuk menyimpan informasi aplikasi yang kita buat. Untuk membuat berkas package.json, sebenarnya kita dapat membuatnya sendiri layaknya membuat berkas baru pada umumnya. Namun, cara tersebut bukan pendekatan yang baik. Dalam membuat berkas package.json, sebaiknya gunakan perintah **npm init** pada Terminal di dalam project yang kita buat.
 
-# Menjalankan Project Node
+## Menjalankan Project Node
 
 Pada modul sebelumnya kita telah tahu bagaimana membuat proyek Node.js. Sekarang kita akan mulai menuliskan kode dan menjalankannya melalui terminal.
 
@@ -203,7 +203,7 @@ Node.js akan mengeksekusi setiap baris kode yang kita tulis lalu menampilkannya 
 
 ![image](https://github.com/ridopandiSinaga/JavaScript-Beginner-GDSC-USU/assets/89272004/8f099c21-2962-4cf1-80dd-b546e45a21a3)
 
-## Run Scripts
+### Run Scripts
 
 Pada berkas package.json terdapat beberapa object yang penting untuk kita perhatikan, salah satunya adalah object scripts. Secara default object tersebut akan terbentuk ketika package.json dibuat menggunakan perintah init. Nilai default dari scripts adalah seperti ini:
 
