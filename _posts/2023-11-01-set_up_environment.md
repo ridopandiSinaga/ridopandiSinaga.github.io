@@ -62,15 +62,53 @@ Pada materi ini kita akan memasang Node.js di Linux dan macOS. Untuk Anda penggu
 Seperti yang sudah disebutkan sebelumnya, kita akan memasang NVM, lalu memasang Node.js. Untuk informasi lebih detail mengenai NVM di Linux dan macOS, kunjungi halaman [NVM di GitHub](https://github.com/nvm-sh/nvm).
 
 Berikut langkah-langkah dalam memasang NVM di Linux dan macOS.
+
 1. Buka Terminal di macOS atau Linux
 2. Kemudian jalankan perintah di bawah ini pada Terminal.
+
    ```Plaintext
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
    ```
 
+    **Catatan**: Di Linux, jika Anda gagal dalam menjalankan perintah di atas, kemungkinan OS yang Anda gunakan belum terpasang sistem cURL. Jalankan perintah `sudo apt install curl`, kemudian jalankan kembali kode di atas.
 
-   **SKIP DULU**
+    Versi NVM (per Desember 2022) adalah v.0.39.2. Dan untuk sementara versi tersebut digunakan pada materi kali ini. Namun, jika Anda ingin memasang versi yang terbaru (per Desember 2023), Anda bisa mengubah URL dari perintah di atas dengan versi yang Anda inginkan.
 
+    Contoh, jika Anda ingin memasang versi v.0.39.1, berarti gunakan perintah berikut.
+
+    ```Plaintext
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    ```
+
+3. Setelah memasang NVM, tutup dan buka kembali Terminal, kemudian jalankan perintah di bawah ini untuk memastikan NVM berhasil terpasang.
+
+    ```Plaintext
+    nvm -v
+    ```
+
+    **Catatan**: Jangan khawatir jika perintah NVM masih belum bisa dijalankan. Anda bisa simak penyelesaian masalah umum yang terjadi pada halaman [troubleshooting on macOS](https://github.com/nvm-sh/nvm#troubleshooting-on-macos) atau [troubleshooting on Linux](https://github.com/nvm-sh/nvm#troubleshooting-on-linux).
+
+4. Setelah NVM berhasil terpasang, selanjutnya kita pasang Node.js. Cara memasang Node.js adalah dengan perintah berikut ini.
+
+    ```Plaintext
+    nvm install 16
+    ```
+
+    Perintah tersebut akan memasang Node.js versi 16 terbaru.
+
+    Nomor versi pada perintah tersebut bisa Anda ubah sesuai dengan versi yang diinginkan. Contoh, jika ingin memasang Node.js versi 18, gunakan perintah `nvm install 18`.
+
+5. Untuk memastikan Node.js terpasang dengan baik, jalankan perintah berikut ini.
+
+    ```Plaintext
+    node -v
+    ```
+
+6. Benefit lain yang bisa kita dapatkan dengan menggunakan NVM adalah mudah untuk berpindah-pindah versi Node.js. Untuk pindah versi, Anda cukup tulis perintah berikut ini.
+
+    ```Plaintext
+    nvm use (versi Node.js)
+    ```
 
 ### Windows
 
