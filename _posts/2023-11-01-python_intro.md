@@ -1,18 +1,14 @@
 ---
 title: Berkenalan dengan Python
-date: 2023-11-01
+date: 2023-11-11
 tags: [python, gdsc]
 category: Python
 layout: post
-#  image: https://files.realpython.com/media/K-Means-Clustering-in-Python_Watermarked.70101a29a2a2.jpg
+image: https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:846988f563c287badaed1f1342f543ba20230726105936.jpeg
 ---
 
-## Berkenalan dengan Python
 
 ### Pengenalan Python
-
-![](https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:846988f563c287badaed1f1342f543ba20230726105936.jpeg)
-
 
 Python, yang diperkenalkan oleh Guido van Rossum pada tahun 1991, merupakan bahasa pemrograman serbaguna yang didesain untuk kemudahan pembacaan dan pemahaman. Van Rossum menghadirkan Python dengan fokus pada kejelasan kode dan penanganan kesalahan yang efektif. Berkat prinsip-prinsip ini, Python berhasil meraih popularitasnya dan diadopsi secara luas di berbagai bidang.
 
@@ -47,9 +43,6 @@ Sistem kedua yang memainkan peran kunci adalah Python Enhancement Proposals (PEP
 Salah satu panduan utama yang menjadi landasan pengambilan keputusan dalam pengembangan Python adalah PEP 20 yang dikenal sebagai Zen of Python. PEP 20 ini menjadi pijakan untuk setiap langkah pengembangan Python. Berikut adalah isi dari panduan tersebut.
 
 Salah satu pedoman kunci yang dipegang sebagai acuan adalah PEP 20 yang diberi judul Zen of Python. PEP 20 ini berfungsi sebagai landasan atau akar dalam setiap proses pengambilan keputusan dalam pengembangan Python. Di bawah ini adalah esensi dari panduan tersebut.
-
-> Example line for prompt.
-{: .prompt-info }
 
 ## Mengapa Python
 
@@ -93,6 +86,7 @@ Pengguna Ubuntu, bisa menggunakan keyboard shortcut dengan menekan **Ctrl + Alt 
    ```Plaintext
    python --version
    ```
+
 3. Baik Mac OS, Ubuntu, dan Windows akan menampilkan versi Python yang telah terinstal.
 
     ![image](https://github.com/ridopandiSinaga/JavaScript-GDSC-USU/assets/89272004/36672243-10b6-4003-91bd-d9f2173da531)
