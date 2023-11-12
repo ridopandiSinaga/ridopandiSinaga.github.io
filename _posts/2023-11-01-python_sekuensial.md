@@ -4,10 +4,12 @@ date: 2023-11-11
 tags: [python, gdsc]
 category: Python
 layout: post
-image: https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:846988f563c287badaed1f1342f543ba20230726105936.jpeg
+# image: https://codewithmosh.com/_next/image?url=https%3A%2F%2Fwww.filepicker.io%2Fapi%2Ffile%2FBFMMlbcQvml9HSqXcvNp&w=384&q=75
 ---
 
-## Pengenalan Aksi Sekuensial
+
+> ## Pengenalan Aksi Sekuensial
+{: .prompt-tip }
 
 Selama Anda mempelajari beberapa materi pertama kelas ini, Anda telah membuat banyak program sederhana. Namun, program yang Anda buat masih terdiri dari satu atau dua baris kode saja. Ke depannya, Anda akan membuat kode program yang tidak hanya terdiri dari satu baris, tetapi bisa banyak baris dan lebih kompleks. 
 
@@ -193,16 +195,16 @@ Python termasuk bahasa pemrograman *case-sensitive*. Ini artinya Python memperla
 Perhatikan kode di bawah ini untuk memahami maksud dari *case-sensitive*.
 
 ```python
-teks = "Dicoding"
-Teks = "Indonesia"
+teks = "GDSC"
+Teks = "USU"
 
 print(teks)
 print(Teks)
 
 """
 Output:
-Dicoding
-Indonesia
+GDSC
+USU
 """
 ```
 
