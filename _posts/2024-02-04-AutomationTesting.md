@@ -2,7 +2,6 @@
 title: Automation Testing
 date: 2024-02-04
 tags: [backend, automation-testing]
-pin: true
 category: Catatan menjadi Backend Expert
 layout: post
 ## image: https://www.tutonaut.de/wp-content/uploads/2019/06/Dino.gif
@@ -8500,6 +8499,13 @@ Untuk memudahkan pengelolaan berkas log, Anda juga dapat memisahkan berkas log b
 Selain *logging*, masalah ini juga menyadarkan Anda untuk menggunakan process manager seperti [PM2](https://pm2.keymetrics.io/) ketika menjalankan aplikasi Node.js. Tujuannya, jika aplikasi node terhenti, *process manager* akan menjalankan ulang aplikasi secara otomatis. Sehingga, aplikasi akan selalu tersedia tanpa harus menunggu dijalankan ulang secara manual.
 
 Sekarang Anda sudah mengimplementasikan log dan menerapkan process manager dengan benar. Sehingga, kegagalan yang terjadi di masa mendatang akan lebih mudah dianalisis dan diperbaiki. Semenjak itu, aplikasi catatan semakin leluasa untuk dikembangkan dan minimum down time.
+
+
+
+**Reference**
+https://www.dicoding.com/academies/276-menjadi-back-end-developer-expert
+
+Tidak sempat menyelesaikan submission, jadi sementara dibuat menjadi catatan supaya jika suatu saat kelas bisa kembali terbuka saya bisa menyelesaikan submission dengan belajar dari materi ini lalu melakukan take down materi ini.
 
 
 
