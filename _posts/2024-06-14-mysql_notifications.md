@@ -4,9 +4,8 @@ date: 2024-06-14
 tags: [backend, mysql]
 category: mysql
 layout: post
-# youtubeId: FuEiBZwp4ZI
 ---
-<!-- {% include youtubePlayer.html id=page.youtubeId %} -->
+
 
 ## Database Design: Notification
 
