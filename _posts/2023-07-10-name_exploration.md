@@ -1,5 +1,5 @@
 ---
-title: Names & Insights 💭
+title: Names & Insights
 date: 2023-07-24
 tags: [batak, jawa]
 category: Insights
