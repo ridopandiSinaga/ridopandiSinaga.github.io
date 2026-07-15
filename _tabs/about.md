@@ -8,7 +8,7 @@ order: 4
 
 Hi!👋 I'm **Ridopandi Sinaga**.
 
- As an Information Tecgnology student at the university of North Sumatra. Interested in *Machine Learning* and *backend dev*. I *classify* large amounts of documents by *training models* to *automate repetitive tasks*. Additionally, I *optimize data pipelines* for excercise by *designing and building ETL pipelines* to ensure they run efficiently. I *explore and analyze data* and randomly *scrape data* from the internet. I spend a lot of my time *researching new technologies* that can *help me* reduce manual labor.
+Machine Learning Engineer focused on building AI solutions through data, research, analytics, and automation. I enjoy turning problems into practical systems that create real impact.
 
 # Contact Me🤙
 - Hit me up on [LinkedIn](https://www.linkedin.com/in/ridopandi-sinaga) and let's expand our professional network
