@@ -7,24 +7,24 @@ pin: false
 ---
 
 
-## Horas!
+## Halo!
 
-Kali ini mimin mencoba mengerjakan studi kasus segmentasi pelanggan dari data transaksi retail.
+Ada studi kasus segmentasi pelanggan dari data transaksi retail.
 
-Awalnya kelihatan sederhana: ada invoice, produk, jumlah barang, harga, tanggal transaksi, dan customer ID. Tapi kalau data transaksi seperti ini dirapikan dengan benar, kita bisa mulai menjawab pertanyaan yang cukup penting buat tim marketing:
+Ada invoice, produk, jumlah barang, harga, tanggal transaksi, dan customer ID. Tapi kalau data transaksi seperti ini dirapikan dengan benar, apakah kita bisa mulai menjawab pertanyaan yang cukup penting buat tim marketing?
 
 - pelanggan bagaimana yg aktif dan bernilai tinggi?
 - pelanggan bagaimana yg masih sering belanja, tapi nilainya belum terlalu besar?
 - pelanggan mana yang jarang belanja atau sudah lama tidak aktif?
 - pelanggan mana yang terlihat besar secara transaksi, tapi ternyata banyak retur?
 
-Jadi tujuan proyek ini bukan sekadar membuat cluster. Tujuannya adalah mengubah data transaksi menjadi prioritas pelanggan yang lebih mudah dipakai untuk campaign.
+Harapannya dengan memproses data transaksi bisa mempertimbangkan keputusan-keputusan prioritas yang mungkin boleh dipakai untuk campaign.
 
-## Data Mentahnya Tidak Langsung Bersih
+## Data Mentah
 
 Dataset yang dipakai adalah **Online Retail dataset**, data transaksi retail selama kurang lebih satu tahun.
 
-Sebelum masuk ke model, dimulai dari validasi data dulu. Ini beberapa hal yang muncul:
+Sebelum masuk ke model, dilakukan validasi. Ini beberapa hal yang muncul:
 
 - total data transaksi: **541.909 baris**
 - customer unik: **4.372 pelanggan**
@@ -34,7 +34,7 @@ Sebelum masuk ke model, dimulai dari validasi data dulu. Ini beberapa hal yang m
 - quantity tidak positif: **10.624 baris**
 - unit price tidak positif: **2.517 baris**
 
-Bagian ini penting karena data retail biasanya tidak hanya berisi pembelian bersih. Ada cancellation, retur, missing customer, dan transaksi yang perlu dibaca hati-hati.
+Ada cancellation, retur, missing customer, dan transaksi yang perlu dibaca hati-hati.
 
 Kalau langsung clustering tanpa memahami kondisi ini, pelanggan yang banyak retur bisa saja terlihat seperti pelanggan bernilai tinggi hanya karena nilai transaksi kotornya besar.
 
@@ -58,17 +58,17 @@ Dari profil ini, bisa dibentuk beberapa feature yang masih dekat dengan konsep R
 
 Menurutku, salah satu feature paling penting di sini adalah `net_monetary`.
 
-Alasannya sederhana: pelanggan yang nilai pembelian kotornya tinggi belum tentu benar-benar menguntungkan kalau banyak barangnya dikembalikan. Jadi, nilai bersih lebih masuk akal untuk membaca value pelanggan.
+Alasannya: pelanggan yang nilai pembelian kotornya tinggi belum tentu benar-benar menguntungkan kalau banyak barangnya dikembalikan. Jadi, nilai bersih lebih masuk akal untuk membaca value pelanggan.
 
 ![Gross vs net monetary](/assets/customer_segmentation/gross_vs_net_monetary.png)
 
-## Kenapa Pakai Clustering?
+## Kenapa Clustering?
 
 Dataset ini tidak punya label seperti "loyal customer", "at risk customer", atau "return-heavy customer". Jadi pendekatan yang dipakai adalah **unsupervised learning**.
 
-Model utama yang dipakai adalah **K-Means**. Sebelum masuk model, feature yang sangat skewed aku transformasi dengan `log1p`, lalu seluruh feature matrix distandardisasi.
+Model utama yang dipakai adalah **K-Means**. Sebelum masuk model, feature yang sangat skewed ditransformasikan dengan `log1p`, lalu seluruh feature matrix distandardisasi.
 
-Aku mengevaluasi jumlah cluster dari `k=2` sampai `k=10`.
+Dievaluasi jumlah cluster dari `k=2` sampai `k=10`.
 
 Kalau melihat metrik saja, `k=2` sebenarnya punya silhouette score yang lebih tinggi. Tapi, dua cluster terasa terlalu umum untuk kebutuhan marketing.
 
@@ -82,7 +82,7 @@ Jadi, `k=4` dipilih karena terasa lebih mudah dipakai untuk mengambil tindakan. 
 
 Di visualisasi ini, `k=2` terlihat masih cukup umum, sedangkan `k=4` memberi pembagian yang lebih detail untuk membaca profil pelanggan.
 
-## Empat Segmen yang Terbentuk
+## Empat Segmen terbentuk
 
 Dari model final `k=4`, ada **4.338 pelanggan** yang berhasil disegmentasi.
 
@@ -115,7 +115,7 @@ Tapi kecil bukan berarti tidak penting. Justru segmen ini membantu memberi sinya
 
 Setelah cluster diberi nama, bagian berikutnya adalah menerjemahkannya ke keputusan marketing.
 
-Untuk **High-value active customers**, rekomendasinya adalah loyalty benefit, early access, personal bundle, dan referral. Mereka sudah engaged, jadi pendekatannya tidak harus selalu diskon besar.
+Untuk **High-value active customers**, rekomendasinya adalah loyalty benefit, early access, personal bundle, dan referral. Kenapa? karena mereka sudah engaged.
 
 Untuk **Active regular customers**, fokusnya adalah cross-sell dan threshold offer. Misalnya rekomendasi produk tambahan atau minimum transaksi agar basket size naik.
 
@@ -130,13 +130,13 @@ Prioritas campaign per segmen (ringkas):
 - **Low-frequency customers:** reaktivasi berbiaya rendah berdasarkan recency; dorong second purchase yang realistis.
 - **Return-heavy customers:** prioritas utama adalah service recovery (return reason analysis, perbaikan fulfillment), bukan growth campaign dulu.
 
-## Bagian yang Paling ditekankan: Modelnya Dicek Lagi
+## Perlu ditekankan (Modelnya Dicek Lagi)
 
-Di proyek clustering, ketika cluster sudah rapi mikirnya udahan aja.
+Di proyek clustering, ketika cluster sudah rapi terpikirnya sudah oke, beres.
 
-Di sini setelah model final terbentuk, aku nyoba beberapa check tambahan untuk melihat apakah hasilnya cukup defensible.
+Di sini setelah model final terbentuk, dicobaa beberapa check tambahan untuk melihat apakah hasilnya cukup defensible.
 
-Pertama, ngecek kasus outlier dan retur. Hasilnya:
+Pertama, dicek kasus outlier dan retur. Hasilnya:
 
 - ada **41 pelanggan** dengan `net_monetary < 0`
 - ada **8 pelanggan** dengan `return_value_ratio > 1`
@@ -166,11 +166,11 @@ Keempat, ngelihat silhouette per cluster. Segmen dengan rata-rata silhouette pal
 
 Ini menarik karena segmen kecil tidak otomatis menjadi segmen paling lemah. Dalam kasus ini, Return-heavy justru cukup terpisah secara jarak, sedangkan High-value lebih bercampur dengan pola pelanggan aktif lain.
 
-## Mencoba "Mengganggu" feature-feature nya
+## Feature ablation
 
 Bagian berikutnya adalah feature ablation.
 
-Idenya sederhana: kalau beberapa feature diubah atau dihapus, apakah segmentasinya masih mirip?
+Idenya: kalau beberapa feature diubah atau dihapus, apakah segmentasinya masih mirip?
 
 Beberapa hasil yang menurutku penting:
 
@@ -211,19 +211,17 @@ Source code:
 
 ## Hikmahnya
 
-Ada beberapa pelajaran yang menurutku cukup penting dari proyek ini.
-
 Pertama, unsupervised learning tidak bisa hanya dinilai dari satu angka metrik. Silhouette membantu, tapi keputusan akhir tetap perlu mempertimbangkan interpretasi dan kegunaan bisnis.
 
-Kedua, feature engineering lebih menentukan daripada memilih algoritma yang terlihat kompleks. Dalam kasus ini, `net_monetary`, return ratio, cancellation ratio, dan perilaku pembelian memberi konteks yang tidak terlihat dari RFM sederhana.
+Kedua, feature engineering rasanya lebih informatif daripada memilih algoritma yang terlihat kompleks. Dalam kasus ini, `net_monetary`, return ratio, cancellation ratio, dan perilaku pembelian memberi konteks yang tidak terlihat dari RFM sederhana.
 
 Ketiga, outlier tidak selalu harus langsung dibuang. Kadang outlier adalah sinyal bisnis. Untuk kasus ini, pola retur justru menjadi segmen kecil yang perlu diperhatikan.
 
-Keempat, robustness check membuat cerita model lebih kuat. Bukan hanya "membuat cluster", tetapi juga "cek apakah cluster ini stabil ketika seed berubah, data disubsample, dan feature tertentu diubah".
+Keempat, robustness check membuat cerita model lebih kuat. "cek apakah cluster ini stabil ketika seed berubah, data disubsample, dan feature tertentu diubah".
 
 ## Batasan
 
-Tentu saja, hasil ini bukan absolut benar.
+Tentu saja, hasil ini tidak absolut benar.
 
 Karena ini unsupervised learning, nama segmen adalah interpretasi dari pola data, bukan label ground truth.
 
@@ -233,4 +231,4 @@ Selain itu, dataset ini historis dan belum punya informasi tambahan seperti marg
 
 ## Penutup
 
-Intinya, pelanggan tidak semuanya sama. Dengan segmentasi ini, campaign bisa dibuat lebih relevan untuk tiap kelompok pelanggan. Selanjutnya, hasilnya tinggal diuji untuk melihat strategi mana yang paling efektif.
+ Dengan segmentasi ini, campaign bisa dibuat lebih relevan untuk tiap kelompok pelanggan. Selanjutnya, hasilnya tinggal diuji untuk melihat strategi mana yang paling efektif.
