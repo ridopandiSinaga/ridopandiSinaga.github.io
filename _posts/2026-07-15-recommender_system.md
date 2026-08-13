@@ -7,7 +7,17 @@ tags: [model-engineering, recommender-system, evaluation]
 ---
 
 
-## notebook
+## Haloo!
+
+Pernah selesai membaca sebuah buku, lalu bingung mau membaca apa lagi?
+Bukunya banyak, sehingga jika mencari satu persatu tidak efisien. Disini sistem rekomendasi membantu.
+
+> Bagaimana membantu pembaca menemukan buku berikutnya tanpa menyisir seluruh katalog?
+
+Dataset: [Kaggle Book Recommendation Dataset](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset)
+
+Dataset proyek ini hanya punya informasi buku, pengguna, dan rating. Tidak ada data klik, pembelian, atau waktu membaca.
+
 
 <iframe
   src="{{ 'assets/notebooks/01_end_to_end_book_recommender.html' | relative_url }}"
@@ -18,107 +28,107 @@ tags: [model-engineering, recommender-system, evaluation]
 
 ## Cerita
 
-### Horas!
-
-Pernah selesai membaca sebuah buku, lalu bingung mau membaca apa lagi?
-Bukunya banyak, tetapi mencari satu per satu ya capek juga. Di sinilah sistem rekomendasi membantu.
-
-> Bagaimana membantu pembaca menemukan buku berikutnya tanpa menyisir seluruh
-> katalog?
-
-Dataset: [Kaggle Book Recommendation Dataset](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset)
-
-Dataset proyek ini hanya punya informasi buku, pengguna, dan rating. Tidak ada data klik, pembelian, atau waktu membaca.
-
-### Datanya rada-rada
+### Data kureng
 
 Setelah dibersihkan, datanya berisi 271.359 buku, 383.843 rating, dan 278.858
-pengguna. Banyak ya.
+pengguna. Sepintas terlihat banyak.
 
-Namun, rating tersebut tidak tersebar merata. Seperti pada gambar dibawah, persentil pengguna menunjukkan hanya 10% pegguna yang memberikan lebih dari 9 rating. Lalu pada buku, hanya 10% buku yang menerima lebih dari 4 rating.
+Namun, rating tersebut tidak tersebar merata. Grafik kiri menunjukkan jumlah rating
+per pengguna, sedangkan grafik kanan menunjukkan jumlah rating yang diterima setiap
+buku.
 
 ![Distribusi interaksi user dan buku](/assets/recommender_system/user_item_long_tail.png)
 
-Kondisi ini disebut **sparse data**: datanya besar secara keseluruhan, tetapi tipis
-jika dilihat per pengguna atau per buku. Matriksnya banyak yg bolong, hehe.
+Median keduanya hanya 1. Artinya, setidaknya separuh pengguna hanya memberi satu
+rating dan setidaknya separuh buku hanya menerima satu rating. P90 pengguna adalah
+9, sedangkan P90 buku adalah 4. Dengan kata lain, 90% pengguna memberi paling banyak
+9 rating dan 90% buku menerima paling banyak 4 rating.
 
-Model tidak langsung menggunakan seluruh data. Untuk konfigurasi awal
+Pola ini disebut (**long tail**) sebagian besar pengguna dan buku hanya memiliki
+sedikit rating, sedangkan sebagian kecil lainnya memiliki jauh lebih banyak. Akibatnya,
+data pengguna-buku menjadi **sparse** karena hampir semua pasangan tidak memiliki
+rating.
+
+Model tidak langsung menggunakan seluruh data. Pada konfigurasi awal
 (**baseline**), data disaring agar eksperimen lebih ringan dan collaborative
-filtering memiliki pola rating yang cukup untuk dipelajari. Setelah penyaringan,
-sekitar 52.100 rating digunakan.
+filtering masih memiliki pola rating yang dapat dipelajari. Setelah penyaringan,
+52.109 rating digunakan.
 
-Collaborative filtering belajar dari maksimal 1.000 buku. Sementara itu,
-content-based menggunakan metadata dari 3.000 ISBN sehingga dapat mencari
-rekomendasi dari katalog yang lebih luas.
+Collaborative filtering belajar dari maksimal 1.000 buku. Content-based menggunakan
+metadata dari 3.000 ISBN sehingga dapat mencari rekomendasi dari candidate catalog
+yang lebih luas.
 
 Satu karya dapat memiliki beberapa ISBN karena perbedaan edisi atau cetakan. Setelah
-ISBN yang merujuk pada karya yang sama dikelompokkan, 3.000 ISBN tersebut ternyata
-mewakili 2.816 karya unik. Pengelompokan ini mencegah buku yang sama muncul berulang
-kali hanya karena edisinya berbeda.
+edisi yang merujuk pada karya yang sama dikelompokkan, 3.000 ISBN tersebut menjadi
+2.816 karya unik. Cara ini mencegah buku yang sama muncul berulang kali hanya karena
+edisinya berbeda.
 
 ![Alur data menuju katalog model](/assets/recommender_system/data_pipeline_funnel.png)
 
-Angka tersebut adalah konfigurasi awal untuk memeriksa alur data, bukan ukuran
-seluruh dataset dan bukan ukuran yang pasti terbaik.
+Batas 1.000 buku untuk collaborative filtering dan 3.000 ISBN untuk candidate catalog
+ini merupakan konfigurasi awal untuk memeriksa pipeline, tidak ukuran seluruh dataset
+ataupun ukuran terakhir.
 
-### Tanya Pembaca Lain Dulu
+### Collaborative filtering
 
-Percobaan pertama memakai **collaborative filtering**. Maksudnya seperti bertanya:
+Percobaan pertama memakai **collaborative filtering**.
 
 > Orang yang menyukai buku yang sama denganku biasanya membaca apa lagi?
 
 Model belajar dari pola rating bersama. Ia tidak perlu memahami isi buku, tetapi
-butuh histori yang cukup. Disini pengguna atau buku baru belum punya pola tersebut. inilah
-masalah **cold-start**.
+butuh histori yang cukup. Disini pengguna atau buku baru belum punya pola tersebut (problem **cold-start**).
 
-Ada masalah yang lebih mendasar. Model tidak mungkin menemukan buku yang tidak ada di rak pilihannya, atau **candidate catalog**.
+Ada batasan lain. Model hanya dapat memilih dari daftar buku yang sudah disiapkan
+sebagai **candidate catalog**. Buku yang tidak ada di dalam daftar tersebut tidak
+mungkin direkomendasikan, sebaik apa pun model mengurutkan hasilnya.
 
 Untuk mengujinya, satu buku yang disukai pengguna sengaja disembunyikan. Buku ini
 disebut **holdout**, lalu model diminta menemukannya kembali dari histori yang tersisa.
 
 ![Penyaringan kasus yang dapat dievaluasi](/assets/recommender_system/evaluation_availability_funnel.png)
 
-Pada tes akhir yang sengaja disimpan (**fixed test**) dengan 200 holdout (satu per
-pengguna), hanya 46 buku target atau 23% yang ada di rak model. Hanya 23 kasus yang
-juga punya histori, dan tinggal 19 kasus yang masih punya petunjuk selera berupa buku
-lain dengan rating minimal 8/10.
+Fixed test berisi 200 holdout, satu untuk setiap pengguna. Dari jumlah tersebut,
+hanya 46 buku target yang tersedia di candidate catalog. Sebanyak 23 kasus juga masih
+memiliki histori rating, tetapi hanya 19 yang memiliki buku lain dengan rating minimal
+8/10 sebagai petunjuk selera.
 
-#### Kok Cuma 19?
 
-Untuk 200 pengguna tadi, sistem punya dua pekerjaan: mengisi halaman rekomendasi dan
-membuktikan hasilnya personal. **Fallback hanya menyelesaikan pekerjaan pertama.**
+#### Kenapa Cuma 19 Kasus yang Bisa Diuji?
 
-Fallback adalah rencana cadangan. Jika histori yang terlihat model kosong atau tidak
-punya buku lain dengan rating minimal 8/10, sistem menampilkan buku yang secara umum
-populer. Jika hasil personal belum mencapai 10 buku, sisanya juga diisi dari daftar
-tersebut.
+Seluruh 200 pengguna tetap mendapat 10 rekomendasi. Namun, hanya 19 kasus yang memenuhi dua
+syarat untuk menguji personalisasi:
 
-Buku populer dinilai mempertimbangkan rata-rata rating
-dan banyaknya rating, lalu membuang buku yang sudah dibaca serta edisi lain dari karya
-yang sama.
+1. buku yang disembunyikan tersedia di **candidate catalog**; dan
+2. pengguna masih memiliki buku lain dengan rating minimal 8/10 sebagai petunjuk
+   selera.
 
-| Kondisi pengguna | Target ada di rak | Target tidak ada di rak |
-|---|---:|---:|
-| Punya petunjuk selera | **19** | 46 |
-| Tidak punya petunjuk selera | 27 | 108 |
+Jika petunjuk selera tidak tersedia, sistem menggunakan **fallback** berupa buku
+populer. Fallback membuat halaman rekomendasi tetap terisi, tetapi hasilnya tidak
+dapat dipakai untuk menilai kemampuan personalisasi.
 
-Sebanyak 135 kasus pada baris kedua mengandalkan fallback. Sementara itu, 65 kasus
-masih punya sinyal personal, tetapi 46 target mereka tidak ada di rak. Model masih
-bisa memberi rekomendasi personal, cuma buku uji tersebut memang mustahil ditemukan.
+Daftar populer disusun dengan mempertimbangkan rata-rata dan jumlah rating. Buku
+yang sudah dibaca serta edisi lain dari karya yang sama tetap dibuang.
 
-Pada pengujian ini, 200 dari 200 pengguna tetap mendapat 10 rekomendasi. Namun hanya
-19 kasus yang layak dipakai untuk menilai personalisasi secara khusus. Daftar penuh
-bukan berarti daftar tersebut personal.
+| Kondisi pengguna | Target ada | Target tidak ada | Jumlah |
+|---|---:|---:|---:|
+| Punya petunjuk selera | **19** | 46 | 65 |
+| Tidak punya petunjuk selera | 27 | 108 | 135 |
+| **Jumlah** | **46** | **154** | **200** |
+
+Sebanyak 135 kasus tidak memiliki petunjuk selera sehingga mengandalkan fallback.
+Pada 46 kasus lainnya, model masih memiliki petunjuk selera, tetapi buku target tidak
+tersedia di candidate catalog. Karena itu, hanya 19 kasus yang dapat digunakan untuk
+menilai apakah rekomendasi personal berhasil menemukan buku yang disembunyikan.
 
 Hasil 200/200 juga bukan jaminan untuk semua dataset. Kali ini rak masih punya cukup
 banyak karya populer yang unik untuk mengisi daftar.
 
-### Coba Lihat Bukunya
+### Content based filtering
 
 Karena histori pembaca tipis,  maka kita melihat informasi bukunya.
 
 Pendekatan **content-based** mengubah judul, penulis, dan penerbit menjadi angka
-dengan TF-IDF. Tujuannya sederhana: mencari buku dengan metadata yang mirip.
+dengan TF-IDF. Tujuannya mencari buku dengan metadata yang mirip.
 
 ![Contoh buku yang mirip berdasarkan metadata](/assets/recommender_system/content_similarity_example.png)
 
@@ -126,12 +136,12 @@ Kemiripan sebuah buku bisa dihitung dari metadata tanpa menunggu banyak rating. 
 untuk menyesuaikannya kepada seseorang, model tetap butuh buku yang pernah ia sukai
 sebagai acuan. “Mirip” juga belum tentu berarti “paling cocok untuk orang ini”.
 
-Collaborative mengenal pola pembaca tetapi butuh histori. Content mengenal kemiripan
-buku tetapi belum benar-benar mengenal pembacanya. Menarik.
+Collaborative mengenal pola pembaca tetapi butuh histori. Lalu Content mengenal kemiripan
+buku tetapi belum benar-benar mengenal pembacanya.
 
-### Digabung ajah
+### Digabung
 
-Supaya sistem rekomendasi bisa berjalan dengan bagus dikondisi data seperti ini, solusi hybrid yaitu menggabungkan tiga suara: collaborative, content, dan popularity adalah solusi yang bagus.
+Supaya sistem rekomendasi bisa berjalan dengan bagus dikondisi data seperti ini, menggabungkan tiga suara: collaborative, content, dan popularity adalah solusi yang bagus.
 
 Ketiga suara menghasilkan skor. Skornya disetarakan, lalu diberi bobot untuk
 menentukan urutan rekomendasi. **Bobot dipakai untuk mengatur seberapa besar pengaruh
@@ -140,6 +150,7 @@ setiap suara terhadap hasil akhir.**
 Beberapa kombinasi dicoba pada validation. Dari percobaan awal itu, komposisi 0,40
 untuk collaborative, 0,45 untuk content, dan 0,15 untuk popularity dipakai sebagai
 baseline atau titik pembanding.
+
 
 ![Perubahan kontribusi tiga sinyal Hybrid](/assets/recommender_system/hybrid_signal_weights.png)
 
@@ -156,56 +167,57 @@ lebih baik. Itu yang akan diuji berikutnya.
 
 ### Dipastikan dulu
 
-Hasil percobaan awal tadi belum cukup. Baseline perlu diuji lagi tanpa mengintip
-fixed test.
+Komposisi baseline dari percobaan awal belum tentu menjadi pilihan terbaik. Sebelum
+fixed test dibuka, baseline `0,40 / 0,45 / 0,15` dibandingkan dengan penantang yang
+memberi porsi lebih besar kepada content, yaitu `0,30 / 0,60 / 0,10`.
 
-Baseline `0,40 / 0,45 / 0,15` dibandingkan dengan komposisi yang lebih berat ke
-content, yaitu `0,30 / 0,60 / 0,10`. Validation dipakai untuk memilih, sedangkan
-fixed test disimpan sampai keputusannya selesai.
+Perbandingan dilakukan pada lima validation split, masing-masing berisi 200 holdout.
+Kedua komposisi diuji menggunakan pasangan pengguna dan buku yang sama. Pengguna
+dapat muncul kembali pada split lain, sehingga jumlahnya bukan 1.000 pengguna unik.
 
-Pengujian dilakukan pada lima validation split, masing-masing berisi 200 holdout.
-Kedua komposisi mendapat pasangan pengguna-buku yang sama. Penggunanya bisa muncul
-lagi pada split lain, jadi jumlahnya bukan 1.000 pengguna unik.
+Metrik utamanya adalah NDCG@10. Metrik ini memeriksa apakah buku yang disembunyikan
+muncul dalam 10 rekomendasi teratas dan berada di urutan berapa. Semakin tinggi
+posisinya, semakin besar nilainya. Jika tidak ditemukan, nilainya 0.
 
-Metrik utamanya NDCG@10. Makin dekat buku yang dicari ke 10 urutan teratas, makin tinggi
-nilainya.
-
-Rata-rata NDCG baseline adalah 0,01903, sedangkan penantang 0,02011. Selisihnya
-+0,00108. Penantang terlihat unggul, tetapi belum tentu konsisten.
+Rata-rata NDCG baseline adalah 0,01903, sedangkan penantang 0,02011. Selisihnya hanya
++0,00108. Penantang terlihat sedikit lebih baik, tetapi kita masih perlu memastikan
+bahwa hasil tersebut konsisten.
 
 ![Perbandingan bobot pada repeated validation](/assets/recommender_system/repeated_split_selection.png)
 
 Grafik kiri menunjukkan penantang unggul pada dua dari lima split. Baseline unggul
-sekali, sedangkan dua split lainnya sama. Artinya, penantang hanya menang 40% dari
-pengujian.
+pada satu split, sedangkan dua split lainnya berakhir sama. Artinya, penantang hanya
+unggul pada 40% validation split.
 
-Grafik kanan menunjukkan selisih rata-rata beserta rentang ketidakpastiannya. Setelah
-dihitung dengan 2.000 bootstrap sample, rentangnya berada di `-0,00078` sampai
-`0,00313`. Karena masih melewati nol, penantang bisa saja sedikit lebih buruk, sama
-saja, atau sedikit lebih baik.
+Grafik kanan menunjukkan selisih rata-rata NDCG beserta rentang ketidakpastiannya.
+Dari 2.000 sampel bootstrap, rentangnya berada di `-0,00078` sampai `0,00313`.
+Karena rentang tersebut masih melewati nol, penantang bisa saja sedikit lebih buruk,
+sama, atau sedikit lebih baik daripada baseline.
 
-Syarat promosi sudah ditetapkan 60%. Penantang hanya mencapai 40%, jadi baseline
-tetap dipakai.
+Penantang hanya dapat menggantikan baseline jika unggul pada minimal 60% validation
+split dan batas bawah rentang ketidakpastiannya berada di atas nol. Kedua syarat
+tersebut tidak terpenuhi, sehingga baseline tetap digunakan.
 
-Setelah keputusan selesai, fixed test dibuka untuk baseline. Hasilnya NDCG@10 sebesar
-0,00631 dan HitRate@10 sebesar 1%. Artinya, buku yang disembunyikan ditemukan di
-sepuluh rekomendasi teratas pada 1% dari seluruh kasus uji.
+Setelah pilihan bobot ditetapkan, fixed test dibuka untuk mengukur baseline. Hasilnya,
+NDCG@10 sebesar 0,00631 dan HitRate@10 sebesar 1%. Artinya, buku yang disembunyikan
+ditemukan dalam 10 rekomendasi teratas pada 1% dari seluruh kasus uji.
 
-Hasil ini tidak membuktikan baseline mengalahkan penantang di fixed test karena
-penantang memang tidak diuji di sana. Bukti yang tersedia hanya mengatakan bahwa
-belum ada alasan cukup kuat untuk mengganti baseline.
+Hasil ini tidak membuktikan bahwa baseline mengalahkan penantang pada fixed test,
+karena penantang memang tidak diuji di sana. Kesimpulannya: bukti dari
+validation belum cukup kuat untuk mengganti baseline.
 
 ### Raknya Diperbesar?
 
 Kalau kita kilas balik ke bagian **Tanya Pembaca Lain Dulu**, hanya 46 dari 200 buku
-target yang masuk candidate books. Sebanyak 154 buku lainnya tidak pernah sampai ke
-tahap pengurutan.
+target yang tersedia di candidate catalog pada fixed test. Sebanyak 154 target lainnya
+tidak pernah sampai ke tahap pengurutan. Apakah masalahnya selesai jika candidate
+catalog diperbesar?
 
 Jumlah candidate books diatur dengan dua batas. Angka `1.000 / 3.000`, misalnya,
 berarti 1.000 buku punya pola rating untuk collaborative dan total 3.000 buku bisa
-dipertimbangkan hybrid. Jadi, jumlahnya bukan 4.000 buku.
+dipertimbangkan hybrid.
 
-Kita coba tiga ukuran: kecil `1.000 / 3.000`, sedang `3.000 / 10.000`, dan besar
+Dicoba tiga ukuran: kecil `1.000 / 3.000`, sedang `3.000 / 10.000`, dan besar
 `5.000 / 20.000`. Data test, pengguna, holdout, dan bobot tetap sama. Yang berubah
 hanya jumlah candidate books.
 
@@ -216,58 +228,54 @@ yang bisa dinilai secara personal juga naik dari 12,6% menjadi 23,3%, lalu 29,0%
 
 ![Perubahan NDCG pada katalog yang lebih besar](/assets/recommender_system/catalog_quality.png)
 
-Titiknya memang berada di kanan nol, tetapi kedua garis masih melewati nol. Artinya,
-nilai rata-rata NDCG terlihat naik, tetapi kenaikannya belum pasti.
+Dibandingkan ukuran kecil, rata-rata NDCG ukuran sedang naik 0,0034 dan ukuran besar
+naik 0,0031. Namun, garis ketidakpastian keduanya masih melewati nol. Jadi,
+peningkatannya terlihat pada rata-rata, tetapi belum cukup konsisten.
 
 ![Biaya tiga ukuran katalog](/assets/recommender_system/catalog_cost.png)
 
 Ukuran sedang masih berada di bawah dua batas biaya. Ukuran terbesar sudah melewati
 batas waktu respons dan ukuran file model.
 
-Tidak ada ukuran baru yang lolos semua syarat. Jadi, ukuran kecil tetap dipakai. Bukan
-karena selalu paling bagus, tetapi karena belum ada bukti yang cukup untuk
+Tidak ada ukuran baru yang lolos semua syarat. Jadi, ukuran kecil tetap dipakai, karena belum ada bukti yang cukup untuk
 menggantinya.
 
-### Jadi Pakai yang Mana?
+### Jadi gimana, bobot, ukuran rak?
 
-Popularity berguna saat histori belum ada. Collaborative bekerja saat pola pembaca
-sudah terbentuk. Content membantu mencari buku serupa. Hybrid yang sedang berjalan
-menggabungkan ketiganya dengan bobot baseline.
+Dari seluruh percobaan tadi, sistem tetap menggunakan hybrid dengan bobot baseline:
+0,40 untuk collaborative, 0,45 untuk content, dan 0,15 untuk popularity. Kapasitas
+katalog yang digunakan juga tetap `1.000 / 3.000`.
 
-![Trade-off kualitas dan keragaman rekomendasi](/assets/recommender_system/recommendation_tradeoffs.png)
+Popularity mengambil alih ketika pengguna belum memiliki petunjuk selera. Content
+membantu ketika historinya masih tipis, sedangkan peran collaborative bertambah
+ketika pola rating pengguna sudah lebih jelas.
 
-Titik biru adalah bobot baseline. Titik oranye memberi porsi lebih besar kepada
-content-based. `C` berarti collaborative, `T` berarti content-based yang membaca teks
-metadata, dan `P` berarti popularity.
+Konfigurasi ini dipertahankan bukan karena sudah terbukti paling baik untuk selamanya.
+Penantang bobot belum menunjukkan peningkatan yang konsisten, sedangkan katalog yang
+lebih besar belum berhasil meningkatkan kualitas sekaligus memenuhi batas biaya.
 
-Pada coverage, novelty, dan diversity, posisi lebih ke kanan menunjukkan nilai yang
-lebih tinggi. Pada share buku populer, posisi lebih ke kiri berarti hasilnya tidak
-terlalu dikuasai buku populer. Di sini, titik oranye tidak memperbaiki tiga metrik
-pertama, sedangkan porsi buku populernya tetap sama.
+Evaluasi offline juga belum menjawab apakah pengguna nyata akan mengklik, menyimpan,
+atau membeli buku yang direkomendasikan. Jika sistem digunakan pada produk dengan
+traffic yang cukup, langkah berikutnya adalah membandingkan konfigurasi melalui A/B
+test.
 
-Grafik ini dipakai untuk diagnosis, bukan untuk mengumumkan satu bobot sebagai
-pemenang.
-
-Nah, bisnisnya belum selesai di NDCG. Evaluasi offline belum menjawab apakah pengguna
-akan mengklik, menyimpan, atau membeli buku.
-
-Kalau sistem ini dipakai di produk nyata, tahap berikutnya adalah membandingkan versi
-lama dan baru lewat A/B test. Ukur klik, wishlist, pembelian, kunjungan kembali, serta
-latency dan error. Pengguna baru dan pengguna aktif juga sebaiknya dibaca terpisah
-karena kebutuhan mereka berbeda.
+Klik, buku yang disimpan, buku yang mulai dibaca, waktu respons, dan error dapat
+dipantau selama pengujian. Pengguna baru dan pengguna aktif juga perlu dilihat
+terpisah karena kebutuhan serta jumlah histori mereka berbeda.
 
 ### Belum selesai
 
-Collaborative mengajarkan pentingnya histori. Content membantu saat interaksi tipis.
-Fallback yaitu menggunakan buku populer menjaga halaman tidak kosong, sedangkan Hybrid menyatukan semua petunjuk.
+Tidak ada satu pendekatan yang cocok untuk semua kondisi. Collaborative membutuhkan
+histori rating, content mengandalkan metadata buku, sedangkan fallback berbasis
+popularity menjaga halaman rekomendasi tetap terisi. Hybrid menggabungkan ketiganya
+sesuai petunjuk selera yang tersedia.
 
-Eksperimen katalog juga memberi pesan sederhana: rak lebih besar memperluas
-ketersediaan target dan karya yang muncul secara offline, tetapi ranking belum
-terbukti membaik dan model makin berat. Jadi, baseline 0,40 / 0,45 / 0,15 dengan rak
-1.000 / 3.000 tetap berjalan.
+Percobaan ini juga menunjukkan bahwa model yang lebih kompleks atau katalog yang lebih
+besar belum tentu memberi hasil yang lebih baik. Katalog besar membuat lebih banyak
+buku target tersedia, tetapi kualitas ranking belum meningkat secara konsisten.
+Waktu respons dan ukuran modelnya juga ikut bertambah.
 
-Langkah berikutnya adalah memperbaiki pemilihan kandidat dan, ketika data produk
-tersedia, menguji dampaknya secara online.
+Pertanyaan berikutnya, mungkin bukan berapa banyak buku yang dapat direkomendasikan, namun apakah rekomendasi tersebut benar-benar membantu pembaca. Untuk menjawabnya, kita membutuhkan pemilihan kandidat yang lebih baik dan data penggunaan nyata.
 
 Kalau ingin mencobanya, sistem rekomendasi ini tersedia di
 [website Streamlit](https://books-system-recommendation.streamlit.app/). Kode,

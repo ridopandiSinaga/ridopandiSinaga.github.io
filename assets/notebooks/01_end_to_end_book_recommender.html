@@ -9447,7 +9447,7 @@ terlihat lebih baik hanya karena edisi lain masih tersedia sebagai kandidat.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-Baseline-Pertama:-Popularity">4. Baseline Pertama: Popularity<a class="anchor-link" href="#4.-Baseline-Pertama:-Popularity">¶</a></h2><p>Sebelum personalisasi, sistem perlu baseline yang murah dan selalu tersedia.
+<h2 id="4.-Baseline-Pertama-(Popularity)">4. Baseline Pertama (Popularity)<a class="anchor-link" href="#4.-Baseline-Pertama-(Popularity)">¶</a></h2><p>Sebelum personalisasi, sistem perlu baseline yang murah dan selalu tersedia.
 Skor popularity menggunakan <code>mean_rating × log1p(rating_count)</code>, sehingga sebuah
 buku dengan satu rating 10 tidak otomatis mengalahkan buku yang konsisten disukai
 banyak pengguna.</p>
@@ -9634,7 +9634,7 @@ cocok sebagai fallback/alternatif dan baseline pembanding, bukan otomatis jawaba
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5.-Collaborative-Filtering:-Belajar-dari-Pola-Bersama">5. Collaborative Filtering: Belajar dari Pola Bersama<a class="anchor-link" href="#5.-Collaborative-Filtering:-Belajar-dari-Pola-Bersama">¶</a></h2><p>Item-based collaborative filtering membangun sparse matrix buku × user. Rating
+<h2 id="5.-Collaborative-Filtering">5. Collaborative Filtering<a class="anchor-link" href="#5.-Collaborative-Filtering">¶</a></h2><p>Item-based collaborative filtering membangun sparse matrix buku × user. Rating
 dikoreksi terhadap rata-rata user yang diregularisasi, lalu model mencari item
 dengan pola rating serupa. Hanya rating <code>&gt;= 8</code> yang menjadi positive seed.</p>
 </div>
@@ -10045,7 +10045,7 @@ buku lain dari seri tersebut.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="6.-Content-Based:-Ketika-Co-rating-Tidak-Cukup">6. Content-Based: Ketika Co-rating Tidak Cukup<a class="anchor-link" href="#6.-Content-Based:-Ketika-Co-rating-Tidak-Cukup">¶</a></h2><p>Metadata tetap tersedia meskipun sebuah item belum memiliki banyak interaksi.
+<h2 id="6.-Content-Based-filtering">6. Content-Based filtering<a class="anchor-link" href="#6.-Content-Based-filtering">¶</a></h2><p>Metadata tetap tersedia meskipun sebuah item belum memiliki banyak interaksi.
 Model content mengubah <code>title + author + publisher</code> menjadi TF-IDF unigram/bigram,
 lalu mencari cosine-neighbor dan mendeduplikasi canonical work.</p>
 </div>
@@ -10220,7 +10220,7 @@ dan penerbit saja belum tentu cukup untuk memahami isi buku.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="7.-Hybrid:-Gabungkan-aja">7. Hybrid: Gabungkan aja<a class="anchor-link" href="#7.-Hybrid:-Gabungkan-aja">¶</a></h2><p>Hybrid menggabungkan collaborative, content profile, dan popularity setelah
+<h2 id="7.-Hybrid-(Gabungan)">7. Hybrid (Gabungan)<a class="anchor-link" href="#7.-Hybrid-(Gabungan)">¶</a></h2><p>Hybrid menggabungkan collaborative, content profile, dan popularity setelah
 masing-masing dinormalisasi. Bobot dasar adalah 0,40 / 0,45 / 0,15, lalu dapat
 bergeser berdasarkan jumlah positive canonical works milik user.</p>
 </div>
@@ -10453,7 +10453,7 @@ judul–penulis belum selalu berhasil mengenali variasi judul.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Failure-Mode,-Bukan-Hanya-Happy-Path">Failure Mode, Bukan Hanya Happy Path<a class="anchor-link" href="#Failure-Mode,-Bukan-Hanya-Happy-Path">¶</a></h3><p>Tiga skenario berikut menunjukkan cara hybrid menyesuaikan bobot.</p>
+<h3 id="Failure-Mode">Failure Mode<a class="anchor-link" href="#Failure-Mode">¶</a></h3><p>Tiga skenario berikut menunjukkan cara hybrid menyesuaikan bobot.</p>
 <p>Pengguna tanpa riwayat mendapat rekomendasi popularity. Untuk pengguna yang baru memiliki 1–2
 karya dengan rating minimal 8, bobot collaborative dikurangi dan content diperbesar.
 Pengguna dengan lebih dari 5 karya positif memakai bobot dasar 40% collaborative,
@@ -12115,7 +12115,7 @@ karena challenger memang tidak diuji di sana.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="11.-Eksperimen-Kapasitas-Katalog:-Reach-vs-Serving-Cost">11. Eksperimen Kapasitas Katalog: Reach vs Serving Cost<a class="anchor-link" href="#11.-Eksperimen-Kapasitas-Katalog:-Reach-vs-Serving-Cost">¶</a></h2><p>Bagian ini menguji apakah jumlah <strong>candidate books</strong> perlu diperbesar. Katalog yang
+<h2 id="11.-Eksperimen-Kapasitas-Katalog">11. Eksperimen Kapasitas Katalog<a class="anchor-link" href="#11.-Eksperimen-Kapasitas-Katalog">¶</a></h2><p>Bagian ini menguji apakah jumlah <strong>candidate books</strong> perlu diperbesar. Katalog yang
 lebih besar dapat membuat buku relevan lebih sering masuk kandidat, tetapi juga
 menambah waktu rekomendasi dan ukuran model. Karena itu, manfaat dan biayanya perlu
 dibandingkan sebelum konfigurasi baru digunakan.</p>
@@ -12949,7 +12949,7 @@ katalog terbesar melewati batas latency dan ukuran model.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="12.-Experiment-to-Serving:-Model-yang-Sama,-Bukan-Demo-Terpisah">12. Experiment-to-Serving: Model yang Sama, Bukan Demo Terpisah<a class="anchor-link" href="#12.-Experiment-to-Serving:-Model-yang-Sama,-Bukan-Demo-Terpisah">¶</a></h2><p><code>RecommenderService.load</code> memverifikasi manifest, checksum SHA-256, tipe model,
+<h2 id="12.-Experiment-to-Serving">12. Experiment-to-Serving<a class="anchor-link" href="#12.-Experiment-to-Serving">¶</a></h2><p><code>RecommenderService.load</code> memverifikasi manifest, checksum SHA-256, tipe model,
 kompatibilitas runtime, algorithm version, schema, dan dataset fingerprint sebelum
 memberi akses inference. Ini adalah boundary yang sama dengan API dan Streamlit.</p>
 </div>
