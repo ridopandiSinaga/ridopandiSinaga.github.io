@@ -262,3 +262,12 @@ Kalau ingin mencobanya, sistem rekomendasi ini tersedia di
 [website Streamlit](https://books-system-recommendation.streamlit.app/). Kode,
 eksperimen, dan pipeline-nya bisa dilihat di
 [repository GitHub](https://github.com/ridopandiSinaga/System-Recommendation).
+
+## notebook
+
+<iframe
+  src="{{ 'assets/notebooks/01_end_to_end_book_recommender.html' | relative_url }}"
+  width="100%"
+  height="1200px"
+  style="border: none;">
+</iframe>
