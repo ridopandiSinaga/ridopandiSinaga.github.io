@@ -6,8 +6,8 @@ tags: [model-engineering, recommender-system, evaluation]
 
 ---
 
-
-## Horas!
+## Cerita
+### Horas!
 
 Pernah selesai membaca sebuah buku, lalu bingung mau membaca apa lagi?
 Bukunya banyak, tetapi mencari satu per satu ya capek juga. Di sinilah sistem rekomendasi membantu.
@@ -19,7 +19,7 @@ Dataset: [Kaggle Book Recommendation Dataset](https://www.kaggle.com/datasets/ar
 
 Dataset proyek ini hanya punya informasi buku, pengguna, dan rating. Tidak ada data klik, pembelian, atau waktu membaca.
 
-## Datanya rada-rada
+### Datanya rada-rada
 
 Setelah dibersihkan, datanya berisi 271.359 buku, 383.843 rating, dan 278.858
 pengguna. Banyak ya.
@@ -50,7 +50,7 @@ kali hanya karena edisinya berbeda.
 Angka tersebut adalah konfigurasi awal untuk memeriksa alur data, bukan ukuran
 seluruh dataset dan bukan ukuran yang pasti terbaik.
 
-## Tanya Pembaca Lain Dulu
+### Tanya Pembaca Lain Dulu
 
 Percobaan pertama memakai **collaborative filtering**. Maksudnya seperti bertanya:
 
@@ -72,7 +72,7 @@ pengguna), hanya 46 buku target atau 23% yang ada di rak model. Hanya 23 kasus y
 juga punya histori, dan tinggal 19 kasus yang masih punya petunjuk selera berupa buku
 lain dengan rating minimal 8/10.
 
-### Kok Cuma 19?
+#### Kok Cuma 19?
 
 Untuk 200 pengguna tadi, sistem punya dua pekerjaan: mengisi halaman rekomendasi dan
 membuktikan hasilnya personal. **Fallback hanya menyelesaikan pekerjaan pertama.**
@@ -102,7 +102,7 @@ bukan berarti daftar tersebut personal.
 Hasil 200/200 juga bukan jaminan untuk semua dataset. Kali ini rak masih punya cukup
 banyak karya populer yang unik untuk mengisi daftar.
 
-## Coba Lihat Bukunya
+### Coba Lihat Bukunya
 
 Karena histori pembaca tipis,  maka kita melihat informasi bukunya.
 
@@ -118,7 +118,7 @@ sebagai acuan. “Mirip” juga belum tentu berarti “paling cocok untuk orang 
 Collaborative mengenal pola pembaca tetapi butuh histori. Content mengenal kemiripan
 buku tetapi belum benar-benar mengenal pembacanya. Menarik.
 
-## Digabung ajah
+### Digabung ajah
 
 Supaya sistem rekomendasi bisa berjalan dengan bagus dikondisi data seperti ini, solusi hybrid yaitu menggabungkan tiga suara: collaborative, content, dan popularity adalah solusi yang bagus.
 
@@ -143,7 +143,7 @@ Jadi, semakin banyak petunjuk selera, semakin besar kepercayaan model pada
 collaborative. Grafik ini baru menunjukkan cara kerjanya, belum membuktikan hasilnya
 lebih baik. Itu yang akan diuji berikutnya.
 
-## Dipastikan dulu
+### Dipastikan dulu
 
 Hasil percobaan awal tadi belum cukup. Baseline perlu diuji lagi tanpa mengintip
 fixed test.
@@ -184,7 +184,7 @@ Hasil ini tidak membuktikan baseline mengalahkan penantang di fixed test karena
 penantang memang tidak diuji di sana. Bukti yang tersedia hanya mengatakan bahwa
 belum ada alasan cukup kuat untuk mengganti baseline.
 
-## Raknya Diperbesar?
+### Raknya Diperbesar?
 
 Kalau kita kilas balik ke bagian **Tanya Pembaca Lain Dulu**, hanya 46 dari 200 buku
 target yang masuk candidate books. Sebanyak 154 buku lainnya tidak pernah sampai ke
@@ -217,7 +217,7 @@ Tidak ada ukuran baru yang lolos semua syarat. Jadi, ukuran kecil tetap dipakai.
 karena selalu paling bagus, tetapi karena belum ada bukti yang cukup untuk
 menggantinya.
 
-## Jadi Pakai yang Mana?
+### Jadi Pakai yang Mana?
 
 Popularity berguna saat histori belum ada. Collaborative bekerja saat pola pembaca
 sudah terbentuk. Content membantu mencari buku serupa. Hybrid yang sedang berjalan
@@ -245,7 +245,7 @@ lama dan baru lewat A/B test. Ukur klik, wishlist, pembelian, kunjungan kembali,
 latency dan error. Pengguna baru dan pengguna aktif juga sebaiknya dibaca terpisah
 karena kebutuhan mereka berbeda.
 
-## Belum selesai
+### Belum selesai
 
 Collaborative mengajarkan pentingnya histori. Content membantu saat interaksi tipis.
 Fallback yaitu menggunakan buku populer menjaga halaman tidak kosong, sedangkan Hybrid menyatukan semua petunjuk.
