@@ -226,7 +226,10 @@ a {
 .projects-section {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) 24px;
+  width: 100%;
+  min-width: 0;
   min-height: 0;
+  overflow: hidden;
   padding-bottom: 8px;
 }
 
@@ -259,11 +262,16 @@ a {
 
 .carousel-wrap {
   position: relative;
+  width: 100%;
+  min-width: 0;
   min-height: 0;
 }
 
 .project-track {
   display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   height: 100%;
   gap: 22px;
   padding: 0 clamp(48px, 7vw, 84px) 9px;
