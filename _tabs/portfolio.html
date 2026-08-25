@@ -1,0 +1,297 @@
+---
+layout: null
+title: Portfolio
+icon: fas fa-briefcase
+order: 0
+permalink: /portfolio/
+description: Selected AI engineering, machine learning, and data science work by Rido Pandi Sinaga.
+---
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f2f2f0">
+    <title>Rido. — Portfolio</title>
+    <meta name="description" content="Selected AI engineering, machine learning, and data science work by Rido Pandi Sinaga.">
+    <link rel="canonical" href="{{ '/portfolio/' | absolute_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">
+    <script defer src="{{ '/assets/js/portfolio.js' | relative_url }}"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#projects">Skip to projects</a>
+
+    <main class="portfolio-paper">
+      <header class="site-header" aria-label="Primary navigation">
+        <a class="wordmark" href="{{ '/portfolio/' | relative_url }}" aria-label="Rido portfolio home">Rido.</a>
+
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Portfolio navigation">
+            <a class="active" href="#projects" aria-current="page">Projects</a>
+            <a href="{{ '/about/' | relative_url }}">About</a>
+            <a href="{{ '/' | relative_url }}">Blog</a>
+          </nav>
+
+          <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Change color theme">
+            <span class="theme-toggle-dot" aria-hidden="true"></span>
+          </button>
+        </div>
+      </header>
+
+      <section class="hero" aria-labelledby="portfolio-title">
+        <div class="hero-copy">
+          <p class="eyebrow">AI Engineer · Data Scientist</p>
+          <h1 id="portfolio-title">I build<br>intelligent systems.</h1>
+          <p class="hero-description">
+            I design and ship AI applications that blend machine learning,
+            data systems, and clean UX.
+          </p>
+        </div>
+      </section>
+
+      <section class="projects-section" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Selected work</p>
+            <h2 id="projects-title">Projects</h2>
+          </div>
+          <p class="project-counter" aria-live="polite"><span id="current-project">01</span> / 04</p>
+        </div>
+
+        <div class="carousel-wrap">
+          <button class="carousel-button carousel-button--previous" type="button" aria-label="Show previous project" disabled>
+            <span aria-hidden="true">←</span>
+          </button>
+
+          <div class="project-track" id="project-track" tabindex="0" aria-label="Project carousel">
+            <article class="project-card" data-project="0">
+              <header class="project-header">
+                <p class="project-number">Project 01</p>
+                <p class="status-pill"><span aria-hidden="true"></span>Client project</p>
+              </header>
+
+              <div class="project-intro">
+                <h3>Agentic Customer Service</h3>
+                <p>An AI customer-service agent that understands context, retrieves grounded knowledge, and completes sales workflows.</p>
+              </div>
+
+              <div class="project-preview project-preview--agent" aria-label="Stylized preview of the customer-service agent interface">
+                <div class="preview-statement">
+                  <p class="preview-title">Resolve more.<br>Respond with context.</p>
+                  <p class="preview-copy">A tool-using assistant for product search, orders, payments, and human handoff.</p>
+                  <div class="preview-tags" aria-hidden="true">
+                    <span>Multi-turn</span><span>RAG</span><span>Tool use</span>
+                  </div>
+                </div>
+                <div class="chat-window" aria-hidden="true">
+                  <div class="chat-heading"><span class="chat-avatar">R</span><span>Rido Support<small>AI Agent</small></span></div>
+                  <div class="chat-bubble chat-bubble--agent">Hi! What can I help you find?</div>
+                  <div class="chat-bubble chat-bubble--user">I need glasses for -2.5.</div>
+                  <div class="chat-bubble chat-bubble--agent">I found three suitable frames. Shall I show them?</div>
+                  <div class="chat-input">Message Rido Support… <span>↑</span></div>
+                </div>
+              </div>
+
+              <dl class="project-metrics">
+                <div><dt>Context Recall</dt><dd>85.6%</dd><small>↑ from 73.6%</small></div>
+                <div><dt>Answer Relevancy</dt><dd>92.16%</dd><small>RAGAS evaluation</small></div>
+                <div><dt>Product Catalog</dt><dd>200</dd><small>Unique frames</small></div>
+              </dl>
+
+              <button class="case-study-link" type="button" data-dialog="agentic-dialog" aria-haspopup="dialog">
+                Open full case study <span aria-hidden="true">→</span>
+              </button>
+            </article>
+
+            <article class="project-card" data-project="1">
+              <header class="project-header">
+                <p class="project-number">Project 02</p>
+                <p class="status-pill"><span aria-hidden="true"></span>Internship project</p>
+              </header>
+
+              <div class="project-intro">
+                <h3>ElAiS</h3>
+                <p>A retrieval assistant for oil-palm research knowledge, built to make technical books and product information easier to explore.</p>
+              </div>
+
+              <div class="project-preview project-preview--elais" aria-label="Stylized preview of the ElAiS retrieval and evaluation dashboard">
+                <div class="elais-sidebar" aria-hidden="true">
+                  <span class="elais-logo">E</span>
+                  <i></i><i></i><i></i><i></i>
+                </div>
+                <div class="elais-main" aria-hidden="true">
+                  <div class="dashboard-heading"><span>Retrieval overview</span><small>Live evaluation</small></div>
+                  <div class="dashboard-grid">
+                    <div><small>Retriever</small><strong>Qdrant</strong><span class="tiny-bars"><i></i><i></i><i></i><i></i></span></div>
+                    <div><small>Final context</small><strong>Top 3</strong><span class="sparkline"></span></div>
+                    <div class="dashboard-wide"><small>Answer pipeline</small><span class="pipeline"><i>Query</i><b>→</b><i>Rerank</i><b>→</b><i>Answer</i></span></div>
+                  </div>
+                </div>
+              </div>
+
+              <dl class="project-metrics">
+                <div><dt>Knowledge source</dt><dd>Multi</dd><small>Books and product docs</small></div>
+                <div><dt>Final context</dt><dd>Top 3</dd><small>After reranking</small></div>
+                <div><dt>Evaluation</dt><dd>RAGAS</dd><small>Retrieval and answers</small></div>
+              </dl>
+
+              <button class="case-study-link" type="button" data-dialog="elais-dialog" aria-haspopup="dialog">
+                Open full case study <span aria-hidden="true">→</span>
+              </button>
+            </article>
+
+            <article class="project-card" data-project="2">
+              <header class="project-header">
+                <p class="project-number">Project 03</p>
+                <p class="status-pill"><span aria-hidden="true"></span>Machine learning</p>
+              </header>
+
+              <div class="project-intro">
+                <h3>Book Recommender</h3>
+                <p>A hybrid recommendation pipeline combining collaborative signals, book metadata, and a popularity fallback for sparse interactions.</p>
+              </div>
+
+              <div class="project-preview project-preview--books" aria-label="Stylized preview of a book recommendation interface">
+                <div class="book-profile" aria-hidden="true">
+                  <div class="book-cover"><span>THE<br>READER</span></div>
+                  <div><small>Because you liked</small><strong>Literary fiction</strong><span>Collaborative + content signals</span></div>
+                </div>
+                <div class="book-results" aria-hidden="true">
+                  <small>Next reads</small>
+                  <div><i class="cover-one"></i><span><strong>Similar themes</strong><small>0.91 match</small></span></div>
+                  <div><i class="cover-two"></i><span><strong>Readers also liked</strong><small>0.87 match</small></span></div>
+                  <div><i class="cover-three"></i><span><strong>Popular fallback</strong><small>Cold-start ready</small></span></div>
+                </div>
+              </div>
+
+              <dl class="project-metrics">
+                <div><dt>Raw catalog</dt><dd>271K</dd><small>Book records</small></div>
+                <div><dt>Ratings</dt><dd>383K</dd><small>User interactions</small></div>
+                <div><dt>Hybrid signals</dt><dd>3</dd><small>CF, content, popularity</small></div>
+              </dl>
+
+              <button class="case-study-link" type="button" data-dialog="recommender-dialog" aria-haspopup="dialog">
+                Open full case study <span aria-hidden="true">→</span>
+              </button>
+            </article>
+
+            <article class="project-card" data-project="3">
+              <header class="project-header">
+                <p class="project-number">Project 04</p>
+                <p class="status-pill"><span aria-hidden="true"></span>Data science</p>
+              </header>
+
+              <div class="project-intro">
+                <h3>Customer Segmentation</h3>
+                <p>A retail analytics workflow that converts noisy transactions into actionable customer groups while accounting for returns.</p>
+              </div>
+
+              <div class="project-preview project-preview--segments" aria-label="Stylized preview of a customer-segmentation dashboard">
+                <div class="segment-summary" aria-hidden="true">
+                  <small>Selected model</small>
+                  <strong>4 segments</strong>
+                  <p>Chosen for clearer campaign actions—not metric score alone.</p>
+                </div>
+                <div class="segment-chart" aria-hidden="true">
+                  <div><span>High value</span><i style="--bar: 100%"></i><small>C1</small></div>
+                  <div><span>Active regular</span><i style="--bar: 100%"></i><small>C2</small></div>
+                  <div><span>Low activity</span><i style="--bar: 100%"></i><small>C3</small></div>
+                  <div><span>Return heavy</span><i style="--bar: 100%"></i><small>C4</small></div>
+                </div>
+              </div>
+
+              <dl class="project-metrics">
+                <div><dt>Transactions</dt><dd>541K</dd><small>Rows validated</small></div>
+                <div><dt>Customers</dt><dd>4,372</dd><small>Unique profiles</small></div>
+                <div><dt>Segments</dt><dd>4</dd><small>Action-oriented groups</small></div>
+              </dl>
+
+              <button class="case-study-link" type="button" data-dialog="segmentation-dialog" aria-haspopup="dialog">
+                Open full case study <span aria-hidden="true">→</span>
+              </button>
+            </article>
+          </div>
+
+          <button class="carousel-button carousel-button--next" type="button" aria-label="Show next project">
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="carousel-dots" role="group" aria-label="Choose a project">
+          <button class="active" type="button" data-slide="0" aria-label="Show project 1" aria-current="true"></button>
+          <button type="button" data-slide="1" aria-label="Show project 2"></button>
+          <button type="button" data-slide="2" aria-label="Show project 3"></button>
+          <button type="button" data-slide="3" aria-label="Show project 4"></button>
+        </div>
+      </section>
+
+      <footer class="portfolio-footer">
+        <p>Rido Pandi Sinaga · Medan, Indonesia</p>
+        <div>
+          <a href="mailto:ridosinaga037@gmail.com">Email</a>
+          <a href="https://github.com/ridopandiSinaga" rel="me">GitHub</a>
+          <a href="https://www.linkedin.com/in/ridopandi-sinaga" rel="me">LinkedIn</a>
+        </div>
+      </footer>
+    </main>
+
+    <dialog class="case-dialog" id="agentic-dialog" aria-labelledby="agentic-title">
+      <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
+      <div class="dialog-overline"><span>Project 01</span><span>AI Engineering · 2025</span></div>
+      <h2 id="agentic-title">Agentic Customer Service</h2>
+      <p class="dialog-lead">A multi-turn customer-service system for Optik 150 K that combines grounded answers with product, order, payment, and escalation workflows.</p>
+      <div class="dialog-grid">
+        <section><h3>Challenge</h3><p>Customer questions mix product discovery, store policy, pricing, and purchase intent. The system needed to retain context while preventing unsupported answers and unsafe actions.</p></section>
+        <section><h3>Approach</h3><p>I designed a LangGraph ReAct workflow with intent routing, MMR retrieval, structured sales slots, validation, confirmation gates, and human handoff.</p></section>
+        <section><h3>System</h3><p>DeepSeek-V3, Jina Embeddings v3, Qdrant, MySQL, REST APIs, QRIS payment flow, webhooks, and audit logging.</p></section>
+        <section><h3>Result</h3><p>Context Recall increased from 73.6% to 85.6%, while Answer Relevancy reached 92.16% across QA and multi-turn evaluation.</p></section>
+      </div>
+      <div class="dialog-tags"><span>LangGraph</span><span>Agentic RAG</span><span>Qdrant</span><span>DeepSeek-V3</span><span>MySQL</span><span>HITL</span></div>
+    </dialog>
+
+    <dialog class="case-dialog" id="elais-dialog" aria-labelledby="elais-title">
+      <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
+      <div class="dialog-overline"><span>Project 02</span><span>AI Engineer Intern · 2024</span></div>
+      <h2 id="elais-title">ElAiS</h2>
+      <p class="dialog-lead">A knowledge assistant built at IOPRI/PPKS to help users explore institutional profiles, oil-palm products, and technical cultivation material.</p>
+      <div class="dialog-grid">
+        <section><h3>Challenge</h3><p>Useful answers were distributed across long technical books, product documents, and institutional sources with different writing styles and levels of detail.</p></section>
+        <section><h3>Approach</h3><p>I iterated from hybrid graph-vector retrieval to a focused Qdrant pipeline, adding query paraphrasing and reranking to improve the quality of final context.</p></section>
+        <section><h3>System</h3><p>LangChain, Qdrant, Jina Embeddings, Jina Rerank, document parsing, Streamlit, and RAGAS-based evaluation.</p></section>
+        <section><h3>Result</h3><p>The project established an evaluation-led retrieval workflow and a maintainable foundation for answering domain-specific questions from internal knowledge.</p></section>
+      </div>
+      <div class="dialog-tags"><span>RAG</span><span>Qdrant</span><span>Jina AI</span><span>Reranking</span><span>RAGAS</span><span>Streamlit</span></div>
+    </dialog>
+
+    <dialog class="case-dialog" id="recommender-dialog" aria-labelledby="recommender-title">
+      <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
+      <div class="dialog-overline"><span>Project 03</span><span>Machine Learning · 2026</span></div>
+      <h2 id="recommender-title">Book Recommender</h2>
+      <p class="dialog-lead">An end-to-end recommendation study focused on sparse interactions, duplicate editions, cold start, and realistic serving trade-offs.</p>
+      <div class="dialog-grid">
+        <section><h3>Challenge</h3><p>The dataset looks large, but interaction density is low: median ratings per user and per book are both only one. Multiple ISBNs can also represent the same work.</p></section>
+        <section><h3>Approach</h3><p>I combined item-based collaborative filtering, metadata similarity, and a popularity fallback, then grouped editions to stop the same title appearing repeatedly.</p></section>
+        <section><h3>System</h3><p>Python, pandas, scikit-learn, sparse matrices, offline evaluation, catalog filtering, and a notebook-based reproducible analysis.</p></section>
+        <section><h3>Result</h3><p>The resulting pipeline supports personalized recommendations where interaction history exists and sensible fallback behavior for sparse or new users.</p></section>
+      </div>
+      <div class="dialog-actions"><a href="{{ '/posts/recommender_system/' | relative_url }}">Read the technical article <span aria-hidden="true">→</span></a></div>
+      <div class="dialog-tags"><span>Recommender Systems</span><span>Collaborative Filtering</span><span>Content-Based</span><span>Cold Start</span></div>
+    </dialog>
+
+    <dialog class="case-dialog" id="segmentation-dialog" aria-labelledby="segmentation-title">
+      <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
+      <div class="dialog-overline"><span>Project 04</span><span>Data Science · 2026</span></div>
+      <h2 id="segmentation-title">Customer Segmentation</h2>
+      <p class="dialog-lead">A customer-analytics workflow that treats cancellations and returns as business signals rather than simply discarding them.</p>
+      <div class="dialog-grid">
+        <section><h3>Challenge</h3><p>Raw retail data contains missing customer IDs, cancellations, negative quantities, and customers whose gross spend hides a high return value.</p></section>
+        <section><h3>Approach</h3><p>I converted transactions into richer customer profiles, including recency, frequency, net monetary value, activity, product variety, and return ratios.</p></section>
+        <section><h3>System</h3><p>Python, pandas, feature validation, log transformation, standardization, K-Means, and cluster-profile analysis.</p></section>
+        <section><h3>Result</h3><p>Four segments were selected for clearer campaign actions: high value, active regular, low activity, and return-heavy customers.</p></section>
+      </div>
+      <div class="dialog-actions"><a href="{{ '/posts/customer_segmentation/' | relative_url }}">Read the technical article <span aria-hidden="true">→</span></a></div>
+      <div class="dialog-tags"><span>Customer Analytics</span><span>K-Means</span><span>RFM</span><span>Feature Engineering</span></div>
+    </dialog>
+  </body>
+</html>
