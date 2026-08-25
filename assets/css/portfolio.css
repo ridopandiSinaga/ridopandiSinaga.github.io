@@ -296,8 +296,25 @@ a {
   border-radius: var(--radius-card);
   background: var(--card);
   box-shadow: var(--card-shadow);
+  cursor: pointer;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  transition: transform 220ms var(--ease), border-color 180ms ease, box-shadow 220ms var(--ease);
+}
+
+.project-card:focus-visible {
+  border-color: color-mix(in srgb, var(--ink) 45%, var(--line));
+  outline: 3px solid color-mix(in srgb, var(--ink) 22%, transparent);
+  outline-offset: 4px;
+  transform: translateY(-3px);
+}
+
+@media (hover: hover) {
+  .project-card:hover {
+    border-color: color-mix(in srgb, var(--ink) 24%, var(--line));
+    box-shadow: 0 23px 58px rgba(20, 20, 18, 0.15), 0 3px 10px rgba(20, 20, 18, 0.06);
+    transform: translateY(-3px);
+  }
 }
 
 .project-header {
@@ -842,15 +859,15 @@ a {
 }
 
 .case-study-link {
+  display: inline-flex;
+  align-items: center;
   width: fit-content;
   margin-top: 12px;
   padding: 4px 0;
-  border: 0;
   border-bottom: 1px solid transparent;
-  background: transparent;
   font-size: 12px;
   font-weight: 650;
-  cursor: pointer;
+  pointer-events: none;
   transition: border-color 160ms ease;
 }
 
@@ -860,14 +877,13 @@ a {
   transition: transform 220ms var(--ease);
 }
 
-.case-study-link:hover,
-.case-study-link:focus-visible {
+.project-card:hover .case-study-link,
+.project-card:focus-visible .case-study-link {
   border-bottom-color: var(--ink);
-  outline: none;
 }
 
-.case-study-link:hover span,
-.case-study-link:focus-visible span {
+.project-card:hover .case-study-link span,
+.project-card:focus-visible .case-study-link span {
   transform: translateX(5px);
 }
 
@@ -880,11 +896,11 @@ a {
   height: 58px;
   padding: 0;
   place-items: center;
-  border: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--ink) 22%, var(--line));
   border-radius: 50%;
   color: var(--ink);
   background: var(--card);
-  box-shadow: 0 12px 32px rgba(15, 15, 13, 0.13);
+  box-shadow: 0 14px 38px rgba(15, 15, 13, 0.2), 0 0 0 5px color-mix(in srgb, var(--paper) 74%, transparent);
   cursor: pointer;
   transform: translateY(-50%);
   transition: transform 200ms var(--ease), opacity 180ms ease, background 180ms ease;
@@ -907,11 +923,12 @@ a {
 }
 
 .carousel-button--previous {
-  left: 20px;
+  left: calc(clamp(48px, 7vw, 84px) - 29px);
 }
 
 .carousel-button--next {
-  right: 20px;
+  right: auto;
+  left: calc(clamp(48px, 7vw, 84px) + clamp(610px, 65vw, 790px) - 29px);
 }
 
 .carousel-dots {
@@ -1141,6 +1158,14 @@ body.dialog-open {
   .project-card {
     flex-basis: min(700px, calc(100vw - 150px));
   }
+
+  .carousel-button--previous {
+    left: 15px;
+  }
+
+  .carousel-button--next {
+    left: calc(44px + min(700px, calc(100vw - 150px)) - 29px);
+  }
 }
 
 @media (max-width: 700px) {
@@ -1300,6 +1325,7 @@ body.dialog-open {
   }
 
   .carousel-button--next {
+    left: auto;
     right: 3px;
   }
 

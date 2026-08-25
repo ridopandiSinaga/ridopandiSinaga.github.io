@@ -45,6 +45,8 @@
   const counter = document.querySelector("#current-project");
   let activeIndex = 0;
   let scrollFrame = 0;
+  let pointerStartScroll = 0;
+  let pointerMoved = false;
 
   const setActiveProject = (index) => {
     activeIndex = Math.max(0, Math.min(index, cards.length - 1));
@@ -112,6 +114,29 @@
     { passive: true }
   );
 
+  track?.addEventListener("pointerdown", () => {
+    pointerStartScroll = track.scrollLeft;
+    pointerMoved = false;
+  });
+
+  track?.addEventListener(
+    "pointermove",
+    () => {
+      if (Math.abs(track.scrollLeft - pointerStartScroll) > 8) pointerMoved = true;
+    },
+    { passive: true }
+  );
+
+  track?.addEventListener("pointercancel", () => {
+    pointerMoved = false;
+  });
+
+  track?.addEventListener("pointerup", () => {
+    window.setTimeout(() => {
+      pointerMoved = false;
+    }, 0);
+  });
+
   track?.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
@@ -130,12 +155,30 @@
   const dialogTriggers = document.querySelectorAll("[data-dialog]");
   const dialogs = document.querySelectorAll(".case-dialog");
 
+  const openCaseStudy = (trigger) => {
+    const dialog = document.getElementById(trigger.dataset.dialog);
+    if (!(dialog instanceof HTMLDialogElement)) return;
+    dialog.showModal();
+    document.body.classList.add("dialog-open");
+  };
+
   dialogTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      const dialog = document.getElementById(trigger.dataset.dialog);
-      if (!(dialog instanceof HTMLDialogElement)) return;
-      dialog.showModal();
-      document.body.classList.add("dialog-open");
+    trigger.addEventListener("click", (event) => {
+      if (pointerMoved) {
+        event.preventDefault();
+        window.setTimeout(() => {
+          pointerMoved = false;
+        }, 0);
+        return;
+      }
+
+      openCaseStudy(trigger);
+    });
+
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openCaseStudy(trigger);
     });
   });
 
