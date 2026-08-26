@@ -87,7 +87,7 @@ a {
 
 .portfolio-paper {
   display: grid;
-  grid-template-rows: 92px minmax(205px, 0.72fr) minmax(0, 1.55fr) 52px;
+  grid-template-rows: 92px minmax(0, 1fr) 52px;
   width: min(1240px, 100%);
   height: clamp(760px, calc(100svh - 48px), 980px);
   min-height: 760px;
@@ -185,18 +185,6 @@ a {
   transform: translateX(2px);
 }
 
-.hero {
-  display: flex;
-  align-items: center;
-  padding: 14px clamp(48px, 12vw, 168px) 28px;
-}
-
-.hero-copy {
-  max-width: 720px;
-}
-
-.eyebrow,
-.section-kicker,
 .project-number {
   margin: 0;
   color: var(--faint);
@@ -204,23 +192,6 @@ a {
   font-weight: 680;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-.hero h1 {
-  margin: 9px 0 16px;
-  font-size: clamp(48px, 5.5vw, 76px);
-  font-weight: 760;
-  letter-spacing: -0.062em;
-  line-height: 0.96;
-}
-
-.hero-description {
-  max-width: 610px;
-  margin: 0;
-  color: var(--muted);
-  font-size: clamp(17px, 1.8vw, 21px);
-  letter-spacing: -0.018em;
-  line-height: 1.55;
 }
 
 .projects-section {
@@ -237,7 +208,7 @@ a {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  padding: 0 clamp(48px, 7vw, 84px) 13px;
+  padding: 24px clamp(48px, 7vw, 84px) 16px;
 }
 
 .section-heading h2 {
@@ -1137,7 +1108,7 @@ body.dialog-open {
 
 @media (max-width: 900px) {
   .portfolio-paper {
-    grid-template-rows: 82px minmax(220px, 0.72fr) minmax(0, 1.5fr) 48px;
+    grid-template-rows: 82px minmax(0, 1fr) 48px;
   }
 
   .site-header,
@@ -1151,10 +1122,6 @@ body.dialog-open {
 
   .site-nav {
     gap: 25px;
-  }
-
-  .hero {
-    padding-inline: 74px;
   }
 
   .section-heading,
@@ -1225,20 +1192,6 @@ body.dialog-open {
     height: 31px;
   }
 
-  .hero {
-    min-height: 440px;
-    padding: 88px 24px 76px;
-  }
-
-  .hero h1 {
-    margin-top: 11px;
-    font-size: clamp(50px, 15vw, 72px);
-  }
-
-  .hero-description {
-    font-size: 17px;
-  }
-
   .projects-section {
     display: grid;
     grid-template-rows: auto auto 26px;
@@ -1246,7 +1199,7 @@ body.dialog-open {
   }
 
   .section-heading {
-    padding: 0 24px 16px;
+    padding: 42px 24px 16px;
   }
 
   .project-track {
@@ -1372,10 +1325,6 @@ body.dialog-open {
 @media (max-width: 430px) {
   .site-nav a:nth-child(2) {
     display: none;
-  }
-
-  .hero {
-    min-height: 410px;
   }
 
   .project-card {
