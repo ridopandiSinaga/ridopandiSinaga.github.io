@@ -224,16 +224,68 @@ description: Selected AI engineering, machine learning, and data science work by
 
     <dialog class="case-dialog" id="agentic-dialog" aria-labelledby="agentic-title">
       <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
-      <div class="dialog-overline"><span>Project 01</span><span>AI Engineering · 2025</span></div>
+      <div class="dialog-overline"><span>Project 01</span><span>Sole AI Engineer · 2025</span></div>
       <h2 id="agentic-title">Agentic Customer Service</h2>
-      <p class="dialog-lead">A multi-turn customer-service system for Optik 150 K that combines grounded answers with product, order, payment, and escalation workflows.</p>
+      <p class="dialog-lead">An end-to-end customer-service agent for Optik 150 K that recommends products, builds orders, requests staff approval for sensitive actions, and completes QRIS payments without losing conversation context.</p>
+
+      <section class="case-media" data-video-gallery aria-labelledby="agentic-demo-title">
+        <div class="case-media-heading">
+          <div>
+            <p class="case-media-kicker">Product demos</p>
+            <h3 id="agentic-demo-title">See the system in action</h3>
+          </div>
+          <p>Choose a recording, then press play.</p>
+        </div>
+
+        <div class="case-media-stage">
+          <button class="case-video-launch" type="button" data-video-launch data-video-src="https://drive.google.com/file/d/1CurLILNcrjWqYlsKbJa-mzsdxVzhvn0I/preview" aria-label="Play the customer journey demo">
+            <img src="{{ '/assets/img/portfolio/agentic-customer-service/customer-journey.webp' | relative_url }}" alt="Optik 150 K customer chat recommending suitable frames">
+            <span class="case-video-overlay" aria-hidden="true">
+              <span class="case-video-play">▶</span>
+              <span class="case-video-copy"><small>End-to-end demo · 04:45</small><strong>Customer journey</strong><span>Chat, product discovery, staff approval, and payment</span></span>
+            </span>
+          </button>
+        </div>
+
+        <div class="case-media-options" role="group" aria-label="Choose an Agentic Customer Service recording">
+          <button class="case-media-option active" type="button" data-video-select data-video-src="https://drive.google.com/file/d/1CurLILNcrjWqYlsKbJa-mzsdxVzhvn0I/preview" data-video-poster="{{ '/assets/img/portfolio/agentic-customer-service/customer-journey.webp' | relative_url }}" data-video-alt="Optik 150 K customer chat recommending suitable frames" data-video-label="Play the customer journey demo" data-video-kicker="End-to-end demo · 04:45" data-video-title="Customer journey" data-video-description="Chat, product discovery, staff approval, and payment" aria-pressed="true">
+            <img src="{{ '/assets/img/portfolio/agentic-customer-service/customer-journey.webp' | relative_url }}" alt="">
+            <span><strong>Customer journey</strong><small>Conversation to QRIS payment</small></span>
+          </button>
+          <button class="case-media-option" type="button" data-video-select data-video-src="https://drive.google.com/file/d/1kOJ6Jn6L-uvjontiKRSDkO-dHZccZeys/preview" data-video-poster="{{ '/assets/img/portfolio/agentic-customer-service/langfuse-observability.webp' | relative_url }}" data-video-alt="Langfuse dashboard showing traces, model cost, and evaluation scores" data-video-label="Play the Langfuse observability demo" data-video-kicker="Observability · 01:38" data-video-title="Langfuse monitoring" data-video-description="Traces, usage, cost, scores, and agent debugging" aria-pressed="false">
+            <img src="{{ '/assets/img/portfolio/agentic-customer-service/langfuse-observability.webp' | relative_url }}" alt="">
+            <span><strong>Langfuse monitoring</strong><small>Traces, cost, and evaluation</small></span>
+          </button>
+        </div>
+      </section>
+
+      <dl class="agentic-metrics" aria-label="Agentic Customer Service results">
+        <div><dt>Context Recall</dt><dd>85.6%</dd><small>Up from 73.6%</small></div>
+        <div><dt>Answer Relevancy</dt><dd>92.16%</dd><small>RAGAS evaluation</small></div>
+        <div><dt>Product Catalog</dt><dd>200</dd><small>Unique frames</small></div>
+      </dl>
+
+      <section class="agentic-flow" aria-labelledby="agentic-flow-title">
+        <div class="agentic-section-heading">
+          <p>System flow</p>
+          <h3 id="agentic-flow-title">From customer intent to a verified transaction</h3>
+        </div>
+        <ol>
+          <li><span>01</span><strong>Understand</strong><small>Intent and session context</small></li>
+          <li><span>02</span><strong>Retrieve</strong><small>Grounded catalog search</small></li>
+          <li><span>03</span><strong>Build order</strong><small>Validated sales details</small></li>
+          <li><span>04</span><strong>Staff gate</strong><small>Approve, reject, or take over</small></li>
+          <li><span>05</span><strong>Complete</strong><small>QRIS and webhook status</small></li>
+        </ol>
+      </section>
+
       <div class="dialog-grid">
-        <section><h3>Challenge</h3><p>Customer questions mix product discovery, store policy, pricing, and purchase intent. The system needed to retain context while preventing unsupported answers and unsafe actions.</p></section>
-        <section><h3>Approach</h3><p>I designed a LangGraph ReAct workflow with intent routing, MMR retrieval, structured sales slots, validation, confirmation gates, and human handoff.</p></section>
-        <section><h3>System</h3><p>DeepSeek-V3, Jina Embeddings v3, Qdrant, MySQL, REST APIs, QRIS payment flow, webhooks, and audit logging.</p></section>
-        <section><h3>Result</h3><p>Context Recall increased from 73.6% to 85.6%, while Answer Relevancy reached 92.16% across QA and multi-turn evaluation.</p></section>
+        <section><h3>Challenge</h3><p>Customer requests combine product discovery, eye-care needs, prescription details, pricing, store policy, and purchase intent. A static chatbot could not retain the required state or safely execute sensitive actions.</p></section>
+        <section><h3>Approach</h3><p>I designed a stateful LangGraph ReAct workflow with intent routing, MMR retrieval, structured sales slots, validation, confirmation gates, and Human-in-the-Loop approval or staff takeover.</p></section>
+        <section><h3>System</h3><p>FastAPI, DeepSeek-V3, Jina Embeddings v3, Qdrant, MySQL, Midtrans QRIS, dynamic webhooks, audit logging, and Langfuse observability work as one modular service.</p></section>
+        <section><h3>Result</h3><p>Context Recall improved from 73.6% to 85.6%, while Answer Relevancy reached 92.16%. The agent can transition to staff and resume automation without dropping conversation context.</p></section>
       </div>
-      <div class="dialog-tags"><span>LangGraph</span><span>Agentic RAG</span><span>Qdrant</span><span>DeepSeek-V3</span><span>MySQL</span><span>HITL</span></div>
+      <div class="dialog-tags"><span>LangGraph</span><span>Agentic RAG</span><span>FastAPI</span><span>Qdrant</span><span>DeepSeek-V3</span><span>MySQL</span><span>Midtrans</span><span>Langfuse</span><span>HITL</span></div>
     </dialog>
 
     <dialog class="case-dialog" id="elais-dialog" aria-labelledby="elais-title">
