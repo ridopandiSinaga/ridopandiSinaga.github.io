@@ -90,36 +90,26 @@ description: Selected AI engineering, machine learning, and data science work by
               </span>
             </article>
 
-            <article class="project-card" data-project="1" data-dialog="elais-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="elais-dialog" aria-label="Open ElAiS case study">
+            <article class="project-card" data-project="1" data-dialog="chat-opa-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="chat-opa-dialog" aria-label="Open Chat OPA case study">
               <header class="project-header">
                 <p class="project-number">Project 02</p>
-                <p class="status-pill"><span aria-hidden="true"></span>Internship project</p>
+                <p class="status-pill"><span aria-hidden="true"></span>Live product</p>
               </header>
 
               <div class="project-intro">
-                <h3>ElAiS</h3>
-                <p>A retrieval assistant for oil-palm research knowledge, built to make technical books and product information easier to explore.</p>
+                <h3>Chat OPA</h3>
+                <p>A production AI assistant that turns unstructured oil-palm knowledge into searchable, contextual answers.</p>
               </div>
 
-              <div class="project-preview project-preview--elais" aria-label="Stylized preview of the ElAiS retrieval and evaluation dashboard">
-                <div class="elais-sidebar" aria-hidden="true">
-                  <span class="elais-logo">E</span>
-                  <i></i><i></i><i></i><i></i>
-                </div>
-                <div class="elais-main" aria-hidden="true">
-                  <div class="dashboard-heading"><span>Retrieval overview</span><small>Live evaluation</small></div>
-                  <div class="dashboard-grid">
-                    <div><small>Retriever</small><strong>Qdrant</strong><span class="tiny-bars"><i></i><i></i><i></i><i></i></span></div>
-                    <div><small>Final context</small><strong>Top 3</strong><span class="sparkline"></span></div>
-                    <div class="dashboard-wide"><small>Answer pipeline</small><span class="pipeline"><i>Query</i><b>→</b><i>Rerank</i><b>→</b><i>Answer</i></span></div>
-                  </div>
-                </div>
+              <div class="project-preview project-preview--chat-opa" aria-label="Chat OPA public product homepage">
+                <img src="{{ '/assets/img/portfolio/chat-opa/homepage.webp' | relative_url }}" alt="OPA homepage inviting users to consult about oil-palm management through Chat OPA">
+                <span class="project-live-badge" aria-hidden="true"><i></i>Live product</span>
               </div>
 
               <dl class="project-metrics">
-                <div><dt>Knowledge source</dt><dd>Multi</dd><small>Books and product docs</small></div>
-                <div><dt>Final context</dt><dd>Top 3</dd><small>After reranking</small></div>
-                <div><dt>Evaluation</dt><dd>RAGAS</dd><small>Retrieval and answers</small></div>
+                <div><dt>Knowledge base</dt><dd>100+</dd><small>Unstructured documents</small></div>
+                <div><dt>Retrieval</dt><dd>Agentic</dd><small>Memory-aware search</small></div>
+                <div><dt>Delivery</dt><dd>Live</dd><small>Production deployment</small></div>
               </dl>
 
               <span class="case-study-link" aria-hidden="true">
@@ -259,14 +249,14 @@ description: Selected AI engineering, machine learning, and data science work by
         </div>
       </section>
 
-      <dl class="agentic-metrics" aria-label="Agentic Customer Service results">
+      <dl class="case-metrics" aria-label="Agentic Customer Service results">
         <div><dt>Context Recall</dt><dd>85.6%</dd><small>Up from 73.6%</small></div>
         <div><dt>Answer Relevancy</dt><dd>92.16%</dd><small>RAGAS evaluation</small></div>
         <div><dt>Product Catalog</dt><dd>200</dd><small>Unique frames</small></div>
       </dl>
 
-      <section class="agentic-flow" aria-labelledby="agentic-flow-title">
-        <div class="agentic-section-heading">
+      <section class="case-flow" aria-labelledby="agentic-flow-title">
+        <div class="case-section-heading">
           <p>System flow</p>
           <h3 id="agentic-flow-title">From customer intent to a verified transaction</h3>
         </div>
@@ -288,18 +278,74 @@ description: Selected AI engineering, machine learning, and data science work by
       <div class="dialog-tags"><span>LangGraph</span><span>Agentic RAG</span><span>FastAPI</span><span>Qdrant</span><span>DeepSeek-V3</span><span>MySQL</span><span>Midtrans</span><span>Langfuse</span><span>HITL</span></div>
     </dialog>
 
-    <dialog class="case-dialog" id="elais-dialog" aria-labelledby="elais-title">
+    <dialog class="case-dialog" id="chat-opa-dialog" aria-labelledby="chat-opa-title">
       <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
-      <div class="dialog-overline"><span>Project 02</span><span>AI Engineer Intern · 2024</span></div>
-      <h2 id="elais-title">ElAiS</h2>
-      <p class="dialog-lead">A knowledge assistant built at IOPRI/PPKS to help users explore institutional profiles, oil-palm products, and technical cultivation material.</p>
+      <div class="dialog-overline"><span>Project 02</span><span>AI Engineer · Contract · 2025</span></div>
+      <h2 id="chat-opa-title">Chat OPA</h2>
+      <p class="dialog-lead">A production knowledge assistant for PT Riset Perkebunan Nusantara Bogor that turns 100+ unstructured commercial documents into searchable, memory-aware conversations.</p>
+
+      <section class="case-media case-gallery" data-image-gallery aria-labelledby="chat-opa-gallery-title">
+        <div class="case-media-heading">
+          <div>
+            <p class="case-media-kicker">Product gallery</p>
+            <h3 id="chat-opa-gallery-title">From public product to grounded answers</h3>
+          </div>
+          <p>Choose a screen to inspect the experience.</p>
+        </div>
+
+        <figure class="case-image-stage">
+          <img data-gallery-image src="{{ '/assets/img/portfolio/chat-opa/homepage.webp' | relative_url }}" alt="OPA homepage inviting users to consult about oil-palm management through Chat OPA">
+          <figcaption>
+            <small data-gallery-kicker>Product entry point</small>
+            <strong data-gallery-title>OPA public homepage</strong>
+            <span data-gallery-description>A clear route into the assistant for oil-palm consultation.</span>
+          </figcaption>
+        </figure>
+
+        <div class="case-media-options case-media-options--three" role="group" aria-label="Choose a Chat OPA product screen">
+          <button class="case-media-option active" type="button" data-image-select data-image-src="{{ '/assets/img/portfolio/chat-opa/homepage.webp' | relative_url }}" data-image-alt="OPA homepage inviting users to consult about oil-palm management through Chat OPA" data-image-kicker="Product entry point" data-image-title="OPA public homepage" data-image-description="A clear route into the assistant for oil-palm consultation." aria-pressed="true">
+            <img src="{{ '/assets/img/portfolio/chat-opa/homepage.webp' | relative_url }}" alt="">
+            <span><strong>Product homepage</strong><small>Public OPA experience</small></span>
+          </button>
+          <button class="case-media-option" type="button" data-image-select data-image-src="{{ '/assets/img/portfolio/chat-opa/chat-workspace.webp' | relative_url }}" data-image-alt="Chat OPA workspace with conversation history, library, and Deep Search controls" data-image-kicker="Assistant workspace" data-image-title="Memory-aware chat" data-image-description="Conversation history, knowledge library, multimodal input, and Deep Search in one interface." aria-pressed="false">
+            <img src="{{ '/assets/img/portfolio/chat-opa/chat-workspace.webp' | relative_url }}" alt="">
+            <span><strong>Chat workspace</strong><small>History, library, and Deep Search</small></span>
+          </button>
+          <button class="case-media-option" type="button" data-image-select data-image-src="{{ '/assets/img/portfolio/chat-opa/deep-search.webp' | relative_url }}" data-image-alt="Chat OPA answering an oil-palm investment question with a structured, detailed response" data-image-kicker="Grounded response" data-image-title="Detailed domain answer" data-image-description="The assistant retrieves and synthesizes domain context into a practical, structured response." aria-pressed="false">
+            <img src="{{ '/assets/img/portfolio/chat-opa/deep-search.webp' | relative_url }}" alt="">
+            <span><strong>Grounded answer</strong><small>Structured domain synthesis</small></span>
+          </button>
+        </div>
+      </section>
+
+      <dl class="case-metrics" aria-label="Chat OPA project facts">
+        <div><dt>Knowledge base</dt><dd>100+</dd><small>Commercial documents</small></div>
+        <div><dt>Ingestion</dt><dd>OCR + LLM</dd><small>Unstructured content</small></div>
+        <div><dt>Delivery</dt><dd>Live</dd><small>Production product</small></div>
+      </dl>
+
+      <section class="case-flow" aria-labelledby="chat-opa-flow-title">
+        <div class="case-section-heading">
+          <p>Knowledge pipeline</p>
+          <h3 id="chat-opa-flow-title">From messy source files to a contextual answer</h3>
+        </div>
+        <ol>
+          <li><span>01</span><strong>Ingest</strong><small>Documents and visual content</small></li>
+          <li><span>02</span><strong>Structure</strong><small>OCR, cleaning, and context</small></li>
+          <li><span>03</span><strong>Index</strong><small>Reliable vector embeddings</small></li>
+          <li><span>04</span><strong>Retrieve</strong><small>LangChain agentic search</small></li>
+          <li><span>05</span><strong>Respond</strong><small>Memory-aware synthesis</small></li>
+        </ol>
+      </section>
+
       <div class="dialog-grid">
-        <section><h3>Challenge</h3><p>Useful answers were distributed across long technical books, product documents, and institutional sources with different writing styles and levels of detail.</p></section>
-        <section><h3>Approach</h3><p>I iterated from hybrid graph-vector retrieval to a focused Qdrant pipeline, adding query paraphrasing and reranking to improve the quality of final context.</p></section>
-        <section><h3>System</h3><p>LangChain, Qdrant, Jina Embeddings, Jina Rerank, document parsing, Streamlit, and RAGAS-based evaluation.</p></section>
-        <section><h3>Result</h3><p>The project established an evaluation-led retrieval workflow and a maintainable foundation for answering domain-specific questions from internal knowledge.</p></section>
+        <section><h3>Challenge</h3><p>Commercial oil-palm knowledge lived across 100+ long, unstructured documents. OCR noise, mixed layouts, and visual material made reliable enterprise search difficult.</p></section>
+        <section><h3>Approach</h3><p>I engineered an OCR and LLM ingestion pipeline, then orchestrated LangChain agents to retrieve, synthesize, and retain the context needed for multi-turn questions.</p></section>
+        <section><h3>System</h3><p>Document parsers, OCR, LangChain, agentic retrieval, vector embeddings, vision-model context, a secure backend, Docker, and production deployment.</p></section>
+        <section><h3>Result</h3><p>OPA became a live internal knowledge assistant that makes domain documents easier to query while supporting contextual and multimodal conversations.</p></section>
       </div>
-      <div class="dialog-tags"><span>RAG</span><span>Qdrant</span><span>Jina AI</span><span>Reranking</span><span>RAGAS</span><span>Streamlit</span></div>
+      <div class="dialog-actions"><a href="https://chat.opa.co.id/" target="_blank" rel="noopener noreferrer">Open the live product <span aria-hidden="true">↗</span></a></div>
+      <div class="dialog-tags"><span>LangChain</span><span>Agentic RAG</span><span>OCR</span><span>Vector Database</span><span>Vision LLM</span><span>Docker</span><span>Production</span></div>
     </dialog>
 
     <dialog class="case-dialog" id="recommender-dialog" aria-labelledby="recommender-title">

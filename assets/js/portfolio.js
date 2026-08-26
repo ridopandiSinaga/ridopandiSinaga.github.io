@@ -241,6 +241,34 @@
     });
   });
 
+  const imageGalleries = document.querySelectorAll("[data-image-gallery]");
+
+  imageGalleries.forEach((gallery) => {
+    const stageImage = gallery.querySelector("[data-gallery-image]");
+    const kicker = gallery.querySelector("[data-gallery-kicker]");
+    const title = gallery.querySelector("[data-gallery-title]");
+    const description = gallery.querySelector("[data-gallery-description]");
+
+    gallery.querySelectorAll("[data-image-select]").forEach((option) => {
+      option.addEventListener("click", () => {
+        if (stageImage instanceof HTMLImageElement && option.dataset.imageSrc) {
+          stageImage.src = option.dataset.imageSrc;
+          stageImage.alt = option.dataset.imageAlt || "Chat OPA product screen";
+        }
+
+        if (kicker) kicker.textContent = option.dataset.imageKicker || "";
+        if (title) title.textContent = option.dataset.imageTitle || "";
+        if (description) description.textContent = option.dataset.imageDescription || "";
+
+        gallery.querySelectorAll("[data-image-select]").forEach((candidate) => {
+          const isSelected = candidate === option;
+          candidate.classList.toggle("active", isSelected);
+          candidate.setAttribute("aria-pressed", String(isSelected));
+        });
+      });
+    });
+  });
+
   dialogs.forEach((dialog) => {
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) dialog.close();
