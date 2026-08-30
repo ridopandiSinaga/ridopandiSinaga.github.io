@@ -117,34 +117,26 @@ description: Selected AI engineering, machine learning, and data science work by
               </span>
             </article>
 
-            <article class="project-card" data-project="2" data-dialog="recommender-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="recommender-dialog" aria-label="Open Book Recommender case study">
+            <article class="project-card" data-project="2" data-dialog="agentic-chess-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="agentic-chess-dialog" aria-label="Open Agentic Chess Arena case study">
               <header class="project-header">
                 <p class="project-number">Project 03</p>
-                <p class="status-pill"><span aria-hidden="true"></span>Machine learning</p>
+                <p class="status-pill"><span aria-hidden="true"></span>Agent evaluation</p>
               </header>
 
               <div class="project-intro">
-                <h3>Book Recommender</h3>
-                <p>A hybrid recommendation pipeline combining collaborative signals, book metadata, and a popularity fallback for sparse interactions.</p>
+                <h3>Agentic Chess Arena</h3>
+                <p>An evidence-driven testbed for typed tool use, self-reflection, failure recovery, and reproducible DeepSeek decisions in deterministic chess.</p>
               </div>
 
-              <div class="project-preview project-preview--books" aria-label="Stylized preview of a book recommendation interface">
-                <div class="book-profile" aria-hidden="true">
-                  <div class="book-cover"><span>THE<br>READER</span></div>
-                  <div><small>Because you liked</small><strong>Literary fiction</strong><span>Collaborative + content signals</span></div>
-                </div>
-                <div class="book-results" aria-hidden="true">
-                  <small>Next reads</small>
-                  <div><i class="cover-one"></i><span><strong>Similar themes</strong><small>0.91 match</small></span></div>
-                  <div><i class="cover-two"></i><span><strong>Readers also liked</strong><small>0.87 match</small></span></div>
-                  <div><i class="cover-three"></i><span><strong>Popular fallback</strong><small>Cold-start ready</small></span></div>
-                </div>
+              <div class="project-preview project-preview--chess" aria-label="Agentic Chess Arena showing the authoritative board and public DeepSeek decision trace">
+                <img src="{{ '/assets/img/portfolio/agentic-chess-arena/human-vs-deepseek.webp' | relative_url }}" alt="Agentic Chess Arena interface with a chessboard and validated DeepSeek decision trace">
+                <span class="project-evidence-badge" aria-hidden="true"><i></i>Strict replay</span>
               </div>
 
               <dl class="project-metrics">
-                <div><dt>Raw catalog</dt><dd>271K</dd><small>Book records</small></div>
-                <div><dt>Ratings</dt><dd>383K</dd><small>User interactions</small></div>
-                <div><dt>Hybrid signals</dt><dd>3</dd><small>CF, content, popularity</small></div>
+                <div><dt>Agent Decisions</dt><dd>56</dd><small>Strictly validated cases</small></div>
+                <div><dt>Logical LLM Calls</dt><dd>111</dd><small>Controlled experiments</small></div>
+                <div><dt>Verified Commits</dt><dd>53/56</dd><small>No silent correction</small></div>
               </dl>
 
               <span class="case-study-link" aria-hidden="true">
@@ -348,19 +340,83 @@ description: Selected AI engineering, machine learning, and data science work by
       <div class="dialog-tags"><span>LangChain</span><span>Agentic RAG</span><span>OCR</span><span>Vector Database</span><span>Vision LLM</span><span>Docker</span><span>Production</span></div>
     </dialog>
 
-    <dialog class="case-dialog" id="recommender-dialog" aria-labelledby="recommender-title">
+    <dialog class="case-dialog" id="agentic-chess-dialog" aria-labelledby="agentic-chess-title">
       <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
-      <div class="dialog-overline"><span>Project 03</span><span>Machine Learning · 2026</span></div>
-      <h2 id="recommender-title">Book Recommender</h2>
-      <p class="dialog-lead">An end-to-end recommendation study focused on sparse interactions, duplicate editions, cold start, and realistic serving trade-offs.</p>
+      <div class="dialog-overline"><span>Project 03</span><span>Independent Agentic AI Project · 2026</span></div>
+      <h2 id="agentic-chess-title">Agentic Chess Arena</h2>
+      <p class="dialog-lead">An evidence-driven Agentic AI system for evaluating ReAct workflows, typed tool calls, self-reflection, failure recovery, and reproducible DeepSeek decisions inside an authoritative chess environment.</p>
+
+      <section class="case-media" data-video-gallery aria-labelledby="agentic-chess-demo-title">
+        <div class="case-media-heading">
+          <div>
+            <p class="case-media-kicker">Product demo</p>
+            <h3 id="agentic-chess-demo-title">Human vs DeepSeek live arena</h3>
+          </div>
+          <p>Interactive input, validated execution, and immutable replay evidence.</p>
+        </div>
+
+        <div class="case-media-stage">
+          <button class="case-video-launch" type="button" data-video-launch data-video-src="https://drive.google.com/file/d/1IKM-bSwxp34kSVwL5bXhJdCJlRGe43sP/preview" aria-label="Play the Human vs DeepSeek Agentic Chess Arena demo">
+            <img src="{{ '/assets/img/portfolio/agentic-chess-arena/human-vs-deepseek.webp' | relative_url }}" alt="Agentic Chess Arena interface with an authoritative chessboard and public DeepSeek decision trace">
+            <span class="case-video-overlay" aria-hidden="true">
+              <span class="case-video-play">▶</span>
+              <span class="case-video-copy"><small>Live arena demo · 10:03</small><strong>Human vs DeepSeek</strong><span>Interactive play, verified agent execution, and strict replay</span></span>
+            </span>
+          </button>
+        </div>
+
+        <div class="case-media-options case-media-options--single" role="group" aria-label="Agentic Chess Arena recording">
+          <button class="case-media-option active" type="button" data-video-select data-video-src="https://drive.google.com/file/d/1IKM-bSwxp34kSVwL5bXhJdCJlRGe43sP/preview" data-video-poster="{{ '/assets/img/portfolio/agentic-chess-arena/human-vs-deepseek.webp' | relative_url }}" data-video-alt="Agentic Chess Arena interface with an authoritative chessboard and public DeepSeek decision trace" data-video-label="Play the Human vs DeepSeek Agentic Chess Arena demo" data-video-kicker="Live arena demo · 10:03" data-video-title="Human vs DeepSeek" data-video-description="Interactive play, verified agent execution, and strict replay" aria-pressed="true">
+            <img src="{{ '/assets/img/portfolio/agentic-chess-arena/human-vs-deepseek.webp' | relative_url }}" alt="">
+            <span><strong>Human vs DeepSeek</strong><small>11 committed plies · 13 logical calls</small></span>
+          </button>
+        </div>
+      </section>
+
+      <dl class="case-metrics" aria-label="Agentic Chess Arena experiment results">
+        <div><dt>Agent Decisions</dt><dd>56</dd><small>Strictly validated DeepSeek cases</small></div>
+        <div><dt>Logical LLM Calls</dt><dd>111</dd><small>Across controlled regimes</small></div>
+        <div><dt>Successful Commits</dt><dd>53/56</dd><small>Invalid actions stayed observable</small></div>
+      </dl>
+
+      <section class="case-experiment" aria-labelledby="agentic-chess-experiment-title">
+        <div class="case-section-heading">
+          <p>Experiment comparison</p>
+          <h3 id="agentic-chess-experiment-title">ReAct control vs self-reflection</h3>
+        </div>
+        <div class="experiment-grid">
+          <article><small>ReAct control</small><strong>28/28</strong><span>Cases committed</span></article>
+          <article><small>Reflection</small><strong>25/28</strong><span>Cases committed</span></article>
+          <article><small>Accepted candidates</small><strong>25</strong><span>Legal candidates accepted</span></article>
+          <article><small>Revised candidates</small><strong>0</strong><span>No measurable revision benefit</span></article>
+        </div>
+        <p class="case-evidence-note"><strong>Evidence gate:</strong> reflection added calls, inspections, token usage, and latency without revising a candidate, so it remained outside the default configuration. The archive retains 36 candidate inspections, 112 offline Stockfish evidence records, and zero exposed private reasoning traces.</p>
+      </section>
+
+      <section class="case-flow case-flow--seven" aria-labelledby="agentic-chess-flow-title">
+        <div class="case-section-heading">
+          <p>System flow</p>
+          <h3 id="agentic-chess-flow-title">From bounded context to a verifiable move</h3>
+        </div>
+        <ol>
+          <li><span>01</span><strong>Context</strong><small>Project authoritative state</small></li>
+          <li><span>02</span><strong>Reason &amp; act</strong><small>Select a typed action</small></li>
+          <li><span>03</span><strong>Use tools</strong><small>Inspect without mutation</small></li>
+          <li><span>04</span><strong>Validate</strong><small>Schema, legality, and revision</small></li>
+          <li><span>05</span><strong>Reflect</strong><small>Accept or revise once</small></li>
+          <li><span>06</span><strong>Commit</strong><small>Apply one verified move</small></li>
+          <li><span>07</span><strong>Evaluate</strong><small>Replay and score offline</small></li>
+        </ol>
+      </section>
+
       <div class="dialog-grid">
-        <section><h3>Challenge</h3><p>The dataset looks large, but interaction density is low: median ratings per user and per book are both only one. Multiple ISBNs can also represent the same work.</p></section>
-        <section><h3>Approach</h3><p>I combined item-based collaborative filtering, metadata similarity, and a popularity fallback, then grouped editions to stop the same title appearing repeatedly.</p></section>
-        <section><h3>System</h3><p>Python, pandas, scikit-learn, sparse matrices, offline evaluation, catalog filtering, and a notebook-based reproducible analysis.</p></section>
-        <section><h3>Result</h3><p>The resulting pipeline supports personalized recommendations where interaction history exists and sensible fallback behavior for sparse or new users.</p></section>
+        <section><h3>Challenge</h3><p>Agent demos can mix model output, application state, tool results, and hidden recovery logic. That makes it difficult to tell whether an agent followed its protocol or whether the application silently repaired the result.</p></section>
+        <section><h3>Approach</h3><p>I built a LangGraph workflow with bounded context projection, typed structured outputs, read-only inspection tools, one same-model reflection step, and strict failure states.</p></section>
+        <section><h3>System</h3><p>DeepSeek-V4-Flash proposes decisions, while Pydantic and python-chess enforce schema and game rules. Append-only JSONL, PGN, hashes, and replay artifacts preserve every transition. Stockfish 18 evaluates only after execution.</p></section>
+        <section><h3>Result</h3><p>The frozen experiment completed all 56 cases. ReAct committed 28/28; reflection committed 25/28 and revised no candidate. Three invalid proposals became typed protocol forfeits—never substituted moves or silent repairs.</p></section>
       </div>
-      <div class="dialog-actions"><a href="{{ '/posts/recommender_system/' | relative_url }}">Read the technical article <span aria-hidden="true">→</span></a></div>
-      <div class="dialog-tags"><span>Recommender Systems</span><span>Collaborative Filtering</span><span>Content-Based</span><span>Cold Start</span></div>
+      <div class="dialog-actions"><a href="https://drive.google.com/file/d/1IKM-bSwxp34kSVwL5bXhJdCJlRGe43sP/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Open the demo recording <span aria-hidden="true">↗</span></a></div>
+      <div class="dialog-tags"><span>Agentic AI</span><span>LangGraph</span><span>ReAct</span><span>Tool Calling</span><span>Self-Reflection</span><span>Structured Outputs</span><span>DeepSeek-V4-Flash</span><span>python-chess</span><span>Stockfish 18</span><span>Strict Replay</span><span>SSE</span></div>
     </dialog>
 
     <dialog class="case-dialog" id="segmentation-dialog" aria-labelledby="segmentation-title">
