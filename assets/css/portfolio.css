@@ -527,96 +527,59 @@ a {
   background: #00a98f;
 }
 
-.project-preview--books {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-  padding: 18px 22px;
-  background:
-    radial-gradient(circle at 8% 0%, rgba(219, 174, 93, 0.22), transparent 36%),
-    linear-gradient(145deg, #15130f, #0c0c0d);
+.project-preview--chess {
+  min-height: 155px;
+  background: #efefed;
 }
 
-.book-profile {
+.project-preview--chess > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 44%;
+  transition: filter 220ms ease, transform 500ms var(--ease);
+}
+
+.project-preview--chess::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.2));
+  content: "";
+  pointer-events: none;
+}
+
+.project-card:hover .project-preview--chess > img,
+.project-card:focus-visible .project-preview--chess > img {
+  filter: contrast(1.02);
+  transform: scale(1.015);
+}
+
+.project-evidence-badge {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  color: #111;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(12px);
+  font-size: 9px;
+  font-weight: 680;
 }
 
-.book-cover {
-  display: flex;
-  width: 75px;
-  height: 104px;
-  flex: 0 0 auto;
-  align-items: end;
-  padding: 9px;
-  border-radius: 3px 7px 7px 3px;
-  color: #f1e9d6;
-  background: linear-gradient(150deg, #9f3a29, #311817);
-  box-shadow: 8px 10px 25px rgba(0, 0, 0, 0.35), inset 5px 0 0 rgba(255, 255, 255, 0.08);
-  font-family: Georgia, serif;
-  font-size: 11px;
-  line-height: 0.95;
-}
-
-.book-profile small,
-.book-results > small {
-  color: #7e7a72;
-  font-size: 7px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.book-profile strong,
-.book-profile span {
-  display: block;
-}
-
-.book-profile strong {
-  margin: 5px 0;
-  font-size: 13px;
-}
-
-.book-profile span {
-  color: #85827c;
-  font-size: 7px;
-}
-
-.book-results {
-  padding: 9px 0;
-}
-
-.book-results > div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 7px;
-  padding: 5px 7px;
-  border: 1px solid #292722;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.book-results i {
-  width: 19px;
-  height: 27px;
-  flex: 0 0 auto;
-  border-radius: 2px;
-}
-
-.cover-one { background: #526d7b; }
-.cover-two { background: #ac7c44; }
-.cover-three { background: #6e4f7a; }
-
-.book-results strong,
-.book-results small {
-  display: block;
-  font-size: 7px;
-}
-
-.book-results small {
-  margin-top: 2px;
-  color: #706d68;
+.project-evidence-badge i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #111;
 }
 
 .project-preview--segments {
@@ -940,13 +903,15 @@ a {
 }
 
 #agentic-dialog,
-#chat-opa-dialog {
+#chat-opa-dialog,
+#agentic-chess-dialog {
   width: min(1120px, calc(100vw - 40px));
   max-height: calc(100svh - 40px);
 }
 
 #agentic-dialog .dialog-lead,
-#chat-opa-dialog .dialog-lead {
+#chat-opa-dialog .dialog-lead,
+#agentic-chess-dialog .dialog-lead {
   max-width: 880px;
 }
 
@@ -1169,6 +1134,10 @@ a {
   width: 106px;
 }
 
+.case-media-options--single {
+  grid-template-columns: minmax(0, 520px);
+}
+
 .case-media-option {
   display: grid;
   grid-template-columns: 126px minmax(0, 1fr);
@@ -1272,6 +1241,73 @@ a {
   font-size: 9px;
 }
 
+.case-experiment {
+  margin-top: 38px;
+}
+
+.experiment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.experiment-grid article {
+  display: flex;
+  min-width: 0;
+  padding: 21px 18px;
+  flex-direction: column;
+  border-left: 1px solid var(--line);
+}
+
+.experiment-grid article:first-child {
+  border-left: 0;
+}
+
+.experiment-grid small,
+.experiment-grid strong,
+.experiment-grid span {
+  display: block;
+}
+
+.experiment-grid small {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+.experiment-grid strong {
+  order: -1;
+  margin-bottom: 7px;
+  font-size: clamp(27px, 3.4vw, 39px);
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+}
+
+.experiment-grid span {
+  margin-top: 5px;
+  color: var(--faint);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.case-evidence-note {
+  margin: 14px 0 0;
+  padding: 17px 19px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  color: var(--muted);
+  background: var(--soft);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.case-evidence-note strong {
+  color: var(--ink);
+}
+
 .case-flow {
   margin-top: 38px;
 }
@@ -1320,8 +1356,21 @@ a {
   line-height: 1.45;
 }
 
+.case-flow--seven ol {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.case-flow--seven li:nth-child(-n + 4) {
+  border-bottom: 1px solid var(--line);
+}
+
+.case-flow--seven li:nth-child(5) {
+  border-left: 0;
+}
+
 #agentic-dialog .dialog-grid,
-#chat-opa-dialog .dialog-grid {
+#chat-opa-dialog .dialog-grid,
+#agentic-chess-dialog .dialog-grid {
   margin-top: 38px;
 }
 
@@ -1444,6 +1493,18 @@ body.dialog-open {
   .case-flow li:nth-child(4) {
     border-left: 0;
   }
+
+  .case-flow--seven ol {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .case-flow--seven li:nth-child(5) {
+    border-left: 1px solid var(--line);
+  }
+
+  .case-flow--seven li:nth-child(7) {
+    border-left: 0;
+  }
 }
 
 @media (max-width: 700px) {
@@ -1539,7 +1600,6 @@ body.dialog-open {
   }
 
   .project-preview--agent,
-  .project-preview--books,
   .project-preview--segments {
     grid-template-columns: 1fr;
   }
@@ -1556,14 +1616,6 @@ body.dialog-open {
     right: 35px;
     bottom: 31px;
     left: 35px;
-  }
-
-  .book-profile {
-    justify-content: center;
-  }
-
-  .book-results {
-    display: none;
   }
 
   .segment-summary {
@@ -1621,7 +1673,8 @@ body.dialog-open {
   }
 
   #agentic-dialog,
-  #chat-opa-dialog {
+  #chat-opa-dialog,
+  #agentic-chess-dialog {
     width: calc(100vw - 20px);
   }
 
@@ -1668,6 +1721,18 @@ body.dialog-open {
     border-top: 0;
   }
 
+  .experiment-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .experiment-grid article:nth-child(3) {
+    border-left: 0;
+  }
+
+  .experiment-grid article:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+
   .case-flow ol {
     grid-template-columns: 1fr;
   }
@@ -1679,6 +1744,11 @@ body.dialog-open {
     align-items: center;
     gap: 10px;
     padding-inline: 0;
+    border-left: 0;
+  }
+
+  .case-flow--seven li:nth-child(5),
+  .case-flow--seven li:nth-child(7) {
     border-left: 0;
   }
 
