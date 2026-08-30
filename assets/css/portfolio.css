@@ -88,7 +88,7 @@ a {
 .portfolio-paper {
   display: grid;
   grid-template-rows: 92px minmax(0, 1fr) 52px;
-  width: min(1240px, 100%);
+  width: min(1540px, 100%);
   height: clamp(760px, calc(100svh - 48px), 980px);
   min-height: 760px;
   margin: 0 auto;
@@ -211,11 +211,8 @@ a {
   padding: 24px clamp(48px, 7vw, 84px) 16px;
 }
 
-.section-heading h2 {
-  margin: 2px 0 0;
-  font-size: 21px;
-  font-weight: 710;
-  letter-spacing: -0.04em;
+.section-heading--counter-only {
+  justify-content: flex-end;
 }
 
 .project-counter {
@@ -1241,73 +1238,6 @@ a {
   font-size: 9px;
 }
 
-.case-experiment {
-  margin-top: 38px;
-}
-
-.experiment-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 18px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.experiment-grid article {
-  display: flex;
-  min-width: 0;
-  padding: 21px 18px;
-  flex-direction: column;
-  border-left: 1px solid var(--line);
-}
-
-.experiment-grid article:first-child {
-  border-left: 0;
-}
-
-.experiment-grid small,
-.experiment-grid strong,
-.experiment-grid span {
-  display: block;
-}
-
-.experiment-grid small {
-  color: var(--muted);
-  font-size: 9px;
-  font-weight: 650;
-  letter-spacing: 0.04em;
-}
-
-.experiment-grid strong {
-  order: -1;
-  margin-bottom: 7px;
-  font-size: clamp(27px, 3.4vw, 39px);
-  letter-spacing: -0.055em;
-  line-height: 0.95;
-}
-
-.experiment-grid span {
-  margin-top: 5px;
-  color: var(--faint);
-  font-size: 9px;
-  line-height: 1.4;
-}
-
-.case-evidence-note {
-  margin: 14px 0 0;
-  padding: 17px 19px;
-  border: 1px solid var(--line);
-  border-radius: 13px;
-  color: var(--muted);
-  background: var(--soft);
-  font-size: 11px;
-  line-height: 1.6;
-}
-
-.case-evidence-note strong {
-  color: var(--ink);
-}
-
 .case-flow {
   margin-top: 38px;
 }
@@ -1719,18 +1649,6 @@ body.dialog-open {
 
   .case-metrics > div:first-child {
     border-top: 0;
-  }
-
-  .experiment-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .experiment-grid article:nth-child(3) {
-    border-left: 0;
-  }
-
-  .experiment-grid article:nth-child(n + 3) {
-    border-top: 1px solid var(--line);
   }
 
   .case-flow ol {
