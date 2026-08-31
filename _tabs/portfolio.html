@@ -41,7 +41,7 @@ description: Selected AI engineering, machine learning, and data science work by
 
       <section class="projects-section" id="projects" aria-label="Projects">
         <div class="section-heading section-heading--counter-only">
-          <p class="project-counter" aria-live="polite"><span id="current-project">01</span> / 04</p>
+          <p class="project-counter" aria-live="polite"><span id="current-project">01</span> / 05</p>
         </div>
 
         <div class="carousel-wrap">
@@ -143,9 +143,36 @@ description: Selected AI engineering, machine learning, and data science work by
               </span>
             </article>
 
-            <article class="project-card" data-project="3" data-dialog="segmentation-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="segmentation-dialog" aria-label="Open Customer Segmentation case study">
+            <article class="project-card" data-project="3" data-dialog="book-recommender-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="book-recommender-dialog" aria-label="Open Book Recommender case study">
               <header class="project-header">
                 <p class="project-number">Project 04</p>
+                <p class="status-pill"><span aria-hidden="true"></span>Machine learning</p>
+              </header>
+
+              <div class="project-intro">
+                <h3>Book Recommender</h3>
+                <p>A hybrid ranking system that combines metadata, collaborative signals, and popularity fallback without repeating equivalent book editions.</p>
+              </div>
+
+              <div class="project-preview project-preview--book-recommender" aria-label="Book Recommender interface showing hybrid recommendations">
+                <img src="{{ '/assets/img/portfolio/book-recommender/product-ui.webp' | relative_url }}" alt="Book Recommender interface showing catalog statistics, hybrid controls, and recommended books">
+                <span class="project-live-badge" aria-hidden="true"><i></i>Live demo</span>
+              </div>
+
+              <dl class="project-metrics">
+                <div><dt>Raw Catalog</dt><dd>271K</dd><small>Book records</small></div>
+                <div><dt>Raw Ratings</dt><dd>1.15M</dd><small>User interactions</small></div>
+                <div><dt>Ranking Signals</dt><dd>3</dd><small>Content, CF, popularity</small></div>
+              </dl>
+
+              <span class="case-study-link" aria-hidden="true">
+                Open full case study <span aria-hidden="true">→</span>
+              </span>
+            </article>
+
+            <article class="project-card" data-project="4" data-dialog="segmentation-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="segmentation-dialog" aria-label="Open Customer Segmentation case study">
+              <header class="project-header">
+                <p class="project-number">Project 05</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Data science</p>
               </header>
 
@@ -190,6 +217,7 @@ description: Selected AI engineering, machine learning, and data science work by
           <button type="button" data-slide="1" aria-label="Show project 2"></button>
           <button type="button" data-slide="2" aria-label="Show project 3"></button>
           <button type="button" data-slide="3" aria-label="Show project 4"></button>
+          <button type="button" data-slide="4" aria-label="Show project 5"></button>
         </div>
       </section>
 
@@ -398,9 +426,67 @@ description: Selected AI engineering, machine learning, and data science work by
       <div class="dialog-tags"><span>Agentic AI</span><span>LangGraph</span><span>ReAct</span><span>Tool Calling</span><span>Self-Reflection</span><span>Structured Outputs</span><span>DeepSeek-V4-Flash</span><span>python-chess</span><span>Stockfish 18</span><span>Strict Replay</span><span>SSE</span></div>
     </dialog>
 
+    <dialog class="case-dialog" id="book-recommender-dialog" aria-labelledby="book-recommender-title">
+      <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
+      <div class="dialog-overline"><span>Project 04</span><span>Individual Machine Learning Project · 2026</span></div>
+      <h2 id="book-recommender-title">Book Recommender</h2>
+      <p class="dialog-lead">An end-to-end hybrid recommendation system that helps readers find similar books and personalized Top-N results while handling sparse feedback, cold start, and duplicate ISBN editions.</p>
+
+      <section class="case-media" aria-labelledby="book-recommender-product-title">
+        <div class="case-media-heading">
+          <div>
+            <p class="case-media-kicker">Product interface</p>
+            <h3 id="book-recommender-product-title">Similar, collaborative, and hybrid discovery</h3>
+          </div>
+          <p>The same verified model artifact powers the interface and API.</p>
+        </div>
+
+        <figure class="case-image-stage case-image-stage--contain">
+          <img src="{{ '/assets/img/portfolio/book-recommender/product-ui.webp' | relative_url }}" alt="Book Recommender interface with catalog statistics, hybrid recommendation controls, and ranked book results">
+          <figcaption>
+            <small>Hybrid recommendation</small>
+            <strong>Personalized Top-N results</strong>
+            <span>Each result exposes the strongest contributing signal.</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <dl class="case-metrics" aria-label="Book Recommender project scale">
+        <div><dt>Raw Books</dt><dd>271K</dd><small>Catalog records</small></div>
+        <div><dt>Raw Ratings</dt><dd>1.15M</dd><small>Book-Crossing interactions</small></div>
+        <div><dt>Ranking Signals</dt><dd>3</dd><small>Content, collaborative, popularity</small></div>
+      </dl>
+
+      <section class="case-flow" aria-labelledby="book-recommender-flow-title">
+        <div class="case-section-heading">
+          <p>Recommendation pipeline</p>
+          <h3 id="book-recommender-flow-title">From sparse interactions to a verified ranking</h3>
+        </div>
+        <ol>
+          <li><span>01</span><strong>Validate</strong><small>Schema, ratings, and identifiers</small></li>
+          <li><span>02</span><strong>Canonicalize</strong><small>Group equivalent ISBN editions</small></li>
+          <li><span>03</span><strong>Build candidates</strong><small>Training-only catalog</small></li>
+          <li><span>04</span><strong>Rank</strong><small>Content, item CF, popularity</small></li>
+          <li><span>05</span><strong>Serve</strong><small>Checksum-verified artifact</small></li>
+        </ol>
+      </section>
+
+      <div class="dialog-grid">
+        <section><h3>Challenge</h3><p>Book-Crossing contains a large but sparse preference signal. Rating 0 means no explicit score, new users lack history, and one literary work can appear under several ISBN editions—creating duplicate results and evaluation leakage.</p></section>
+        <section><h3>Approach</h3><p>I combined TF-IDF metadata similarity, adjusted-cosine item collaborative filtering, and popularity fallback in a weighted hybrid. Canonical-work identity removes equivalent editions and dynamic weights adapt to limited user history.</p></section>
+        <section><h3>System</h3><p>A shared Python pipeline keeps cleaning, training, evaluation, CLI, FastAPI, and Streamlit consistent. Training and serving load the same checksum-verified model bundle rather than rebuilding artifacts independently.</p></section>
+        <section><h3>Result</h3><p>The system supports similar-book search and personalized recommendations with cold-start fallback. A larger catalog produced a 17.9% higher NDCG@10 point estimate, but its adjusted confidence interval crossed zero, so I retained the smaller baseline.</p></section>
+      </div>
+      <div class="dialog-actions">
+        <a href="https://books-system-recommendation.streamlit.app/" target="_blank" rel="noopener noreferrer">Open the live demo <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/ridopandiSinaga/System-Recommendation" target="_blank" rel="noopener noreferrer">View the GitHub repository <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="dialog-tags"><span>Hybrid Recommender</span><span>Content-Based</span><span>Item Collaborative Filtering</span><span>Cold Start</span><span>TF-IDF</span><span>FastAPI</span><span>Streamlit</span><span>Docker</span></div>
+    </dialog>
+
     <dialog class="case-dialog" id="segmentation-dialog" aria-labelledby="segmentation-title">
       <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
-      <div class="dialog-overline"><span>Project 04</span><span>Data Science · 2026</span></div>
+      <div class="dialog-overline"><span>Project 05</span><span>Data Science · 2026</span></div>
       <h2 id="segmentation-title">Customer Segmentation</h2>
       <p class="dialog-lead">A customer-analytics workflow that treats cancellations and returns as business signals rather than simply discarding them.</p>
       <div class="dialog-grid">
