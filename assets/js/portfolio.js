@@ -253,7 +253,7 @@
       option.addEventListener("click", () => {
         if (stageImage instanceof HTMLImageElement && option.dataset.imageSrc) {
           stageImage.src = option.dataset.imageSrc;
-          stageImage.alt = option.dataset.imageAlt || "Chat OPA product screen";
+          stageImage.alt = option.dataset.imageAlt || "Project screen";
         }
 
         if (kicker) kicker.textContent = option.dataset.imageKicker || "";
