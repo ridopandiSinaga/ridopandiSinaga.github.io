@@ -278,6 +278,10 @@ a {
   transition: transform 220ms var(--ease), border-color 180ms ease, box-shadow 220ms var(--ease);
 }
 
+.project-card--no-metrics {
+  grid-template-rows: auto auto minmax(170px, 1fr) auto;
+}
+
 .project-card:focus-visible {
   border-color: color-mix(in srgb, var(--ink) 45%, var(--line));
   outline: 3px solid color-mix(in srgb, var(--ink) 22%, transparent);
@@ -1617,6 +1621,10 @@ body.dialog-open {
     min-height: 660px;
     padding: 23px;
     border-radius: 22px;
+  }
+
+  .project-card--no-metrics {
+    grid-template-rows: auto auto auto auto;
   }
 
   .status-pill {
