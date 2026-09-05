@@ -41,7 +41,7 @@ description: Selected AI engineering, machine learning, and data science work by
 
       <section class="projects-section" id="projects" aria-label="Projects">
         <div class="section-heading section-heading--counter-only">
-          <p class="project-counter" aria-live="polite"><span id="current-project">01</span> / 05</p>
+          <p class="project-counter" aria-live="polite"><span id="current-project">01</span> / 06</p>
         </div>
 
         <div class="carousel-wrap">
@@ -205,6 +205,31 @@ description: Selected AI engineering, machine learning, and data science work by
                 Open full case study <span aria-hidden="true">→</span>
               </span>
             </article>
+            <article class="project-card" data-project="5" data-dialog="soothemate-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="soothemate-dialog" aria-label="Open SootheMate case study">
+              <header class="project-header">
+                <p class="project-number">Project 06</p>
+                <p class="status-pill"><span aria-hidden="true"></span>Team capstone</p>
+              </header>
+
+              <div class="project-intro">
+                <h3>SootheMate</h3>
+                <p>A mobile application that estimates stress from personal and lifestyle inputs, helping users follow their patterns over time.</p>
+              </div>
+
+              <div class="project-preview project-preview--soothemate">
+                <img src="{{ '/assets/img/portfolio/soothemate/app-overview.webp' | relative_url }}" alt="SootheMate app showcase with onboarding, stress prediction, and a daily dashboard" width="2000" height="1500" loading="lazy" decoding="async">
+              </div>
+
+              <dl class="project-metrics">
+                <div><dt>My contribution</dt><dd>ML</dd><small>Machine Learning team</small></div>
+                <div><dt>Experience</dt><dd>Mobile</dd><small>Personal stress insights</small></div>
+                <div><dt>Tracking</dt><dd>Daily</dd><small>Trends and history</small></div>
+              </dl>
+
+              <span class="case-study-link" aria-hidden="true">
+                Open full case study <span aria-hidden="true">→</span>
+              </span>
+            </article>
           </div>
 
           <button class="carousel-button carousel-button--next" type="button" aria-label="Show next project">
@@ -218,6 +243,7 @@ description: Selected AI engineering, machine learning, and data science work by
           <button type="button" data-slide="2" aria-label="Show project 3"></button>
           <button type="button" data-slide="3" aria-label="Show project 4"></button>
           <button type="button" data-slide="4" aria-label="Show project 5"></button>
+          <button type="button" data-slide="5" aria-label="Show project 6"></button>
         </div>
       </section>
 
@@ -531,6 +557,69 @@ description: Selected AI engineering, machine learning, and data science work by
       </div>
       <div class="dialog-actions"><a href="{{ '/posts/customer_segmentation/' | relative_url }}">Read the technical article <span aria-hidden="true">→</span></a></div>
       <div class="dialog-tags"><span>Customer Analytics</span><span>K-Means</span><span>RFM</span><span>Feature Engineering</span></div>
+    </dialog>
+    <dialog class="case-dialog" id="soothemate-dialog" aria-labelledby="soothemate-title">
+      <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
+      <div class="dialog-overline"><span>Project 06</span><span>Machine Learning contributor · Bangkit capstone C241-PS363</span></div>
+      <h2 id="soothemate-title">SootheMate</h2>
+      <p class="dialog-lead">A mobile application for monitoring stress through personal data, BMI, and sleep patterns. Stress estimates, daily trends, and history help users understand their patterns and make more informed lifestyle choices.</p>
+
+      <section class="case-media case-gallery" data-image-gallery aria-labelledby="soothemate-gallery-title">
+        <div class="case-media-heading">
+          <div>
+            <p class="case-media-kicker">App showcase</p>
+            <h3 id="soothemate-gallery-title">From daily inputs to personal insights</h3>
+          </div>
+          <p>Explore the app overview and its key screens.</p>
+        </div>
+
+        <figure class="case-image-stage case-image-stage--showcase">
+          <img data-gallery-image src="{{ '/assets/img/portfolio/soothemate/app-overview.webp' | relative_url }}" alt="SootheMate app showcase with onboarding, stress prediction, and a daily dashboard" width="2000" height="1500" loading="lazy" decoding="async">
+          <figcaption>
+            <small data-gallery-kicker>App showcase · 01</small>
+            <strong data-gallery-title>SootheMate at a glance</strong>
+            <span data-gallery-description>The app brings onboarding, stress estimates, and daily monitoring into one mobile experience.</span>
+          </figcaption>
+        </figure>
+
+        <div class="case-media-options" role="group" aria-label="Choose a SootheMate showcase image">
+          <button class="case-media-option active" type="button" data-image-select data-image-src="{{ '/assets/img/portfolio/soothemate/app-overview.webp' | relative_url }}" data-image-alt="SootheMate app showcase with onboarding, stress prediction, and a daily dashboard" data-image-kicker="App showcase · 01" data-image-title="SootheMate at a glance" data-image-description="The app brings onboarding, stress estimates, and daily monitoring into one mobile experience." aria-pressed="true">
+            <img src="{{ '/assets/img/portfolio/soothemate/app-overview.webp' | relative_url }}" alt="" width="2000" height="1500" loading="lazy" decoding="async">
+            <span><strong>App overview</strong><small>Onboarding and daily monitoring</small></span>
+          </button>
+          <button class="case-media-option" type="button" data-image-select data-image-src="{{ '/assets/img/portfolio/soothemate/app-screens.webp' | relative_url }}" data-image-alt="SootheMate screens for login, profile, stress history, BMI calculation, and lifestyle inputs" data-image-kicker="App showcase · 02" data-image-title="The everyday app experience" data-image-description="Account access, personal inputs, BMI calculation, and stress history support an ongoing view of the user's patterns." aria-pressed="false">
+            <img src="{{ '/assets/img/portfolio/soothemate/app-screens.webp' | relative_url }}" alt="" width="2000" height="1500" loading="lazy" decoding="async">
+            <span><strong>Key app screens</strong><small>Profile, BMI, inputs, and history</small></span>
+          </button>
+        </div>
+      </section>
+
+      <section class="case-objectives" aria-labelledby="soothemate-objectives-title">
+        <div class="case-section-heading">
+          <p>Project objectives</p>
+          <h3 id="soothemate-objectives-title">Make stress patterns easier to understand</h3>
+        </div>
+        <ul>
+          <li><strong>Track over time</strong><p>Keep daily stress estimates and revisit previous records.</p></li>
+          <li><strong>Understand patterns</strong><p>Use personal and lifestyle inputs to make sense of changes.</p></li>
+          <li><strong>Support healthier habits</strong><p>Turn those insights into greater awareness of everyday choices.</p></li>
+        </ul>
+      </section>
+
+      <div class="dialog-grid">
+        <section><h3>Challenge</h3><p>Understanding stress requires more than a single reading. Users need a simple way to record relevant personal inputs and revisit how their estimated stress changes over time.</p></section>
+        <section><h3>Approach</h3><p>Our capstone team combined machine learning with a mobile experience for personal inputs, stress estimates, and history. My role was in the Machine Learning team.</p></section>
+        <section><h3>System</h3><p>The project separates mobile development, machine learning, and backend services into three repositories. The ML workflow uses Python, data preprocessing with scikit-learn, and TensorFlow/Keras neural networks.</p></section>
+        <section><h3>Result</h3><p>The team produced SootheMate with stress prediction, daily trends, history tracking, and account access. The app showcase and source repositories document the product and its implementation.</p></section>
+      </div>
+
+      <div class="dialog-actions">
+        <a href="https://github.com/SootheMate-Capstone-Team-C241-PS363" target="_blank" rel="noopener noreferrer">Project overview <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/SootheMate-Capstone-Team-C241-PS363/SootheMate-ML" target="_blank" rel="noopener noreferrer">Machine Learning repository <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/SootheMate-Capstone-Team-C241-PS363/SootheMate-MD" target="_blank" rel="noopener noreferrer">Mobile repository <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/SootheMate-Capstone-Team-C241-PS363/SootheMate-BackEnd" target="_blank" rel="noopener noreferrer">Backend repository <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="dialog-tags" aria-label="Machine Learning technology stack"><span>Python</span><span>TensorFlow / Keras</span><span>scikit-learn</span><span>pandas</span><span>NumPy</span></div>
     </dialog>
   </body>
 </html>
