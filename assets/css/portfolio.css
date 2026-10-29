@@ -1481,6 +1481,274 @@ a {
   transform: translateX(4px);
 }
 
+/* Book Recommender keeps product evidence separate from research results. */
+#book-recommender-dialog h2 {
+  margin-top: 22px;
+  font-size: clamp(32px, 5vw, 65px);
+}
+
+#book-recommender-dialog .book-actions {
+  margin-top: 22px;
+}
+
+#book-recommender-dialog .book-actions a {
+  min-height: 38px;
+}
+
+#book-recommender-dialog .book-demo-note {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#book-recommender-dialog .book-app-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 58px);
+  margin-top: 32px;
+}
+
+#book-recommender-dialog .book-product-figure {
+  min-width: 0;
+  margin: 0;
+}
+
+#book-recommender-dialog .book-product-figure > a {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #f3f3f1;
+  cursor: zoom-in;
+}
+
+#book-recommender-dialog .book-product-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#book-recommender-dialog .book-product-figure figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+#book-recommender-dialog .book-product-figure figcaption a,
+#book-recommender-dialog .book-source-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+#book-recommender-dialog h3 {
+  margin: 0 0 12px;
+  font-size: clamp(21px, 2.3vw, 29px);
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+#book-recommender-dialog .book-app-summary > p,
+#book-recommender-dialog .book-results > p,
+#book-recommender-dialog .book-decisions p,
+#book-recommender-dialog .book-technical-note p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+#book-recommender-dialog .book-app-stats {
+  margin: 28px 0;
+}
+
+#book-recommender-dialog .book-app-stats > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+#book-recommender-dialog .book-app-stats dt {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+#book-recommender-dialog .book-app-stats dd {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+#book-recommender-dialog .book-app-summary .book-small-note,
+#book-recommender-dialog .book-results .book-small-note {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+#book-recommender-dialog .book-results {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+#book-recommender-dialog .book-results .book-chart-label {
+  margin: 24px 0 18px;
+  font-size: 12px;
+}
+
+#book-recommender-dialog .book-ranking-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+  margin-bottom: 24px;
+}
+
+#book-recommender-dialog .book-ranking-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+#book-recommender-dialog .book-ranking-table caption {
+  padding-bottom: 18px;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+#book-recommender-dialog .book-ranking-table caption span {
+  margin-left: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#book-recommender-dialog .book-ranking-table th {
+  width: 39%;
+  padding: 10px 12px 10px 0;
+  text-align: left;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+#book-recommender-dialog .book-ranking-table thead th {
+  padding-top: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+#book-recommender-dialog .book-ranking-table td {
+  padding: 10px 0;
+}
+
+#book-recommender-dialog .book-ranking-table strong {
+  display: inline-block;
+  width: 4.1em;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+#book-recommender-dialog .book-bar-track {
+  display: inline-block;
+  width: calc(100% - 4.4em);
+  height: 17px;
+  vertical-align: middle;
+  background: var(--soft);
+}
+
+#book-recommender-dialog .book-bar-track i {
+  display: block;
+  width: var(--bar);
+  height: 100%;
+  background: #98a69d;
+}
+
+#book-recommender-dialog .book-bar--neural i {
+  background: #6c9584;
+}
+
+#book-recommender-dialog .book-bar--cosine i {
+  background: #34745a;
+}
+
+#book-recommender-dialog .book-results .book-evaluation-limit {
+  padding: 13px 16px;
+  border-left: 3px solid #a7774e;
+  background: var(--soft);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+#book-recommender-dialog .book-source-link {
+  font-size: 13px;
+}
+
+#book-recommender-dialog .book-decisions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+  margin-top: 42px;
+}
+
+#book-recommender-dialog .book-decisions h3 {
+  font-size: 21px;
+}
+
+#book-recommender-dialog .book-technical-note {
+  margin-top: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+#book-recommender-dialog .book-technical-note summary {
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+#book-recommender-dialog .book-technical-note p {
+  margin: 16px 0 0;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  #book-recommender-dialog .book-app-layout,
+  #book-recommender-dialog .book-ranking-charts,
+  #book-recommender-dialog .book-decisions {
+    grid-template-columns: 1fr;
+  }
+
+  #book-recommender-dialog .book-app-layout {
+    gap: 30px;
+    margin-top: 26px;
+  }
+
+  #book-recommender-dialog .book-actions {
+    gap: 10px 16px;
+  }
+
+  #book-recommender-dialog .book-ranking-charts,
+  #book-recommender-dialog .book-decisions {
+    gap: 24px;
+  }
+
+  #book-recommender-dialog .book-results {
+    margin-top: 30px;
+    padding-top: 28px;
+  }
+}
+
 /* Supporting project details use regular body text at the end of each case study. */
 .case-notes {
   margin-top: 28px;
