@@ -17,6 +17,7 @@ description: Selected AI engineering, machine learning, and data science work by
     <meta name="description" content="Selected AI engineering, machine learning, and data science work by Rido Pandi Sinaga.">
     <link rel="canonical" href="{{ '/portfolio/' | absolute_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/text-to-cypher.css' | relative_url }}">
     <script defer src="{{ '/assets/js/portfolio.js' | relative_url }}"></script>
   </head>
   <body>
@@ -137,9 +138,32 @@ description: Selected AI engineering, machine learning, and data science work by
               </span>
             </article>
 
-            <article class="project-card" data-project="3" data-dialog="book-recommender-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="book-recommender-dialog" aria-label="Open Book Recommender case study">
+            <article class="project-card" data-project="3" data-dialog="text-to-cypher-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="text-to-cypher-dialog" aria-label="Open Bilingual Text-to-Cypher case study">
               <header class="project-header">
                 <p class="project-number">Project 04</p>
+                <p class="status-pill"><span aria-hidden="true"></span>LLM fine-tuning</p>
+              </header>
+              <div class="project-intro">
+                <h3>Bilingual Text-to-Cypher</h3>
+                <p>Converts English and Indonesian questions into Cypher queries for a Neo4j movie database.</p>
+              </div>
+              <div class="project-preview project-preview--cypher">
+                <p class="cypher-preview-label">Recorded example</p>
+                <p class="cypher-preview-question" lang="id">“Berapa jumlah film dalam graph? Tampilkan jumlahnya.”</p>
+                <pre><code>MATCH (m:Movie)
+RETURN count(m) AS NumberOfMovies</code></pre>
+                <p class="cypher-preview-result"><strong>38</strong> movies counted in Neo4j</p>
+              </div>
+              <dl class="project-metrics cypher-card-metrics" aria-label="Correct queries on the test set, with the selected adapter">
+                <div><dt>English · test</dt><dd>63.4%</dd><small>52 of 82 queries correct</small></div>
+                <div><dt>Indonesian · test</dt><dd>59.8%</dd><small>49 of 82 queries correct</small></div>
+              </dl>
+              <span class="case-study-link" aria-hidden="true">Open full case study <span aria-hidden="true">→</span></span>
+            </article>
+
+            <article class="project-card" data-project="4" data-dialog="book-recommender-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="book-recommender-dialog" aria-label="Open Book Recommender case study">
+              <header class="project-header">
+                <p class="project-number">Project 05</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Machine learning</p>
               </header>
 
@@ -164,9 +188,9 @@ description: Selected AI engineering, machine learning, and data science work by
               </span>
             </article>
 
-            <article class="project-card" data-project="4" data-dialog="segmentation-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="segmentation-dialog" aria-label="Open Customer Segmentation case study">
+            <article class="project-card" data-project="5" data-dialog="segmentation-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="segmentation-dialog" aria-label="Open Customer Segmentation case study">
               <header class="project-header">
-                <p class="project-number">Project 05</p>
+                <p class="project-number">Project 06</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Data science</p>
               </header>
 
@@ -199,9 +223,9 @@ description: Selected AI engineering, machine learning, and data science work by
                 Open full case study <span aria-hidden="true">→</span>
               </span>
             </article>
-            <article class="project-card" data-project="5" data-dialog="soothemate-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="soothemate-dialog" aria-label="Open SootheMate case study">
+            <article class="project-card" data-project="6" data-dialog="soothemate-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="soothemate-dialog" aria-label="Open SootheMate case study">
               <header class="project-header">
-                <p class="project-number">Project 06</p>
+                <p class="project-number">Project 07</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Team capstone</p>
               </header>
 
@@ -490,6 +514,96 @@ description: Selected AI engineering, machine learning, and data science work by
       </section>
     </dialog>
 
+    <dialog class="case-dialog" id="text-to-cypher-dialog" aria-labelledby="text-to-cypher-title">
+      <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
+      <div class="dialog-overline"><span>LLM fine-tuning · 2026</span><span>Research prototype</span></div>
+      <h2 id="text-to-cypher-title">Bilingual Text-to-Cypher</h2>
+      <p class="dialog-lead">The model takes a question in English or Indonesian and uses the database structure to write a Cypher query. The query can then be checked and run in Neo4j.</p>
+      <div class="dialog-actions">
+        <a href="https://huggingface.co/Ridopandi/qwen3-4b-text2cypher-en-id-qlora" target="_blank" rel="noopener noreferrer">View model <span aria-hidden="true">↗</span></a>
+        <a href="https://huggingface.co/datasets/Ridopandi/movies-text2cypher-en-id-v3" target="_blank" rel="noopener noreferrer">View dataset <span aria-hidden="true">↗</span></a>
+        <a href="{{ '/assets/docs/text-to-cypher/portfolio-text-to-cypher.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Project walkthrough · PDF in Indonesian <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <section class="cypher-example" aria-labelledby="cypher-example-title">
+        <div class="cypher-example-input">
+          <p class="cypher-eyebrow">Recorded example</p>
+          <h3 id="cypher-example-title">Two languages, the same query</h3>
+          <dl class="cypher-questions">
+            <div><dt>English</dt><dd>How many movies are in the graph? Return the count.</dd></div>
+            <div><dt>Indonesian</dt><dd lang="id">Berapa jumlah film dalam graph? Tampilkan jumlahnya.</dd></div>
+          </dl>
+          <p class="cypher-note">The prompt also includes the graph schema: the available node types, properties, and relationships.</p>
+        </div>
+        <div class="cypher-example-output">
+          <p class="cypher-eyebrow">Generated Cypher</p>
+          <pre><code>MATCH (m:Movie)
+RETURN count(m) AS NumberOfMovies</code></pre>
+          <dl class="cypher-count"><dt>NumberOfMovies</dt><dd>38</dd></dl>
+          <p class="cypher-note">Both questions generated this query. One recorded Neo4j execution returned the count above. This demonstration is separate from the test results.</p>
+        </div>
+      </section>
+
+      <div class="cypher-columns">
+        <section>
+          <h3>Why this project</h3>
+          <p>People may know what they want to find without knowing Cypher, the query language for graph databases. The task is to turn that request into a query that preserves its meaning and uses the right relationships.</p>
+        </section>
+        <section>
+          <h3>What was trained</h3>
+          <p>Qwen3-4B was fine-tuned with QLoRA on a Tesla T4. A small adapter was trained while the base model weights stayed fixed. Training used 600 question pairs: 1,200 rows across English and Indonesian. Each pair stayed together when splitting the data.</p>
+        </section>
+      </div>
+
+      <section class="cypher-results" aria-labelledby="cypher-results-title">
+        <p class="cypher-eyebrow">Test completed · 1 October 2026</p>
+        <h3 id="cypher-results-title">Fine-tuning improved both languages</h3>
+        <p>Both versions used the same prepared Qwen3-4B base and generation settings. Each was tested on 82 question pairs, with one English and one Indonesian version per pair.</p>
+        <table class="cypher-results-table">
+          <caption>Queries passing all six checks · percentages rounded to one decimal</caption>
+          <thead><tr><th scope="col">Language</th><th scope="col">Without adapter</th><th scope="col">With adapter</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">English</th><td><strong>18.3%</strong><span>15 / 82</span></td><td><strong>63.4%</strong><span>52 / 82</span></td></tr>
+            <tr><th scope="row">Indonesian</th><td><strong>13.4%</strong><span>11 / 82</span></td><td><strong>59.8%</strong><span>49 / 82</span></td></tr>
+          </tbody>
+        </table>
+        <p class="cypher-note">A correct query had to be read-only, use valid syntax, execute successfully, follow the schema, preserve the question’s meaning, and match the reference result.</p>
+        <p class="cypher-limit"><strong>The 75% target was not reached in either language.</strong> Results cover one Movies graph and one seed. English and Indonesian questions are paired. Development and semantic review were AI-assisted, with no independent human review.</p>
+      </section>
+
+      <section class="cypher-decision" aria-labelledby="cypher-decision-title">
+        <h3 id="cypher-decision-title">Why the earlier checkpoint was kept</h3>
+        <p>Selection prioritized the weaker language’s validation score. The chosen checkpoint answered 21 of 37 validation questions correctly in each language. More training and a lower learning rate did not improve that selection criterion, so the checkpoint was retained.</p>
+        <p class="cypher-note">Validation was reused during development. Those later experiments did not lead to a new final test; the table above reports the 1 October test.</p>
+      </section>
+
+      <section class="cypher-failure" aria-labelledby="cypher-failure-title">
+        <div>
+          <p class="cypher-eyebrow">Saved validation example</p>
+          <h3 id="cypher-failure-title">A query can run and still answer the wrong question</h3>
+          <p>The question asks for <strong>all youngest actors</strong> with a known birth year, sorted by name. The generated query uses <code>LIMIT 1</code>, which returns only one row and can omit actors who share the youngest birth year.</p>
+          <p>On this graph, its output matched the reference result. It still failed the meaning check. The query also lacked duplicate removal and sorting by name.</p>
+          <p class="cypher-note">The screenshot shows the saved evaluation in Indonesian. The checks and result come from the selected adapter’s validation output.</p>
+        </div>
+        <figure>
+          <a href="{{ '/assets/img/portfolio/text-to-cypher/validation-example.png' | relative_url }}" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size Text-to-Cypher validation screenshot in a new tab">
+            <img src="{{ '/assets/img/portfolio/text-to-cypher/validation-example.png' | relative_url }}" width="565" height="660" alt="Saved validation: a query with LIMIT 1 returns Jonathan Lipnicki, born in 1996. Five checks pass, but meaning fails." loading="lazy" decoding="async">
+          </a>
+          <figcaption>Actual evaluation screenshot · <a href="{{ '/assets/img/portfolio/text-to-cypher/validation-example.png' | relative_url }}" target="_blank" rel="noopener noreferrer">View full size <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
+      </section>
+
+      <details class="cypher-sources">
+        <summary>Evaluation data and sources</summary>
+        <p>The model card describes the method and limitations. The dataset contains the paired English and Indonesian questions. Selected result files are also included below for checking the numbers and examples on this page.</p>
+        <ul>
+          <li><a href="{{ '/assets/docs/text-to-cypher/test-comparison.json' | relative_url }}" target="_blank" rel="noopener noreferrer">Test comparison · original JSON</a></li>
+          <li><a href="{{ '/assets/docs/text-to-cypher/web-evidence.json' | relative_url }}" target="_blank" rel="noopener noreferrer">Example queries, selection results, and source references · JSON</a></li>
+        </ul>
+      </details>
+      <div class="dialog-tags"><span>Qwen3-4B</span><span>QLoRA</span><span>PyTorch</span><span>Neo4j</span></div>
+    </dialog>
+
     <dialog class="case-dialog" id="book-recommender-dialog" aria-labelledby="book-recommender-title">
       <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
       <div class="dialog-overline"><span>Machine learning · 2026</span></div>
@@ -570,7 +684,7 @@ description: Selected AI engineering, machine learning, and data science work by
 
     <dialog class="case-dialog" id="segmentation-dialog" aria-labelledby="segmentation-title">
       <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
-      <div class="dialog-overline"><span>Project 05</span><span>Data Science · 2026</span></div>
+      <div class="dialog-overline"><span>Project 06</span><span>Data Science · 2026</span></div>
       <h2 id="segmentation-title">Customer Segmentation</h2>
       <p class="dialog-lead">A customer-analytics workflow that treats cancellations and returns as business signals rather than simply discarding them.</p>
       <div class="dialog-grid">
@@ -584,7 +698,7 @@ description: Selected AI engineering, machine learning, and data science work by
     </dialog>
     <dialog class="case-dialog" id="soothemate-dialog" aria-labelledby="soothemate-title">
       <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
-      <div class="dialog-overline"><span>Project 06</span><span>Machine Learning contributor · Bangkit capstone C241-PS363</span></div>
+      <div class="dialog-overline"><span>Project 07</span><span>Machine Learning contributor · Bangkit capstone C241-PS363</span></div>
       <h2 id="soothemate-title">SootheMate</h2>
       <p class="dialog-lead">A mobile application for monitoring stress through personal data, BMI, and sleep patterns. Stress estimates, daily trends, and history help users understand their patterns and make more informed lifestyle choices.</p>
 

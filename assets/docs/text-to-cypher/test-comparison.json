@@ -1,0 +1,92 @@
+{
+  "selected_model": {
+    "trial": 2,
+    "epoch": 1,
+    "model_id": "Qwen/Qwen3-4B",
+    "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+    "checkpoint_sha256": "f0cbec87d22566192afd4546edb9700b051abc80e944e7c858ca9b3d734de530",
+    "ranking_key": [
+      -21,
+      -42,
+      0.2918271521893446,
+      2,
+      1
+    ]
+  },
+  "model_choice_unchanged_after_test": true,
+  "baseline": {
+    "en": {
+      "correct": 15,
+      "total": 82,
+      "diagnostics": {
+        "read_only_ok": 47,
+        "syntax_ok": 47,
+        "execution_ok": 40,
+        "schema_ok": 46,
+        "meaning_ok": 15,
+        "result_ok": 22
+      },
+      "rate": 0.18292682926829268,
+      "minimum_correct": 62,
+      "observed_target_met": false
+    },
+    "id": {
+      "correct": 11,
+      "total": 82,
+      "diagnostics": {
+        "read_only_ok": 48,
+        "syntax_ok": 48,
+        "execution_ok": 39,
+        "schema_ok": 49,
+        "meaning_ok": 11,
+        "result_ok": 19
+      },
+      "rate": 0.13414634146341464,
+      "minimum_correct": 62,
+      "observed_target_met": false
+    }
+  },
+  "adapter": {
+    "en": {
+      "correct": 52,
+      "total": 82,
+      "diagnostics": {
+        "read_only_ok": 73,
+        "syntax_ok": 73,
+        "execution_ok": 72,
+        "schema_ok": 79,
+        "meaning_ok": 52,
+        "result_ok": 59
+      },
+      "rate": 0.6341463414634146,
+      "minimum_correct": 62,
+      "observed_target_met": false
+    },
+    "id": {
+      "correct": 49,
+      "total": 82,
+      "diagnostics": {
+        "read_only_ok": 74,
+        "syntax_ok": 74,
+        "execution_ok": 73,
+        "schema_ok": 80,
+        "meaning_ok": 49,
+        "result_ok": 54
+      },
+      "rate": 0.5975609756097561,
+      "minimum_correct": 62,
+      "observed_target_met": false
+    }
+  },
+  "delta_correct": {
+    "en": 37,
+    "id": 38
+  },
+  "target_met_in_both_languages": false,
+  "both_languages_correct": {
+    "baseline": 6,
+    "adapter": 45
+  },
+  "test_pairs": 82,
+  "independent_human_review": false
+}

@@ -1,0 +1,291 @@
+{
+  "scope": "Selected evidence for the Bilingual Text-to-Cypher portfolio case study. This file extracts existing project results; it does not represent a new run.",
+  "test_date": "2026-10-01",
+  "test_comparison_file": "test-comparison.json",
+  "rounding": "Percentages are correct / total * 100, rounded to one decimal.",
+  "training_data": {
+    "pairs": 600,
+    "rows": 1200,
+    "languages": [
+      "en",
+      "id"
+    ],
+    "pair_kept_in_same_split": true
+  },
+  "validation_data": {
+    "pairs": 37,
+    "rows": 74
+  },
+  "recorded_example": {
+    "scope": "Two unscored interactive generations; one real Neo4j execution. Not a new final test.",
+    "generations": [
+      {
+        "question": "How many movies are in the graph? Return the count.",
+        "cypher": "MATCH (m:Movie)\nRETURN count(m) AS NumberOfMovies"
+      },
+      {
+        "question": "Berapa jumlah film dalam graph? Tampilkan jumlahnya.",
+        "cypher": "MATCH (m:Movie)\nRETURN count(m) AS NumberOfMovies"
+      }
+    ],
+    "execution": {
+      "example_id": "interactive_demo",
+      "cypher": "MATCH (m:Movie)\nRETURN count(m) AS NumberOfMovies",
+      "cypher_prepared": "MATCH (m:Movie)\nRETURN count(m) AS NumberOfMovies",
+      "query_sha256": "bc79b6837ce016a3655fb4e67f9b3382137df3e2ef7a3ab013779645cf21dccf",
+      "normalization": [],
+      "admission_reason": null,
+      "explain_status": "passed",
+      "schema_status": "no_violation_detected",
+      "execution_status": "passed",
+      "columns": [
+        "NumberOfMovies"
+      ],
+      "rows": [
+        {
+          "NumberOfMovies": 38
+        }
+      ],
+      "error": null,
+      "semantic_status": "not_assessed_by_execution_validator",
+      "admission_status": "accepted",
+      "query_type": "r",
+      "notifications": [],
+      "schema_violations": [],
+      "explain_seconds": 0.13909503300010329,
+      "rows_saved": 1,
+      "row_count": 1,
+      "row_count_lower_bound": 1,
+      "unsupported_value_types": [],
+      "execution_notifications": [],
+      "result_sha256": "9ad089cb83f75642b50285f2a1f522cd9602623d83619f3ab88a6ef99a94b6f5",
+      "execution_seconds": 0.03448258599996734
+    }
+  },
+  "validation_selection": {
+    "ranking": [
+      "minimum_per_language_correct_desc",
+      "total_correct_desc",
+      "validation_answer_token_nll_asc",
+      "earlier_trial_then_epoch"
+    ],
+    "selected": {
+      "trial": 2,
+      "epoch": 1,
+      "model_id": "Qwen/Qwen3-4B",
+      "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "checkpoint_sha256": "f0cbec87d22566192afd4546edb9700b051abc80e944e7c858ca9b3d734de530",
+      "ranking_key": [
+        -21,
+        -42,
+        0.2918271521893446,
+        2,
+        1
+      ]
+    },
+    "selected_validation_results": {
+      "en": {
+        "correct": 21,
+        "total": 37,
+        "diagnostics": {
+          "read_only_ok": 34,
+          "syntax_ok": 34,
+          "execution_ok": 32,
+          "schema_ok": 35,
+          "meaning_ok": 21,
+          "result_ok": 26
+        },
+        "rate": 0.5675675675675675,
+        "minimum_correct": 28,
+        "observed_target_met": false
+      },
+      "id": {
+        "correct": 21,
+        "total": 37,
+        "diagnostics": {
+          "read_only_ok": 34,
+          "syntax_ok": 34,
+          "execution_ok": 34,
+          "schema_ok": 37,
+          "meaning_ok": 21,
+          "result_ok": 25
+        },
+        "rate": 0.5675675675675675,
+        "minimum_correct": 28,
+        "observed_target_met": false
+      }
+    },
+    "continuation_decision": {
+      "run_id": "v3_epoch_continuation_1",
+      "completed_epoch": 4,
+      "selected": {
+        "epoch": 1,
+        "checkpoint_step": 150,
+        "en_correct": 21,
+        "id_correct": 21,
+        "answer_token_nll": 0.2918271521893446,
+        "checkpoint_sha256": "f0cbec87d22566192afd4546edb9700b051abc80e944e7c858ca9b3d734de530"
+      },
+      "history": [
+        {
+          "epoch": 3,
+          "task_improved": false,
+          "consecutive_nonimproving_new_epochs": 1,
+          "stop": false
+        },
+        {
+          "epoch": 4,
+          "task_improved": false,
+          "consecutive_nonimproving_new_epochs": 2,
+          "stop": true
+        }
+      ],
+      "continue_training": false,
+      "next_epoch": null
+    },
+    "lower_learning_rate_decision": {
+      "selected": {
+        "epoch": 1,
+        "checkpoint_step": 150,
+        "en_correct": 21,
+        "id_correct": 21,
+        "answer_token_nll": 0.2918271521893446,
+        "checkpoint_sha256": "f0cbec87d22566192afd4546edb9700b051abc80e944e7c858ca9b3d734de530",
+        "run_id": "v3_qlora_trial_2"
+      },
+      "new_run_best": {
+        "epoch": 1,
+        "checkpoint_step": 150,
+        "en_correct": 22,
+        "id_correct": 19,
+        "answer_token_nll": 0.2943553614944761,
+        "minimum_correct": 19,
+        "total_correct": 41,
+        "reviewed_examples": 74,
+        "checkpoint_sha256": "75ae3a80a7ec9b950bad45c77ef7e9f1528c224af97cc9401d3adceaf6d753a1",
+        "summary_sha256": "42d8730fa5702d8f60bc82ffffebf69c278c64f7d1639deb1f8211d1b0133566",
+        "reviews_sha256": "6a58c790b4e870eaf60d5601f52c0e1a04d3f4ce6eb6ee6a624f29c0259e6573",
+        "run_id": "v3_lr_trial_1"
+      }
+    }
+  },
+  "validation_failure_example": {
+    "id": "v3_validation_instance_id_27409_id",
+    "pair_id": "v3_validation_instance_id_27409",
+    "language": "id",
+    "question": "Siapa saja pemeran termuda yang tahun lahirnya diketahui? Tampilkan semua pemeran dengan tahun lahir paling akhir, beserta nama dan tahun lahirnya, diurutkan menurut abjad nama.",
+    "target": "MATCH (p:Person)-[:ACTED_IN]->(:Movie)\nWHERE p.born IS NOT NULL\nWITH max(p.born) AS latestBorn\nMATCH (p:Person)-[:ACTED_IN]->(:Movie)\nWHERE p.born = latestBorn\nRETURN DISTINCT p.name AS ActorName, p.born AS BirthYear\nORDER BY ActorName",
+    "reference": {
+      "columns": [
+        "ActorName",
+        "BirthYear"
+      ],
+      "rows": [
+        {
+          "ActorName": "Jonathan Lipnicki",
+          "BirthYear": 1996
+        }
+      ]
+    },
+    "results": {
+      "baseline": {
+        "query": "MATCH (p:Person)-[:ACTED_IN]->(m:Movie)\nWHERE p.born = (SELECT MAX(born) FROM Person)\nRETURN p.name, p.born\nORDER BY p.name ASC;",
+        "generated_sha256": "ef7b5c0dd434696ec3c2ede5774e4e81829791b985cb5a2726b17829f32a4be3",
+        "correct": false,
+        "flags": {
+          "read_only_ok": false,
+          "syntax_ok": false,
+          "execution_ok": false,
+          "schema_ok": true,
+          "meaning_ok": false,
+          "result_ok": false
+        },
+        "category": "invalid_sql_subquery",
+        "reason": "SELECT MAX(born) FROM Person adalah konstruksi SQL, bukan subquery Cypher; maksimum juga tidak dibatasi aktor dan DISTINCT hilang.",
+        "columns": null,
+        "rows": null,
+        "error": {
+          "type": "CypherSyntaxError",
+          "code": "Neo.ClientError.Statement.SyntaxError",
+          "message": "{code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input 'MAX': expected an expression (line 2, column 24 (offset: 71))\n\"WHERE p.born = (SELECT MAX(born) FROM Person)\"\n                        ^}",
+          "category": "query_or_client_error"
+        },
+        "execution_status": "not_run",
+        "complete": true,
+        "generation_seconds": 4.402457510999966
+      },
+      "adapter": {
+        "query": "MATCH (p:Person)-[:ACTED_IN]->(:Movie)\nWHERE p.born IS NOT NULL\nRETURN p.name AS actor, p.born AS born\nORDER BY born DESC\nLIMIT 1",
+        "generated_sha256": "a3e0d2852779d9a3d93f40ac57b3c8dd568bcfe59267be22247347f9c14680a6",
+        "correct": false,
+        "flags": {
+          "read_only_ok": true,
+          "syntax_ok": true,
+          "execution_ok": true,
+          "schema_ok": true,
+          "meaning_ok": false,
+          "result_ok": true
+        },
+        "category": "missing_ties",
+        "reason": "LIMIT 1 hanya memilih satu aktor, padahal semua aktor dengan tahun lahir maksimum diminta. Deduplikasi dan urutan nama juga hilang.",
+        "columns": [
+          "actor",
+          "born"
+        ],
+        "rows": [
+          {
+            "actor": "Jonathan Lipnicki",
+            "born": 1996
+          }
+        ],
+        "error": null,
+        "execution_status": "passed",
+        "complete": true,
+        "generation_seconds": 7.034663551999984
+      }
+    }
+  },
+  "limits": {
+    "graph": "Movies",
+    "single_seed": true,
+    "paired_languages": true,
+    "validation_reused": true,
+    "ai_assisted_development_and_semantic_review": true,
+    "independent_human_review": false,
+    "later_experiments_produced_new_final_test": false
+  },
+  "sources": [
+    {
+      "path_in_project": "reports/v3/final_test/comparison.json",
+      "sha256": "bb1e73c7368158781c1f902d9529e6c70481f332e9dc3d937ef7d7a75febe643"
+    },
+    {
+      "path_in_project": "reports/v3/portfolio/smoke_result.json",
+      "sha256": "65a2b783efe77bea65d56a3b8299e7a87ecb52f0c2fe8d5772addac29a95e26a"
+    },
+    {
+      "path_in_project": "demo/v3/results.json",
+      "sha256": "630d1d60809b72ce717f48d2ac0de5fb31aa1c6169750732309933e6158b94d1"
+    },
+    {
+      "path_in_project": "reports/v3/training_trial_2/cross_trial_selection.json",
+      "sha256": "b0505c39c37a292816d768483c9e9e11c171115116f99cbd17e1f24eb996e0cf"
+    },
+    {
+      "path_in_project": "reports/v3/epoch_continuation/decisions/after_epoch_4.json",
+      "sha256": "b0c1f99a25d719a5fc0464d9c8baf1e4126bf3cb8c23cbd2e575f1555aa9b9d2"
+    },
+    {
+      "path_in_project": "reports/v3/lr_trial_1/decisions/after_epoch_4.json",
+      "sha256": "e827f6d4fef0f23089fb12164341022c97d24a05c56aec15dca6a9887a3bc90c"
+    },
+    {
+      "path_in_project": "docs/PORTFOLIO_V3.md",
+      "sha256": "fdc7ebad2b8bef554da0d7e259f11e7a56bc41ff71ba366bd7a77ec06d679560"
+    },
+    {
+      "path_in_project": "experiments/v3/LATEST_STATUS.md",
+      "sha256": "1a4cf21da4902c240b2d7cb0e716a8bc651c82d9dbeb1e3d0e382264caa5376d"
+    }
+  ]
+}
