@@ -160,6 +160,7 @@
     ["agentic-dialog", "agentic-customer-service"],
     ["chat-opa-dialog", "chat-opa"],
     ["agentic-chess-dialog", "agentic-chess-arena"],
+    ["text-to-cypher-dialog", "bilingual-text-to-cypher"],
     ["book-recommender-dialog", "book-recommender"],
     ["segmentation-dialog", "customer-segmentation"],
     ["soothemate-dialog", "soothemate"],
