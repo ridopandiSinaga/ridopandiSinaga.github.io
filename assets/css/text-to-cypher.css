@@ -84,5 +84,5 @@
 @media (max-width: 380px) {
   .cypher-results-table { table-layout: fixed; }
   .cypher-results-table th, .cypher-results-table td { padding-inline: 4px; }
-  .cypher-results-table td strong { font-size: 22px; }
+  .cypher-results-table td strong { font-size: 20px; }
 }
