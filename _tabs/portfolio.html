@@ -145,18 +145,18 @@ description: Selected AI engineering, machine learning, and data science work by
 
               <div class="project-intro">
                 <h3>Book Recommender</h3>
-                <p>A hybrid ranking system that combines metadata, collaborative signals, and popularity fallback without repeating equivalent book editions.</p>
+                <p>A book recommendation app with a hybrid model, plus experiments comparing neural ranking with simpler methods.</p>
               </div>
 
               <div class="project-preview project-preview--book-recommender" aria-label="Book Recommender interface showing hybrid recommendations">
                 <img src="{{ '/assets/img/portfolio/book-recommender/product-ui.webp' | relative_url }}" alt="Book Recommender interface showing catalog statistics, hybrid controls, and recommended books">
-                <span class="project-live-badge" aria-hidden="true"><i></i>Live demo</span>
+                <span class="project-live-badge" aria-hidden="true"><i></i>Streamlit app</span>
               </div>
 
               <dl class="project-metrics">
-                <div><dt>Raw Catalog</dt><dd>271K</dd><small>Book records</small></div>
-                <div><dt>Raw Ratings</dt><dd>1.15M</dd><small>User interactions</small></div>
-                <div><dt>Ranking Signals</dt><dd>3</dd><small>Content, CF, popularity</small></div>
+                <div><dt>App catalog</dt><dd>3,000</dd><small>Book editions</small></div>
+                <div><dt>Training ratings</dt><dd>52,109</dd><small>Used by the app model</small></div>
+                <div><dt>App model</dt><dd>Hybrid</dd><small>Content, CF, popularity</small></div>
               </dl>
 
               <span class="case-study-link" aria-hidden="true">
@@ -467,60 +467,81 @@ description: Selected AI engineering, machine learning, and data science work by
 
     <dialog class="case-dialog" id="book-recommender-dialog" aria-labelledby="book-recommender-title">
       <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
-      <div class="dialog-overline"><span>Project 04</span><span>Individual Machine Learning Project · 2026</span></div>
+      <div class="dialog-overline"><span>Machine learning · 2026</span></div>
       <h2 id="book-recommender-title">Book Recommender</h2>
-      <p class="dialog-lead">An end-to-end hybrid recommendation system that helps readers find similar books and personalized Top-N results while handling sparse feedback, cold start, and duplicate ISBN editions.</p>
+      <p class="dialog-lead">A hybrid app for finding similar books and recommendations from rating history. Separate experiments compare neural ranking with popularity and cosine baselines.</p>
+      <div class="dialog-actions book-actions">
+        <a href="https://books-system-recommendation.streamlit.app/" target="_blank" rel="noopener noreferrer">Try the demo <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/ridopandiSinaga/System-Recommendation" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/ridopandiSinaga/System-Recommendation/blob/main/docs/portfolio/book-recommender.pdf" target="_blank" rel="noopener noreferrer">Portfolio PDF <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="book-demo-note">Streamlit may ask you to wake the demo.</p>
 
-      <section class="case-media" aria-labelledby="book-recommender-product-title">
-        <div class="case-media-heading">
-          <div>
-            <p class="case-media-kicker">Product interface</p>
-            <h3 id="book-recommender-product-title">Similar, collaborative, and hybrid discovery</h3>
-          </div>
-          <p>The same verified model artifact powers the interface and API.</p>
-        </div>
-
-        <figure class="case-image-stage case-image-stage--contain">
-          <img src="{{ '/assets/img/portfolio/book-recommender/product-ui.webp' | relative_url }}" alt="Book Recommender interface with catalog statistics, hybrid recommendation controls, and ranked book results">
-          <figcaption>
-            <small>Hybrid recommendation</small>
-            <strong>Personalized Top-N results</strong>
-            <span>Each result exposes the strongest contributing signal.</span>
-          </figcaption>
+      <section class="book-app-layout" aria-labelledby="book-recommender-product-title">
+        <figure class="book-product-figure">
+          <a href="{{ '/assets/img/portfolio/book-recommender/product-ui.webp' | relative_url }}" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size Book Recommender screenshot in a new tab">
+            <img src="{{ '/assets/img/portfolio/book-recommender/product-ui.webp' | relative_url }}" width="680" height="657" alt="Hybrid recommendations for user 11676, showing four books with scores and their strongest contributing signals">
+          </a>
+          <figcaption>Recommendations for user 11676. <a href="{{ '/assets/img/portfolio/book-recommender/product-ui.webp' | relative_url }}" target="_blank" rel="noopener noreferrer">View full-size image <span aria-hidden="true">↗</span></a></figcaption>
         </figure>
-      </section>
 
-      <dl class="case-metrics" aria-label="Book Recommender project scale">
-        <div><dt>Raw Books</dt><dd>271K</dd><small>Catalog records</small></div>
-        <div><dt>Raw Ratings</dt><dd>1.15M</dd><small>Book-Crossing interactions</small></div>
-        <div><dt>Ranking Signals</dt><dd>3</dd><small>Content, collaborative, popularity</small></div>
-      </dl>
-
-      <section class="case-flow" aria-labelledby="book-recommender-flow-title">
-        <div class="case-section-heading">
-          <p>Recommendation pipeline</p>
-          <h3 id="book-recommender-flow-title">From sparse interactions to a verified ranking</h3>
+        <div class="book-app-summary">
+          <h3 id="book-recommender-product-title">The app combines three signals</h3>
+          <p>Book metadata finds similar titles. Ratings from other readers add collaborative recommendations. Popular books provide a fallback when a reader has too little history.</p>
+          <dl class="book-app-stats" aria-label="Data used by the app model">
+            <div><dt>Books in the app catalog</dt><dd>3,000</dd></div>
+            <div><dt>Training ratings</dt><dd>52,109</dd></div>
+            <div><dt>Readers in the training data</dt><dd>9,352</dd></div>
+          </dl>
+          <p class="book-small-note">Title-and-author matching reduces repeated editions, but some variants can still appear again.</p>
         </div>
-        <ol>
-          <li><span>01</span><strong>Validate</strong><small>Schema, ratings, and identifiers</small></li>
-          <li><span>02</span><strong>Canonicalize</strong><small>Group equivalent ISBN editions</small></li>
-          <li><span>03</span><strong>Build candidates</strong><small>Training-only catalog</small></li>
-          <li><span>04</span><strong>Rank</strong><small>Content, item CF, popularity</small></li>
-          <li><span>05</span><strong>Serve</strong><small>Checksum-verified artifact</small></li>
-        </ol>
       </section>
 
-      <div class="dialog-grid">
-        <section><h3>Challenge</h3><p>Book-Crossing contains a large but sparse preference signal. Rating 0 means no explicit score, new users lack history, and one literary work can appear under several ISBN editions—creating duplicate results and evaluation leakage.</p></section>
-        <section><h3>Approach</h3><p>I combined TF-IDF metadata similarity, adjusted-cosine item collaborative filtering, and popularity fallback in a weighted hybrid. Canonical-work identity removes equivalent editions and dynamic weights adapt to limited user history.</p></section>
-        <section><h3>System</h3><p>A shared Python pipeline keeps cleaning, training, evaluation, CLI, FastAPI, and Streamlit consistent. Training and serving load the same checksum-verified model bundle rather than rebuilding artifacts independently.</p></section>
-        <section><h3>Result</h3><p>The system supports similar-book search and personalized recommendations with cold-start fallback. A larger catalog produced a 17.9% higher NDCG@10 point estimate, but its adjusted confidence interval crossed zero, so I retained the smaller baseline.</p></section>
+      <section class="book-results" aria-labelledby="book-recommender-results-title">
+        <h3 id="book-recommender-results-title">Cosine found more targets in the top ten</h3>
+        <p>Selected results from two development splits. The hybrid model used by the app is not part of this comparison.</p>
+        <p class="book-chart-label">Recall@10 · higher is better · shared scale: 0–12%</p>
+        <div class="book-ranking-charts">
+          <table class="book-ranking-table">
+            <caption>Split 17 <span>1,776 readers</span></caption>
+            <thead><tr><th scope="col">Method</th><th scope="col">Recall@10</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Popularity</th><td><span class="book-bar-track" aria-hidden="true"><i style="--bar:35.17%"></i></span><strong>4.22%</strong></td></tr>
+              <tr><th scope="row">History softmax</th><td><span class="book-bar-track book-bar--neural" aria-hidden="true"><i style="--bar:51.17%"></i></span><strong>6.14%</strong></td></tr>
+              <tr><th scope="row">Positive-history cosine</th><td><span class="book-bar-track book-bar--cosine" aria-hidden="true"><i style="--bar:89.58%"></i></span><strong>10.75%</strong></td></tr>
+            </tbody>
+          </table>
+          <table class="book-ranking-table">
+            <caption>Split 29 <span>1,806 readers</span></caption>
+            <thead><tr><th scope="col">Method</th><th scope="col">Recall@10</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Popularity</th><td><span class="book-bar-track" aria-hidden="true"><i style="--bar:30.42%"></i></span><strong>3.65%</strong></td></tr>
+              <tr><th scope="row">History softmax</th><td><span class="book-bar-track book-bar--neural" aria-hidden="true"><i style="--bar:30.42%"></i></span><strong>3.65%</strong></td></tr>
+              <tr><th scope="row">Positive-history cosine</th><td><span class="book-bar-track book-bar--cosine" aria-hidden="true"><i style="--bar:91.33%"></i></span><strong>10.96%</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="book-small-note">One held-out target per reader, ranked among 4,364 works. Recall@10 is the share of targets found in the top ten, rounded to two decimals. Each split uses the same readers, targets, and catalog for all methods.</p>
+        <p class="book-evaluation-limit">These evaluation sets were reused during development, and some readers appear in both splits. The results still need confirmation on fresh test data.</p>
+        <a class="book-source-link" href="https://github.com/ridopandiSinaga/System-Recommendation/blob/main/docs/EXPERIMENTS.md" target="_blank" rel="noopener noreferrer">Experiment notes and source results <span aria-hidden="true">↗</span></a>
+      </section>
+
+      <div class="book-decisions">
+        <section>
+          <h3>From predicting ratings to ranking books</h3>
+          <p>Early neural models did not consistently beat simpler rating predictors. Later experiments trained models to rank liked books and used reading history as input. Neural gains remained inconsistent; cosine had the highest Recall@10 among the selected models in the final development evaluation.</p>
+        </section>
+        <section>
+          <h3>What runs in the app</h3>
+          <p>The app still uses TF-IDF metadata similarity, item collaborative filtering, and popularity in a weighted hybrid. Training exports one model bundle; Streamlit and FastAPI load it through the shared service. The neural and history-cosine experiments are not deployed.</p>
+        </section>
       </div>
-      <div class="dialog-actions">
-        <a href="https://books-system-recommendation.streamlit.app/" target="_blank" rel="noopener noreferrer">Open the live demo <span aria-hidden="true">↗</span></a>
-        <a href="https://github.com/ridopandiSinaga/System-Recommendation" target="_blank" rel="noopener noreferrer">View the GitHub repository <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="dialog-tags"><span>Hybrid Recommender</span><span>Content-Based</span><span>Item Collaborative Filtering</span><span>Cold Start</span><span>TF-IDF</span><span>FastAPI</span><span>Streamlit</span><span>Docker</span></div>
+      <details class="book-technical-note">
+        <summary>Data and catalog choice</summary>
+        <p>Book-Crossing contains 271,360 book records and 1,149,780 rating records. A zero means no explicit rating and is excluded from rating training. The app model uses ratings for 1,000 ISBNs and metadata for 3,000 books.</p>
+        <p>Larger catalogs covered more target books, but the confidence intervals for the NDCG@10 improvement included zero. The largest also exceeded the time and file-size limits. The smaller catalog was retained.</p>
+      </details>
+      <div class="dialog-tags"><span>Python</span><span>NumPy</span><span>TF-IDF</span><span>Streamlit</span><span>FastAPI</span></div>
     </dialog>
 
     <dialog class="case-dialog" id="segmentation-dialog" aria-labelledby="segmentation-title">
