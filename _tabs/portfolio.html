@@ -41,7 +41,7 @@ description: Selected AI engineering, machine learning, and data science work by
 
       <section class="projects-section" id="projects" aria-label="Projects">
         <div class="section-heading section-heading--counter-only">
-          <p class="project-counter" aria-live="polite"><span id="current-project">01</span> / 06</p>
+          <p class="project-counter" aria-live="polite"><span id="current-project">01</span> / 07</p>
         </div>
 
         <div class="carousel-wrap">
@@ -224,6 +224,30 @@ description: Selected AI engineering, machine learning, and data science work by
                 Open full case study <span aria-hidden="true">→</span>
               </span>
             </article>
+
+            <article class="project-card" data-project="6" data-dialog="sentiment-quest-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="sentiment-quest-dialog" aria-label="Open Sentiment Quest case study">
+              <header class="project-header">
+                <p class="project-number">Project 07</p>
+                <p class="status-pill"><span aria-hidden="true"></span>NLP · Fine-tuning</p>
+              </header>
+              <div class="project-intro">
+                <h3>Sentiment Quest</h3>
+                <p>An Indonesian product-review classifier, comparing simple text models with fine-tuned IndoBERT.</p>
+              </div>
+              <div class="project-preview project-preview--sentiment">
+                <svg viewBox="0 0 1440 590" role="img" aria-label="Local sentiment demo with a review input, analysis button, and output area">
+                  <defs><clipPath id="sq-card-image-crop"><rect width="1440" height="590" /></clipPath></defs>
+                  <image href="{{ '/assets/projects/sentiment-quest/demo.png' | relative_url }}" width="1440" height="1050" clip-path="url(#sq-card-image-crop)" />
+                </svg>
+                <span class="sq-preview-label">Local CPU demo</span>
+              </div>
+              <dl class="project-metrics">
+                <div><dt>Test macro-F1</dt><dd>0.9824</dd><small>Fine-tuned IndoBERT</small></div>
+                <div><dt>Prediction errors</dt><dd>54 → 19</dd><small>Baseline → fine-tuning</small></div>
+                <div><dt>Test reviews</dt><dd>1,083</dd><small>Same set for all models</small></div>
+              </dl>
+              <span class="case-study-link" aria-hidden="true">Open full case study <span aria-hidden="true">→</span></span>
+            </article>
           </div>
 
           <button class="carousel-button carousel-button--next" type="button" aria-label="Show next project">
@@ -238,6 +262,7 @@ description: Selected AI engineering, machine learning, and data science work by
           <button type="button" data-slide="3" aria-label="Show project 4"></button>
           <button type="button" data-slide="4" aria-label="Show project 5"></button>
           <button type="button" data-slide="5" aria-label="Show project 6"></button>
+          <button type="button" data-slide="6" aria-label="Show project 7"></button>
         </div>
       </section>
 
@@ -616,6 +641,94 @@ description: Selected AI engineering, machine learning, and data science work by
         <a href="https://github.com/SootheMate-Capstone-Team-C241-PS363" target="_blank" rel="noopener noreferrer">Project overview <span aria-hidden="true">↗</span></a>
       </div>
       <div class="dialog-tags" aria-label="Machine Learning technology stack"><span>Python</span><span>TensorFlow / Keras</span><span>scikit-learn</span><span>pandas</span><span>NumPy</span></div>
+    </dialog>
+
+    <dialog class="case-dialog" id="sentiment-quest-dialog" aria-labelledby="sentiment-quest-title">
+      <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
+      <div class="dialog-overline"><span>Project 07</span><span>NLP project · 2026</span></div>
+      <h2 id="sentiment-quest-title">Sentiment Quest</h2>
+      <p class="dialog-lead">Can fine-tuning IndoBERT classify Indonesian product reviews better than simpler text models? Four approaches were compared on the same reviews, then the selected model was packaged into a local demo.</p>
+      <div class="dialog-actions sq-actions">
+        <a href="{{ '/assets/projects/sentiment-quest/Sentiment_Quest_Portofolio_v3.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Read the experiment journey <span aria-hidden="true">↗</span></a>
+        <span>PDF · 8 pages · Indonesian</span>
+      </div>
+
+      <section class="sq-results" aria-labelledby="sq-results-title">
+        <p class="case-media-kicker">Test results</p>
+        <h3 id="sq-results-title">54 errors became 19 with fine-tuning</h3>
+        <p>All four saved models were evaluated on the same 1,083 held-out reviews after model choices were locked.</p>
+        <table class="sq-table">
+          <caption>Final evaluation · higher macro-F1 and fewer errors are better</caption>
+          <thead><tr><th scope="col">Model</th><th scope="col">Macro-F1</th><th scope="col">Errors</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">TF-IDF + logistic regression <small>Baseline</small></th><td>0.9499</td><td>54</td></tr>
+            <tr><th scope="row">Small PyTorch network</th><td>0.9464</td><td>58</td></tr>
+            <tr><th scope="row">IndoBERT · frozen encoder</th><td>0.9528</td><td>51</td></tr>
+            <tr class="sq-selected"><th scope="row">IndoBERT · full fine-tuning <small>Selected model</small></th><td><strong>0.9824</strong></td><td><strong>19</strong></td></tr>
+          </tbody>
+        </table>
+        <p class="sq-note">Macro-F1 averages the F1 scores for positive and negative reviews, giving each class equal weight. The selected model also reached 98.25% accuracy.</p>
+      </section>
+
+      <div class="sq-methods">
+        <section aria-labelledby="sq-data-title">
+          <h3 id="sq-data-title">Keep learning and testing separate</h3>
+          <p>PRDECT-ID contains 5,400 reviews across 29 product categories. The models use review text to predict positive or negative sentiment; ratings are excluded from their inputs.</p>
+          <dl class="sq-split" aria-label="Dataset split">
+            <div><dt>Train</dt><dd>3,236</dd></div><div><dt>Validation</dt><dd>1,081</dd></div><div><dt>Test</dt><dd>1,083</dd></div>
+          </dl>
+          <p>Identical texts after normalization stay together in one split. Validation guides experiments and checkpoint selection; test data is reserved for the final comparison.</p>
+        </section>
+        <section aria-labelledby="sq-decisions-title">
+          <h3 id="sq-decisions-title">Follow what each experiment shows</h3>
+          <ol class="sq-decisions">
+            <li><strong>Give the small network more training.</strong> Increasing from 5 to 15 epochs improved validation F1, but it remained below TF-IDF.</li>
+            <li><strong>Compare two IndoBERT recipes.</strong> Frozen-encoder training and full fine-tuning each started from the original pretrained model.</li>
+            <li><strong>Check variation before testing.</strong> Run the same recipe with training seeds 42, 43, and 44 on the same split. Keep the reference model chosen before the two additional runs.</li>
+          </ol>
+        </section>
+      </div>
+
+      <details class="sq-detail">
+        <summary>How the evaluation was checked</summary>
+        <p>The reference model uses the epoch 2 checkpoint from a completed three-epoch run, selected by validation macro-F1. Data, model, code, and prediction rules were locked before test evaluation. Metrics were recalculated from prediction CSVs, and artifact identities were verified.</p>
+        <p>A paired bootstrap over text groups used 2,000 resamples. The 95% interval for the macro-F1 improvement over TF-IDF was +1.94 to +4.63 percentage points. This interval applies to the fixed test split and saved models.</p>
+        <p>The three training seeds gave validation macro-F1 of 0.9748, 0.9739, and 0.9711. These are validation results; the additional seeds were not evaluated on test.</p>
+        <a class="sq-text-link" href="{{ '/assets/projects/sentiment-quest/test-metrics.csv' | relative_url }}" download>Download test metrics (CSV) <span aria-hidden="true">↓</span></a>
+      </details>
+
+      <section class="sq-errors" aria-labelledby="sq-errors-title">
+        <div>
+          <h3 id="sq-errors-title">Where it still makes mistakes</h3>
+          <p>Eight negative reviews were predicted as positive. Eleven positive reviews were marked negative.</p>
+          <blockquote lang="id">“ini bukan kertas origami tapi post it”</blockquote>
+          <p class="sq-note">Dataset label: negative · Model prediction: positive</p>
+        </div>
+        <table class="sq-confusion">
+          <caption>Selected model · test predictions</caption>
+          <thead><tr><th scope="col">Dataset label</th><th scope="col">Predicted<br>negative</th><th scope="col">Predicted<br>positive</th></tr></thead>
+          <tbody><tr><th scope="row">Negative</th><td>553</td><td class="sq-error-cell">8</td></tr><tr><th scope="row">Positive</th><td class="sq-error-cell">11</td><td>511</td></tr></tbody>
+        </table>
+      </section>
+
+      <section class="sq-demo" aria-labelledby="sq-demo-title">
+        <figure>
+          <a href="{{ '/assets/projects/sentiment-quest/demo.png' | relative_url }}" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size local sentiment demo screenshot">
+            <img src="{{ '/assets/projects/sentiment-quest/demo.png' | relative_url }}" alt="Gradio interface for entering an Indonesian review and viewing its predicted sentiment" width="1440" height="1050" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Local Gradio demo · input screen before a prediction</figcaption>
+        </figure>
+        <div>
+          <h3 id="sq-demo-title">A saved model you can run on a laptop</h3>
+          <p>The demo loads the selected model on CPU. Enter a review; the app tokenizes it and returns a positive or negative label with model scores.</p>
+          <p class="sq-note">Two classes · up to 128 tokens · uncalibrated scores. Long reviews may be cut off. Performance on new domains and operational benefits still need testing.</p>
+        </div>
+      </section>
+      <details class="sq-detail">
+        <summary>Why the original question changed</summary>
+        <p>The initial goal was to select 100 negative reviews for inspection. Sorting by the lowest rating already found 100 negatives in 100 selections on the validation batch. The project then focused on comparing text classifiers. Higher F1 does not establish an operational benefit over rating-based selection.</p>
+      </details>
+      <div class="dialog-tags" aria-label="Technology stack"><span>Python</span><span>PyTorch</span><span>Transformers</span><span>scikit-learn</span><span>Gradio</span></div>
     </dialog>
   </body>
 </html>

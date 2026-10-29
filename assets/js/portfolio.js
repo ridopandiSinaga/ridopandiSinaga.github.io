@@ -163,6 +163,7 @@
     ["book-recommender-dialog", "book-recommender"],
     ["segmentation-dialog", "customer-segmentation"],
     ["soothemate-dialog", "soothemate"],
+    ["sentiment-quest-dialog", "sentiment-quest"],
   ]);
 
   const caseStudyFromUrl = () => {
