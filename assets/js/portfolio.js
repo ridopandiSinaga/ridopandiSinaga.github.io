@@ -154,12 +154,64 @@
 
   const dialogTriggers = document.querySelectorAll("[data-dialog]");
   const dialogs = document.querySelectorAll(".case-dialog");
+  const portfolioTitle = document.title;
+  const historyKey = "portfolioCaseStudy";
+  const projectSlugs = new Map([
+    ["agentic-dialog", "agentic-customer-service"],
+    ["chat-opa-dialog", "chat-opa"],
+    ["agentic-chess-dialog", "agentic-chess-arena"],
+    ["book-recommender-dialog", "book-recommender"],
+    ["segmentation-dialog", "customer-segmentation"],
+    ["soothemate-dialog", "soothemate"],
+  ]);
+
+  const caseStudyFromUrl = () => {
+    const slug = window.location.hash.slice(1);
+    const entry = Array.from(projectSlugs).find(([, projectSlug]) => projectSlug === slug);
+    return entry ? document.getElementById(entry[0]) : null;
+  };
+
+  const updateDialogState = () => {
+    const openDialog = Array.from(dialogs).find((dialog) => dialog.open);
+    document.body.classList.toggle("dialog-open", Boolean(openDialog));
+    const title = openDialog?.querySelector("h2")?.textContent.trim();
+    document.title = title ? `${title} — Rido. Portfolio` : portfolioTitle;
+  };
+
+  const syncCaseStudyFromUrl = () => {
+    const selectedDialog = caseStudyFromUrl();
+
+    dialogs.forEach((dialog) => {
+      if (dialog.open && dialog !== selectedDialog) dialog.close();
+    });
+
+    if (selectedDialog instanceof HTMLDialogElement && !selectedDialog.open) {
+      const index = cards.findIndex((card) => card.dataset.dialog === selectedDialog.id);
+      if (index !== -1) {
+        goToProject(index, "instant");
+        cards[index].focus({ preventScroll: true });
+      }
+      selectedDialog.showModal();
+    }
+
+    updateDialogState();
+  };
 
   const openCaseStudy = (trigger) => {
     const dialog = document.getElementById(trigger.dataset.dialog);
-    if (!(dialog instanceof HTMLDialogElement)) return;
-    dialog.showModal();
-    document.body.classList.add("dialog-open");
+    const slug = projectSlugs.get(trigger.dataset.dialog);
+    if (!(dialog instanceof HTMLDialogElement) || !slug) return;
+
+    if (caseStudyFromUrl() !== dialog) {
+      const url = new URL(window.location.href);
+      url.hash = slug;
+      window.history.pushState(
+        { ...window.history.state, [historyKey]: { slug } },
+        "",
+        url
+      );
+    }
+    syncCaseStudyFromUrl();
   };
 
   dialogTriggers.forEach((trigger) => {
@@ -275,8 +327,30 @@
     });
 
     dialog.addEventListener("close", () => {
-      document.body.classList.remove("dialog-open");
+      // A queued close event must not clear a newly selected or reopened project.
+      if (dialog.open) return;
       dialog.querySelectorAll("[data-video-gallery]").forEach((gallery) => resetVideoGallery(gallery));
+      updateDialogState();
+
+      if (caseStudyFromUrl() !== dialog) return;
+
+      const entry = window.history.state?.[historyKey];
+      if (entry?.slug === projectSlugs.get(dialog.id)) {
+        // Undo an entry created by a card click, preserving Back/Forward behavior.
+        window.history.back();
+      } else {
+        // Closing a directly shared link must keep the visitor on the portfolio.
+        const url = new URL(window.location.href);
+        url.hash = "";
+        const state = { ...window.history.state };
+        delete state[historyKey];
+        window.history.replaceState(state, "", url);
+      }
     });
   });
+
+  window.addEventListener("popstate", syncCaseStudyFromUrl);
+  window.addEventListener("hashchange", syncCaseStudyFromUrl);
+  syncCaseStudyFromUrl();
 })();
+
