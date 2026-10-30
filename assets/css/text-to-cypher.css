@@ -42,10 +42,8 @@
 .cypher-count dd { margin: 6px 0 0; color: #ecdfb8; font-size: 58px; line-height: 1; }
 .cypher-example p:last-child { margin-bottom: 0; }
 
-.cypher-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 36px; }
-.cypher-columns p { margin-bottom: 0; font-size: 15px; }
-.cypher-results, .cypher-decision, .cypher-failure { margin-top: 38px; padding-top: 30px; border-top: 1px solid var(--line); }
-.cypher-results > p, .cypher-decision p, .cypher-failure p { font-size: 15px; }
+.cypher-results, .cypher-failure { margin-top: 38px; padding-top: 30px; border-top: 1px solid var(--line); }
+.cypher-results > p, .cypher-failure p { font-size: 15px; }
 .cypher-results-table { width: 100%; margin: 24px 0 14px; border-collapse: collapse; font-variant-numeric: tabular-nums; }
 .cypher-results-table caption { margin-bottom: 13px; color: var(--muted); font-size: 12px; text-align: left; }
 .cypher-results-table th, .cypher-results-table td { padding: 17px 20px; border-bottom: 1px solid var(--line); text-align: left; }
@@ -63,6 +61,7 @@
 .cypher-failure figcaption a, .cypher-sources a { text-decoration: underline; text-underline-offset: 3px; }
 .cypher-sources { margin-top: 32px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 13px; }
 .cypher-sources summary { cursor: pointer; font-size: 14px; font-weight: 600; }
+.cypher-sources h4 { margin: 24px 0 8px; font-size: 15px; }
 .cypher-sources ul { padding-left: 20px; line-height: 1.8; }
 .cypher-sources li + li { margin-top: 8px; }
 
@@ -71,8 +70,8 @@
   .project-preview--cypher { padding: 20px; }
   .cypher-preview-question { font-size: 17px; }
   .project-preview--cypher pre { padding: 10px; font-size: 10.5px; }
-  .cypher-example, .cypher-columns, .cypher-failure { grid-template-columns: 1fr; }
-  .cypher-columns, .cypher-failure { gap: 26px; }
+  .cypher-example, .cypher-failure { grid-template-columns: 1fr; }
+  .cypher-failure { gap: 26px; }
   .cypher-example-input, .cypher-example-output { padding: 22px; }
   .cypher-example-output pre { font-size: 12px; }
   .cypher-results-table th, .cypher-results-table td { padding: 14px 7px; }
