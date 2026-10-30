@@ -1,0 +1,121 @@
+---
+layout: null
+permalink: /portfolio-editor/
+sitemap: false
+---
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#f6f5ed">
+    <title>Edit portofolio — Rido</title>
+    <link rel="stylesheet" href="{{ '/assets/css/portfolio-editor.css' | relative_url }}">
+    <script defer src="{{ '/assets/js/portfolio-data.js' | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/portfolio-editor.js' | relative_url }}"></script>
+  </head>
+  <body data-source="{{ '/portfolio-data.json' | relative_url }}">
+    <main class="editor-shell">
+      <header class="editor-header">
+        <div>
+          <a class="wordmark" href="{{ '/portfolio/' | relative_url }}">Rido.</a>
+          <h1>Edit portofolio</h1>
+          <p>Tambahkan video atau proyek, lalu unduh file untuk dipasang di GitHub.</p>
+        </div>
+        <nav aria-label="Bantuan">
+          <a href="{{ '/PANDUAN-PORTOFOLIO/' | relative_url }}" target="_blank" rel="noopener">Panduan</a>
+          <a href="{{ '/portfolio/' | relative_url }}" target="_blank" rel="noopener">Lihat website ↗</a>
+        </nav>
+      </header>
+
+      <div class="notice">
+        <strong>Perubahan di sini belum mengubah website.</strong>
+        Setelah selesai, unduh <code>portfolio.json</code>, lalu unggah untuk mengganti
+        <code>_data/portfolio.json</code> di repositori website. Jangan isi token atau informasi pribadi.
+      </div>
+
+      <div class="editor-toolbar">
+        <div class="toolbar-group">
+          <button id="import-button" class="button" type="button">Buka file JSON</button>
+          <input id="import-file" type="file" accept=".json,application/json" hidden>
+          <button id="backup-button" class="button" type="button" disabled>Unduh cadangan</button>
+        </div>
+        <button id="download-button" class="button primary" type="button" disabled>Unduh portfolio.json</button>
+      </div>
+
+      <div id="load-state" class="status" role="status">Memuat data website…</div>
+      <section id="publish-next" class="publish-next" aria-labelledby="publish-title" hidden>
+        <h2 id="publish-title">Pasang file di website</h2>
+        <p>Klik <strong>Unggah ke GitHub</strong>, pilih file yang baru diunduh dengan nama persis <code>portfolio.json</code>, lalu commit ke <code>main</code>. GitHub akan memublikasikannya setelah pemeriksaan selesai.</p>
+        <div class="toolbar-group">
+          <a class="button primary" href="https://github.com/ridopandiSinaga/ridopandiSinaga.github.io/upload/main/_data" target="_blank" rel="noopener">Unggah ke GitHub ↗</a>
+          <a class="button" href="https://github.com/ridopandiSinaga/ridopandiSinaga.github.io/actions/workflows/jekyll.yml" target="_blank" rel="noopener">Lihat proses publikasi ↗</a>
+        </div>
+      </section>
+      <div id="draft-notice" class="draft-notice" hidden>
+        <p id="draft-message"></p>
+        <div class="toolbar-group">
+          <button id="restore-button" class="button" type="button">Pulihkan draf</button>
+          <button id="discard-draft-button" class="text-button" type="button">Hapus draf tersimpan</button>
+        </div>
+      </div>
+      <section id="error-panel" class="error-panel" role="alert" tabindex="-1" hidden>
+        <h2 id="error-title">Periksa isian ini</h2>
+        <ul id="error-list"></ul>
+      </section>
+
+      <div id="editor-workspace" class="editor-workspace" hidden>
+        <aside class="project-sidebar" aria-label="Pilih proyek">
+          <label class="field-label" for="project-select">Proyek</label>
+          <select id="project-select"></select>
+          <p id="project-kind" class="muted"></p>
+          <button id="add-project-button" class="button" type="button">+ Tambah proyek</button>
+          <button id="delete-project-button" class="text-button danger" type="button" hidden>Hapus proyek ini</button>
+          <p class="sidebar-help">Video boleh dikosongkan. Bagian video hanya muncul setelah ada judul dan tautan.</p>
+        </aside>
+
+        <div class="project-editor">
+          <div class="project-heading">
+            <h2 id="project-heading">Proyek</h2>
+            <span id="project-badge" class="badge"></span>
+          </div>
+
+          <section id="new-project-fields" class="editor-section" hidden>
+            <h3>Isi proyek</h3>
+            <label class="checkbox-label"><input id="project-published" type="checkbox"> Tampilkan proyek di website</label>
+            <p class="help">Biarkan tidak dicentang selama isinya masih draf.</p>
+            <div class="field-grid">
+              <label>Judul<input id="project-title" type="text" data-project-field="title" autocomplete="off"></label>
+              <label>Alamat singkat (slug)<input id="project-slug" type="text" data-project-field="slug" autocomplete="off" spellcheck="false"><span class="help">Contoh: <code>analisis-ulasan</code>. Gunakan huruf kecil, angka, dan tanda hubung.</span></label>
+              <label>Kategori<input id="project-category" type="text" data-project-field="category" placeholder="Contoh: Natural Language Processing"></label>
+              <label>Tag<input id="project-tags" type="text" placeholder="Python, Streamlit, Neo4j"><span class="help">Pisahkan dengan koma.</span></label>
+              <label class="full-width">Ringkasan<textarea id="project-summary" data-project-field="summary" rows="3" placeholder="Masalah yang dikerjakan dan hasil yang bisa dilihat pembaca."></textarea></label>
+              <label>Gambar proyek<input id="project-poster" type="text" data-project-field="poster" placeholder="/assets/img/nama-gambar.webp" spellcheck="false"><span class="help">Unggah gambar ke repositori terlebih dahulu, atau gunakan URL HTTPS.</span></label>
+              <label>Keterangan gambar<input id="project-poster-alt" type="text" data-project-field="poster_alt" placeholder="Contoh: Hasil kueri pada halaman aplikasi"></label>
+            </div>
+            <div class="rows-heading"><h4>Tautan</h4><button class="text-button" type="button" data-add-row="links">+ Tambah tautan</button></div>
+            <p class="help">Contoh: demo, GitHub, atau PDF.</p>
+            <div id="links-rows" class="rows"></div>
+            <div class="rows-heading"><h4>Penjelasan proyek</h4><button class="text-button" type="button" data-add-row="sections">+ Tambah bagian</button></div>
+            <p class="help">Tulis masalah, pendekatan, hasil, atau batasannya. Isi berupa teks biasa; baris baru tetap dipertahankan.</p>
+            <div id="sections-rows" class="rows"></div>
+            <details class="optional-details">
+              <summary>Angka hasil (opsional)</summary>
+              <p class="help">Isi hanya jika ada bukti. Jelaskan data pengujian dan satuannya pada catatan.</p>
+              <div id="metrics-rows" class="rows"></div>
+              <button class="text-button" type="button" data-add-row="metrics">+ Tambah angka</button>
+            </details>
+          </section>
+
+          <section class="editor-section" aria-labelledby="video-heading">
+            <div class="rows-heading"><h3 id="video-heading">Video penjelasan</h3><button class="button" type="button" data-add-row="videos">+ Tambah video</button></div>
+            <p class="help">Tempel tautan YouTube atau Google Drive. Video harus bisa ditonton melalui tautannya; untuk YouTube, pilih Public atau Unlisted. Pastikan penyematan video diizinkan.</p>
+            <div id="videos-rows" class="rows"></div>
+          </section>
+        </div>
+      </div>
+      <p class="save-note" id="save-note" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

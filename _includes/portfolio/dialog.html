@@ -1,0 +1,42 @@
+{% assign detail_project = include.project %}
+{% assign detail_number = include.index | plus: 1 %}
+<dialog class="case-dialog case-dialog--custom" id="project-{{ detail_project.slug | escape }}-dialog" aria-labelledby="project-{{ detail_project.slug | escape }}-title">
+  <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
+  <div class="dialog-overline"><span>Project {% if detail_number < 10 %}0{% endif %}{{ detail_number }}</span>{% if detail_project.category.size > 0 %}<span>{{ detail_project.category | escape }}</span>{% endif %}</div>
+  <h2 id="project-{{ detail_project.slug | escape }}-title">{{ detail_project.title | escape }}</h2>
+  {% if detail_project.summary.size > 0 %}<p class="dialog-lead">{{ detail_project.summary | escape }}</p>{% endif %}
+  {% if detail_project.links.size > 0 %}
+  <div class="dialog-actions">
+    {% for link in detail_project.links %}
+    {% assign link_start = link.url | slice: 0, 1 %}
+    <a href="{% if link_start == '/' %}{{ link.url | relative_url | escape }}{% else %}{{ link.url | escape }}{% endif %}"{% if link_start != '/' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ link.label | escape }} <span aria-hidden="true">↗</span></a>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if detail_project.poster.size > 0 %}
+  <figure class="custom-project-image">
+    <a href="{% assign detail_project_poster_start = detail_project.poster | slice: 0, 1 %}{% if detail_project_poster_start == '/' %}{{ detail_project.poster | relative_url | escape }}{% else %}{{ detail_project.poster | escape }}{% endif %}" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size {{ detail_project.title | escape }} image">
+      <img src="{% assign detail_project_poster_start = detail_project.poster | slice: 0, 1 %}{% if detail_project_poster_start == '/' %}{{ detail_project.poster | relative_url | escape }}{% else %}{{ detail_project.poster | escape }}{% endif %}" alt="{{ detail_project.poster_alt | default: detail_project.title | escape }}" loading="lazy" decoding="async">
+    </a>
+  </figure>
+  {% endif %}
+  {% include portfolio/videos.html project=detail_project %}
+  {% if detail_project.metrics.size > 0 %}
+  <dl class="custom-project-metrics">
+    {% for metric in detail_project.metrics %}
+    <div><dt>{{ metric.label | escape }}</dt><dd>{{ metric.value | escape }}</dd>{% if metric.note.size > 0 %}<small>{{ metric.note | escape }}</small>{% endif %}</div>
+    {% endfor %}
+  </dl>
+  {% endif %}
+  {% if detail_project.sections.size > 0 %}
+  <div class="custom-project-sections">
+    {% for section in detail_project.sections %}
+    <section>
+      {% if section.title.size > 0 %}<h3>{{ section.title | escape }}</h3>{% endif %}
+      {% if section.body.size > 0 %}<p>{{ section.body | escape | newline_to_br }}</p>{% endif %}
+    </section>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if detail_project.tags.size > 0 %}<div class="dialog-tags" aria-label="Technology stack">{% for tag in detail_project.tags %}<span>{{ tag | escape }}</span>{% endfor %}</div>{% endif %}
+</dialog>

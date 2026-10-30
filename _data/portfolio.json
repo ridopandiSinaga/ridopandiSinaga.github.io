@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "projects": [
+    {
+      "slug": "agentic-customer-service",
+      "title": "Agentic Customer Service",
+      "builtin": true,
+      "poster": "/assets/img/portfolio/agentic-customer-service/customer-journey.webp",
+      "videos": [
+        {
+          "title": "Customer journey",
+          "url": "https://drive.google.com/file/d/1CurLILNcrjWqYlsKbJa-mzsdxVzhvn0I/preview",
+          "description": "Chat, product discovery, staff approval, and payment",
+          "poster": "/assets/img/portfolio/agentic-customer-service/customer-journey.webp",
+          "poster_alt": "Optik 150 K customer chat recommending suitable frames",
+          "play_label": "Play the customer journey demo",
+          "kicker": "End-to-end demo · 04:45",
+          "option_description": "Conversation to QRIS payment"
+        },
+        {
+          "title": "Langfuse monitoring",
+          "url": "https://drive.google.com/file/d/1kOJ6Jn6L-uvjontiKRSDkO-dHZccZeys/preview",
+          "description": "Traces, usage, cost, scores, and agent debugging",
+          "poster": "/assets/img/portfolio/agentic-customer-service/langfuse-observability.webp",
+          "poster_alt": "Langfuse dashboard showing traces, model cost, and evaluation scores",
+          "play_label": "Play the Langfuse observability demo",
+          "kicker": "Observability · 01:38",
+          "option_description": "Traces, cost, and evaluation"
+        }
+      ],
+      "video_heading": "See the system in action",
+      "video_kicker": "Product demos",
+      "video_description": "Choose a recording, then press play."
+    },
+    {
+      "slug": "chat-opa",
+      "title": "Chat OPA",
+      "builtin": true,
+      "poster": "/assets/img/portfolio/chat-opa/homepage.webp",
+      "videos": []
+    },
+    {
+      "slug": "bilingual-text-to-cypher",
+      "title": "Bilingual Text-to-Cypher",
+      "builtin": true,
+      "poster": "/assets/img/portfolio/text-to-cypher/validation-example.png",
+      "videos": []
+    },
+    {
+      "slug": "sentiment-quest",
+      "title": "Sentiment Quest",
+      "builtin": true,
+      "poster": "/assets/projects/sentiment-quest/demo.png",
+      "videos": []
+    },
+    {
+      "slug": "book-recommender",
+      "title": "Book Recommender",
+      "builtin": true,
+      "poster": "/assets/img/portfolio/book-recommender/product-ui.webp",
+      "videos": []
+    },
+    {
+      "slug": "agentic-chess-arena",
+      "title": "Agentic Chess Arena",
+      "builtin": true,
+      "poster": "/assets/img/portfolio/agentic-chess-arena/human-vs-deepseek.webp",
+      "videos": [
+        {
+          "title": "Human vs DeepSeek",
+          "url": "https://drive.google.com/file/d/1pXMhHVK6eFssR-CbYxRp3Iwd1ngk0piN/preview",
+          "description": "Interactive play, verified agent execution, and strict replay",
+          "poster": "/assets/img/portfolio/agentic-chess-arena/human-vs-deepseek.webp",
+          "poster_alt": "Agentic Chess Arena interface with an authoritative chessboard and public DeepSeek decision trace",
+          "play_label": "Play the Human vs DeepSeek Agentic Chess Arena demo",
+          "kicker": "Live arena demo · 05:40",
+          "option_description": "11 committed plies · 13 logical calls"
+        }
+      ],
+      "video_heading": "Human vs DeepSeek live arena",
+      "video_kicker": "Product demo",
+      "video_description": "Interactive input, validated execution, and immutable replay evidence."
+    },
+    {
+      "slug": "customer-segmentation",
+      "title": "Customer Segmentation",
+      "builtin": true,
+      "poster": "",
+      "videos": []
+    },
+    {
+      "slug": "soothemate",
+      "title": "SootheMate",
+      "builtin": true,
+      "poster": "/assets/img/portfolio/soothemate/app-overview.webp",
+      "videos": []
+    }
+  ]
+}

@@ -156,16 +156,7 @@
   const dialogs = document.querySelectorAll(".case-dialog");
   const portfolioTitle = document.title;
   const historyKey = "portfolioCaseStudy";
-  const projectSlugs = new Map([
-    ["agentic-dialog", "agentic-customer-service"],
-    ["chat-opa-dialog", "chat-opa"],
-    ["agentic-chess-dialog", "agentic-chess-arena"],
-    ["text-to-cypher-dialog", "bilingual-text-to-cypher"],
-    ["book-recommender-dialog", "book-recommender"],
-    ["segmentation-dialog", "customer-segmentation"],
-    ["soothemate-dialog", "soothemate"],
-    ["sentiment-quest-dialog", "sentiment-quest"],
-  ]);
+  const projectSlugs = new Map(cards.map(card => [card.dataset.dialog, card.dataset.projectSlug]));
 
   const caseStudyFromUrl = () => {
     const slug = window.location.hash.slice(1);
@@ -247,16 +238,21 @@
     const kicker = launch?.querySelector(".case-video-copy small");
     const title = launch?.querySelector(".case-video-copy strong");
     const description = launch?.querySelector(".case-video-copy > span");
+    const external = gallery.querySelector("[data-video-external]");
 
     stage?.querySelector("iframe")?.remove();
     if (!launch) return;
 
     launch.hidden = false;
     launch.dataset.videoSrc = selectedOption.dataset.videoSrc || "";
+    if (external) external.href = selectedOption.dataset.videoSrc || "";
     launch.setAttribute("aria-label", selectedOption.dataset.videoLabel || "Play project video");
 
     if (poster) {
-      poster.src = selectedOption.dataset.videoPoster || "";
+      const src = selectedOption.dataset.videoPoster || "";
+      poster.hidden = !src;
+      if (src) poster.src = src;
+      else poster.removeAttribute("src");
       poster.alt = selectedOption.dataset.videoAlt || "";
     }
 
@@ -282,8 +278,10 @@
     launch?.addEventListener("click", () => {
       if (!stage || !launch.dataset.videoSrc || stage.querySelector("iframe")) return;
 
+      const src = window.PortfolioData?.videoEmbedUrl(launch.dataset.videoSrc);
+      if (!src) return;
       const frame = document.createElement("iframe");
-      frame.src = launch.dataset.videoSrc;
+      frame.src = src;
       frame.title = launch.getAttribute("aria-label") || "Project video";
       frame.loading = "lazy";
       frame.referrerPolicy = "strict-origin-when-cross-origin";
