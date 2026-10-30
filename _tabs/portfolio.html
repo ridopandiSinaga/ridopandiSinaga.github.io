@@ -256,7 +256,7 @@ RETURN count(m) AS NumberOfMovies</code></pre>
               </header>
               <div class="project-intro">
                 <h3>Sentiment Quest</h3>
-                <p>An Indonesian product-review classifier, comparing simple text models with fine-tuned IndoBERT.</p>
+                <p>Classifies Indonesian product reviews as positive or negative using a fine-tuned IndoBERT model.</p>
               </div>
               <div class="project-preview project-preview--sentiment">
                 <svg viewBox="0 0 1440 590" role="img" aria-label="Local sentiment demo with a review input, analysis button, and output area">
@@ -753,18 +753,16 @@ RETURN count(m) AS NumberOfMovies</code></pre>
       <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
       <div class="dialog-overline"><span>Project 08</span><span>NLP project · 2026</span></div>
       <h2 id="sentiment-quest-title">Sentiment Quest</h2>
-      <p class="dialog-lead">Can fine-tuning IndoBERT classify Indonesian product reviews better than simpler text models? Four approaches were compared on the same reviews, then the selected model was packaged into a local demo.</p>
+      <p class="dialog-lead">Sentiment Quest classifies Indonesian product reviews as positive or negative. On 1,083 test reviews, fine-tuned IndoBERT made 19 errors, compared with 54 for TF-IDF.</p>
       <div class="dialog-actions sq-actions">
-        <a href="{{ '/assets/projects/sentiment-quest/Sentiment_Quest_Portofolio_v3.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Read the experiment journey <span aria-hidden="true">↗</span></a>
+        <a href="{{ '/assets/projects/sentiment-quest/Sentiment_Quest_Portofolio_v3.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Portfolio PDF <span aria-hidden="true">↗</span></a>
         <span>PDF · 8 pages · Indonesian</span>
       </div>
 
       <section class="sq-results" aria-labelledby="sq-results-title">
-        <p class="case-media-kicker">Test results</p>
-        <h3 id="sq-results-title">54 errors became 19 with fine-tuning</h3>
-        <p>All four saved models were evaluated on the same 1,083 held-out reviews after model choices were locked.</p>
+        <h3 id="sq-results-title">Model comparison</h3>
         <table class="sq-table">
-          <caption>Final evaluation · higher macro-F1 and fewer errors are better</caption>
+          <caption>All four models were evaluated on the same test set</caption>
           <thead><tr><th scope="col">Model</th><th scope="col">Macro-F1</th><th scope="col">Errors</th></tr></thead>
           <tbody>
             <tr><th scope="row">TF-IDF + logistic regression <small>Baseline</small></th><td>0.9499</td><td>54</td></tr>
@@ -773,40 +771,36 @@ RETURN count(m) AS NumberOfMovies</code></pre>
             <tr class="sq-selected"><th scope="row">IndoBERT · full fine-tuning <small>Selected model</small></th><td><strong>0.9824</strong></td><td><strong>19</strong></td></tr>
           </tbody>
         </table>
-        <p class="sq-note">Macro-F1 averages the F1 scores for positive and negative reviews, giving each class equal weight. The selected model also reached 98.25% accuracy.</p>
       </section>
 
       <div class="sq-methods">
         <section aria-labelledby="sq-data-title">
-          <h3 id="sq-data-title">Keep learning and testing separate</h3>
-          <p>PRDECT-ID contains 5,400 reviews across 29 product categories. The models use review text to predict positive or negative sentiment; ratings are excluded from their inputs.</p>
+          <h3 id="sq-data-title">Data</h3>
+          <p>PRDECT-ID contains 5,400 reviews across 29 product categories. The models used review text only, without ratings.</p>
           <dl class="sq-split" aria-label="Dataset split">
             <div><dt>Train</dt><dd>3,236</dd></div><div><dt>Validation</dt><dd>1,081</dd></div><div><dt>Test</dt><dd>1,083</dd></div>
           </dl>
-          <p>Identical texts after normalization stay together in one split. Validation guides experiments and checkpoint selection; test data is reserved for the final comparison.</p>
+          <p>Reviews with identical normalized text were kept in the same split.</p>
         </section>
         <section aria-labelledby="sq-decisions-title">
-          <h3 id="sq-decisions-title">Follow what each experiment shows</h3>
-          <ol class="sq-decisions">
-            <li><strong>Give the small network more training.</strong> Increasing from 5 to 15 epochs improved validation F1, but it remained below TF-IDF.</li>
-            <li><strong>Compare two IndoBERT recipes.</strong> Frozen-encoder training and full fine-tuning each started from the original pretrained model.</li>
-            <li><strong>Check variation before testing.</strong> Run the same recipe with training seeds 42, 43, and 44 on the same split. Keep the reference model chosen before the two additional runs.</li>
-          </ol>
+          <h3 id="sq-decisions-title">Training results</h3>
+          <p>Increasing the small network's training from 5 to 15 epochs improved validation F1, but it still trailed TF-IDF.</p>
+          <p>Frozen-encoder training and full fine-tuning each started from the original IndoBERT weights. The full fine-tuning run used its epoch 2 checkpoint, selected by validation macro-F1.</p>
         </section>
       </div>
 
       <details class="sq-detail">
-        <summary>How the evaluation was checked</summary>
-        <p>The reference model uses the epoch 2 checkpoint from a completed three-epoch run, selected by validation macro-F1. Data, model, code, and prediction rules were locked before test evaluation. Metrics were recalculated from prediction CSVs, and artifact identities were verified.</p>
-        <p>A paired bootstrap over text groups used 2,000 resamples. The 95% interval for the macro-F1 improvement over TF-IDF was +1.94 to +4.63 percentage points. This interval applies to the fixed test split and saved models.</p>
-        <p>The three training seeds gave validation macro-F1 of 0.9748, 0.9739, and 0.9711. These are validation results; the additional seeds were not evaluated on test.</p>
+        <summary>Evaluation details</summary>
+        <p>Model choices were made using validation data and fixed before test evaluation. Fine-tuning completed three epochs; the selected checkpoint came from epoch 2. Reported metrics were recalculated from saved predictions.</p>
+        <p>Training seeds 42, 43, and 44 produced validation macro-F1 of 0.9748, 0.9739, and 0.9711 on the same split. The reference model was fixed before the two extra runs, which were not evaluated on test.</p>
+        <p>A paired bootstrap over text groups (2,000 resamples) gave a 95% interval of +1.94 to +4.63 percentage points for the macro-F1 gain over TF-IDF. This describes uncertainty for the saved models on this test split.</p>
+        <p>Macro-F1 gives the positive and negative classes equal weight. The selected model's test accuracy was 98.25%.</p>
         <a class="sq-text-link" href="{{ '/assets/projects/sentiment-quest/test-metrics.csv' | relative_url }}" download>Download test metrics (CSV) <span aria-hidden="true">↓</span></a>
       </details>
 
       <section class="sq-errors" aria-labelledby="sq-errors-title">
         <div>
-          <h3 id="sq-errors-title">Where it still makes mistakes</h3>
-          <p>Eight negative reviews were predicted as positive. Eleven positive reviews were marked negative.</p>
+          <h3 id="sq-errors-title">An incorrect prediction</h3>
           <blockquote lang="id">“ini bukan kertas origami tapi post it”</blockquote>
           <p class="sq-note">Dataset label: negative · Model prediction: positive</p>
         </div>
@@ -825,14 +819,14 @@ RETURN count(m) AS NumberOfMovies</code></pre>
           <figcaption>Local Gradio demo · input screen before a prediction</figcaption>
         </figure>
         <div>
-          <h3 id="sq-demo-title">A saved model you can run on a laptop</h3>
-          <p>The demo loads the selected model on CPU. Enter a review; the app tokenizes it and returns a positive or negative label with model scores.</p>
-          <p class="sq-note">Two classes · up to 128 tokens · uncalibrated scores. Long reviews may be cut off. Performance on new domains and operational benefits still need testing.</p>
+          <h3 id="sq-demo-title">Local demo</h3>
+          <p>The Gradio app runs the saved model on CPU and returns a sentiment label and scores for each review.</p>
+          <p class="sq-note">Input is limited to 128 tokens; longer reviews are truncated. Scores are not calibrated. Performance on new domains has not been tested.</p>
         </div>
       </section>
       <details class="sq-detail">
         <summary>Why the original question changed</summary>
-        <p>The initial goal was to select 100 negative reviews for inspection. Sorting by the lowest rating already found 100 negatives in 100 selections on the validation batch. The project then focused on comparing text classifiers. Higher F1 does not establish an operational benefit over rating-based selection.</p>
+        <p>The initial goal was to select 100 negative reviews for inspection. Sorting by lowest rating already found 100 out of 100 on the validation batch, so the project shifted to comparing text classifiers. The higher F1 does not establish a practical benefit over sorting by rating.</p>
       </details>
       <div class="dialog-tags" aria-label="Technology stack"><span>Python</span><span>PyTorch</span><span>Transformers</span><span>scikit-learn</span><span>Gradio</span></div>
     </dialog>
