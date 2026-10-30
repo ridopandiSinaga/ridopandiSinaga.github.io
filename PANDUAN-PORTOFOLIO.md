@@ -13,7 +13,7 @@ Editor menyiapkan file; perubahan terbit setelah kamu menyimpannya ke repository
 
 1. Unggah rekaman ke YouTube. Pilih **Unlisted** jika kamu ingin membagikannya lewat tautan tanpa menampilkannya di halaman channel. Siapa pun yang memiliki tautannya tetap bisa menonton dan membagikannya. [Penjelasan pengaturan YouTube](https://support.google.com/youtube/answer/157177?hl=en).
 2. Pastikan **Allow embedding** aktif di YouTube Studio → Content → video → Details → Show more. [Pengaturan pemutar video](https://support.google.com/youtube/answer/171780?hl=en).
-3. Buka [editor portofolio](https://ridopandisinaga.github.io/portfolio-editor/) dan pilih proyek, misalnya **Book Recommender** atau **Text-to-Cypher**.
+3. Buka [editor portofolio](https://ridopandisinaga.github.io/portfolio-editor/) dan pilih proyek, misalnya **Book Recommender** atau **Bilingual Text-to-Cypher**.
 4. Klik **+ Tambah video**. Isi **Judul video** dan tempel tautan dari tombol **Share** di YouTube ke **Tautan video**. Tautan `youtube.com/watch?v=...` atau `youtu.be/...` bisa langsung digunakan; kamu tidak perlu menyalin kode embed.
 5. Isi **Keterangan singkat** jika membantu pembaca. Contoh: “Penjelasan pemilihan model dan hasil evaluasi.” **Gambar sampul** boleh kosong untuk memakai gambar proyek yang sudah ada.
 6. Klik **Unduh portfolio.json**, lalu ikuti langkah publikasi di bawah.
@@ -69,7 +69,7 @@ Data yang diunggah ke repository dapat dibaca publik, termasuk proyek draf. Simp
 
 | Gejala | Yang diperiksa |
 | --- | --- |
-| Proses **build** merah | Buka langkah yang gagal di Actions. Perbaiki pesan kesalahan pada data, tautan, atau alamat gambar, lalu unduh dan commit ulang. Versi website sebelumnya tetap digunakan jika build baru gagal. |
+| Proses **build** merah | Buka langkah yang gagal di Actions. Di editor, pilih **Buka file JSON** dan buka file terakhir yang kamu unggah, lalu perbaiki isian yang disebut dalam pesan kesalahan. Unduh dan commit ulang. Editor yang baru dibuka mengambil data dari website terakhir yang berhasil terbit, jadi perubahan yang gagal belum ada di sana. |
 | Build hijau, tetapi **deploy** gagal | Buka langkah deploy yang gagal. Pastikan **Settings → Pages → Source** tetap **GitHub Actions**. Setelah penyebabnya diperbaiki, gunakan **Re-run failed jobs** pada proses tersebut. |
 | Video tidak bisa diputar | Coba tautannya di jendela samaran. Periksa izin video, pengaturan embed YouTube, atau izin berbagi Drive. |
 | Gambar tidak muncul | Periksa folder, ejaan nama file, dan ekstensi. Alamat di editor harus dimulai dari `/assets/…`. |
