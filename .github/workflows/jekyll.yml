@@ -4,6 +4,9 @@ on:
   push:
     branches: ["main"]
 
+  pull_request:
+    branches: ["main"]
+
   workflow_dispatch:
 
 permissions:
@@ -26,6 +29,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Pages
+        if: github.event_name != 'pull_request'
         id: pages
         uses: actions/configure-pages@v6
 
@@ -34,6 +38,11 @@ jobs:
         with:
           ruby-version: "3.2"
           bundler-cache: true
+
+      - name: Check portfolio data
+        run: |
+          node --test tools/portfolio-data.test.cjs
+          node tools/validate-portfolio.cjs
 
       - name: Build site
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
@@ -45,7 +54,20 @@ jobs:
         with:
           path: ./_site
 
+      - name: Check rendered portfolio and new-project template
+        run: python3 tools/check-portfolio-build.py
+        env:
+          JEKYLL_ENV: production
+
+      - name: Upload temporary preview for review
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-validation-preview
+          path: ${{ runner.temp }}/portfolio-fixture.html
+
   deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

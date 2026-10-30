@@ -6,6 +6,8 @@ order: 0
 permalink: /portfolio/
 description: Selected AI engineering, machine learning, and data science work by Rido Pandi Sinaga.
 ---
+{% assign extra_projects = site.data.portfolio.projects | where: 'builtin', false | where: 'published', true %}
+{% assign total_projects = extra_projects.size | plus: 8 %}
 <!doctype html>
 <html lang="{{ site.lang | default: 'en' }}">
   <head>
@@ -18,6 +20,7 @@ description: Selected AI engineering, machine learning, and data science work by
     <link rel="canonical" href="{{ '/portfolio/' | absolute_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/text-to-cypher.css' | relative_url }}">
+    <script defer src="{{ '/assets/js/portfolio-data.js' | relative_url }}"></script>
     <script defer src="{{ '/assets/js/portfolio.js' | relative_url }}"></script>
   </head>
   <body>
@@ -42,7 +45,7 @@ description: Selected AI engineering, machine learning, and data science work by
 
       <section class="projects-section" id="projects" aria-label="Projects">
         <div class="section-heading section-heading--counter-only">
-          <p class="project-counter" aria-live="polite"><span id="current-project">01</span> / 08</p>
+          <p class="project-counter" aria-live="polite"><span id="current-project">01</span> / <span id="total-projects">{% if total_projects < 10 %}0{% endif %}{{ total_projects }}</span></p>
         </div>
 
         <div class="carousel-wrap">
@@ -51,7 +54,7 @@ description: Selected AI engineering, machine learning, and data science work by
           </button>
 
           <div class="project-track" id="project-track" tabindex="0" aria-label="Project carousel">
-            <article class="project-card" data-project="0" data-dialog="agentic-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="agentic-dialog" aria-label="Open Agentic Customer Service case study">
+            <article class="project-card" data-project="0" data-dialog="agentic-dialog" data-project-slug="agentic-customer-service" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="agentic-dialog" aria-label="Open Agentic Customer Service case study">
               <header class="project-header">
                 <p class="project-number">Project 01</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Client project</p>
@@ -90,7 +93,7 @@ description: Selected AI engineering, machine learning, and data science work by
               </span>
             </article>
 
-            <article class="project-card" data-project="1" data-dialog="chat-opa-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="chat-opa-dialog" aria-label="Open Chat OPA case study">
+            <article class="project-card" data-project="1" data-dialog="chat-opa-dialog" data-project-slug="chat-opa" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="chat-opa-dialog" aria-label="Open Chat OPA case study">
               <header class="project-header">
                 <p class="project-number">Project 02</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Live product</p>
@@ -117,7 +120,7 @@ description: Selected AI engineering, machine learning, and data science work by
               </span>
             </article>
 
-            <article class="project-card" data-project="2" data-dialog="text-to-cypher-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="text-to-cypher-dialog" aria-label="Open Bilingual Text-to-Cypher case study">
+            <article class="project-card" data-project="2" data-dialog="text-to-cypher-dialog" data-project-slug="bilingual-text-to-cypher" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="text-to-cypher-dialog" aria-label="Open Bilingual Text-to-Cypher case study">
               <header class="project-header">
                 <p class="project-number">Project 03</p>
                 <p class="status-pill"><span aria-hidden="true"></span>LLM fine-tuning</p>
@@ -140,7 +143,7 @@ RETURN count(m) AS NumberOfMovies</code></pre>
               <span class="case-study-link" aria-hidden="true">Open full case study <span aria-hidden="true">→</span></span>
             </article>
 
-            <article class="project-card" data-project="3" data-dialog="sentiment-quest-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="sentiment-quest-dialog" aria-label="Open Sentiment Quest case study">
+            <article class="project-card" data-project="3" data-dialog="sentiment-quest-dialog" data-project-slug="sentiment-quest" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="sentiment-quest-dialog" aria-label="Open Sentiment Quest case study">
               <header class="project-header">
                 <p class="project-number">Project 04</p>
                 <p class="status-pill"><span aria-hidden="true"></span>NLP · Fine-tuning</p>
@@ -164,7 +167,7 @@ RETURN count(m) AS NumberOfMovies</code></pre>
               <span class="case-study-link" aria-hidden="true">Open full case study <span aria-hidden="true">→</span></span>
             </article>
 
-            <article class="project-card" data-project="4" data-dialog="book-recommender-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="book-recommender-dialog" aria-label="Open Book Recommender case study">
+            <article class="project-card" data-project="4" data-dialog="book-recommender-dialog" data-project-slug="book-recommender" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="book-recommender-dialog" aria-label="Open Book Recommender case study">
               <header class="project-header">
                 <p class="project-number">Project 05</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Machine learning</p>
@@ -191,7 +194,7 @@ RETURN count(m) AS NumberOfMovies</code></pre>
               </span>
             </article>
 
-            <article class="project-card project-card--no-metrics" data-project="5" data-dialog="agentic-chess-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="agentic-chess-dialog" aria-label="Open Agentic Chess Arena case study">
+            <article class="project-card project-card--no-metrics" data-project="5" data-dialog="agentic-chess-dialog" data-project-slug="agentic-chess-arena" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="agentic-chess-dialog" aria-label="Open Agentic Chess Arena case study">
               <header class="project-header">
                 <p class="project-number">Project 06</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Agent evaluation</p>
@@ -212,7 +215,7 @@ RETURN count(m) AS NumberOfMovies</code></pre>
               </span>
             </article>
 
-            <article class="project-card" data-project="6" data-dialog="segmentation-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="segmentation-dialog" aria-label="Open Customer Segmentation case study">
+            <article class="project-card" data-project="6" data-dialog="segmentation-dialog" data-project-slug="customer-segmentation" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="segmentation-dialog" aria-label="Open Customer Segmentation case study">
               <header class="project-header">
                 <p class="project-number">Project 07</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Data science</p>
@@ -248,7 +251,7 @@ RETURN count(m) AS NumberOfMovies</code></pre>
               </span>
             </article>
 
-            <article class="project-card" data-project="7" data-dialog="soothemate-dialog" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="soothemate-dialog" aria-label="Open SootheMate case study">
+            <article class="project-card" data-project="7" data-dialog="soothemate-dialog" data-project-slug="soothemate" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="soothemate-dialog" aria-label="Open SootheMate case study">
               <header class="project-header">
                 <p class="project-number">Project 08</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Team capstone</p>
@@ -273,6 +276,10 @@ RETURN count(m) AS NumberOfMovies</code></pre>
                 Open full case study <span aria-hidden="true">→</span>
               </span>
             </article>
+            {% for extra_project in extra_projects %}
+              {% assign extra_index = forloop.index0 | plus: 8 %}
+              {% include portfolio/card.html project=extra_project index=extra_index %}
+            {% endfor %}
           </div>
 
           <button class="carousel-button carousel-button--next" type="button" aria-label="Show next project">
@@ -281,14 +288,9 @@ RETURN count(m) AS NumberOfMovies</code></pre>
         </div>
 
         <div class="carousel-dots" role="group" aria-label="Choose a project">
-          <button class="active" type="button" data-slide="0" aria-label="Show project 1" aria-current="true"></button>
-          <button type="button" data-slide="1" aria-label="Show project 2"></button>
-          <button type="button" data-slide="2" aria-label="Show project 3"></button>
-          <button type="button" data-slide="3" aria-label="Show project 4"></button>
-          <button type="button" data-slide="4" aria-label="Show project 5"></button>
-          <button type="button" data-slide="5" aria-label="Show project 6"></button>
-          <button type="button" data-slide="6" aria-label="Show project 7"></button>
-          <button type="button" data-slide="7" aria-label="Show project 8"></button>
+          {% for project_number in (1..total_projects) %}
+          <button{% if forloop.first %} class="active"{% endif %} type="button" data-slide="{{ forloop.index0 }}" aria-label="Show project {{ project_number }}"{% if forloop.first %} aria-current="true"{% endif %}></button>
+          {% endfor %}
         </div>
       </section>
 
@@ -308,36 +310,8 @@ RETURN count(m) AS NumberOfMovies</code></pre>
       <h2 id="agentic-title">Agentic Customer Service</h2>
       <p class="dialog-lead">An end-to-end customer-service agent for Optik 150 K that recommends products, builds orders, requests staff approval for sensitive actions, and completes QRIS payments without losing conversation context.</p>
 
-      <section class="case-media" data-video-gallery aria-labelledby="agentic-demo-title">
-        <div class="case-media-heading">
-          <div>
-            <p class="case-media-kicker">Product demos</p>
-            <h3 id="agentic-demo-title">See the system in action</h3>
-          </div>
-          <p>Choose a recording, then press play.</p>
-        </div>
-
-        <div class="case-media-stage">
-          <button class="case-video-launch" type="button" data-video-launch data-video-src="https://drive.google.com/file/d/1CurLILNcrjWqYlsKbJa-mzsdxVzhvn0I/preview" aria-label="Play the customer journey demo">
-            <img src="{{ '/assets/img/portfolio/agentic-customer-service/customer-journey.webp' | relative_url }}" alt="Optik 150 K customer chat recommending suitable frames">
-            <span class="case-video-overlay" aria-hidden="true">
-              <span class="case-video-play">▶</span>
-              <span class="case-video-copy"><small>End-to-end demo · 04:45</small><strong>Customer journey</strong><span>Chat, product discovery, staff approval, and payment</span></span>
-            </span>
-          </button>
-        </div>
-
-        <div class="case-media-options" role="group" aria-label="Choose an Agentic Customer Service recording">
-          <button class="case-media-option active" type="button" data-video-select data-video-src="https://drive.google.com/file/d/1CurLILNcrjWqYlsKbJa-mzsdxVzhvn0I/preview" data-video-poster="{{ '/assets/img/portfolio/agentic-customer-service/customer-journey.webp' | relative_url }}" data-video-alt="Optik 150 K customer chat recommending suitable frames" data-video-label="Play the customer journey demo" data-video-kicker="End-to-end demo · 04:45" data-video-title="Customer journey" data-video-description="Chat, product discovery, staff approval, and payment" aria-pressed="true">
-            <img src="{{ '/assets/img/portfolio/agentic-customer-service/customer-journey.webp' | relative_url }}" alt="">
-            <span><strong>Customer journey</strong><small>Conversation to QRIS payment</small></span>
-          </button>
-          <button class="case-media-option" type="button" data-video-select data-video-src="https://drive.google.com/file/d/1kOJ6Jn6L-uvjontiKRSDkO-dHZccZeys/preview" data-video-poster="{{ '/assets/img/portfolio/agentic-customer-service/langfuse-observability.webp' | relative_url }}" data-video-alt="Langfuse dashboard showing traces, model cost, and evaluation scores" data-video-label="Play the Langfuse observability demo" data-video-kicker="Observability · 01:38" data-video-title="Langfuse monitoring" data-video-description="Traces, usage, cost, scores, and agent debugging" aria-pressed="false">
-            <img src="{{ '/assets/img/portfolio/agentic-customer-service/langfuse-observability.webp' | relative_url }}" alt="">
-            <span><strong>Langfuse monitoring</strong><small>Traces, cost, and evaluation</small></span>
-          </button>
-        </div>
-      </section>
+      {% assign video_config = site.data.portfolio.projects | where: 'slug', 'agentic-customer-service' | first %}
+      {% include portfolio/videos.html project=video_config %}
 
       <section class="case-media case-gallery" data-image-gallery aria-labelledby="agentic-gallery-title">
         <div class="case-media-heading">
@@ -436,6 +410,9 @@ RETURN count(m) AS NumberOfMovies</code></pre>
         </div>
       </section>
 
+      {% assign video_config = site.data.portfolio.projects | where: 'slug', 'chat-opa' | first %}
+      {% include portfolio/videos.html project=video_config %}
+
       <div class="dialog-grid">
         <section><h3>Challenge</h3><p>Commercial oil-palm knowledge lived across 100+ long, unstructured books. OCR noise, mixed layouts, and visual material made reliable enterprise search difficult.</p></section>
         <section><h3>Approach</h3><p>I engineered an OCR and LLM ingestion pipeline, then orchestrated LangChain agents to retrieve, synthesize, and retain the context needed for multi-turn questions.</p></section>
@@ -466,32 +443,8 @@ RETURN count(m) AS NumberOfMovies</code></pre>
       <h2 id="agentic-chess-title">Agentic Chess Arena</h2>
       <p class="dialog-lead">An evidence-driven Agentic AI system for evaluating ReAct workflows, typed tool calls, self-reflection, failure recovery, and reproducible DeepSeek decisions inside an authoritative chess environment.</p>
 
-      <section class="case-media" data-video-gallery aria-labelledby="agentic-chess-demo-title">
-        <div class="case-media-heading">
-          <div>
-            <p class="case-media-kicker">Product demo</p>
-            <h3 id="agentic-chess-demo-title">Human vs DeepSeek live arena</h3>
-          </div>
-          <p>Interactive input, validated execution, and immutable replay evidence.</p>
-        </div>
-
-        <div class="case-media-stage">
-          <button class="case-video-launch" type="button" data-video-launch data-video-src="https://drive.google.com/file/d/1pXMhHVK6eFssR-CbYxRp3Iwd1ngk0piN/preview" aria-label="Play the Human vs DeepSeek Agentic Chess Arena demo">
-            <img src="{{ '/assets/img/portfolio/agentic-chess-arena/human-vs-deepseek.webp' | relative_url }}" alt="Agentic Chess Arena interface with an authoritative chessboard and public DeepSeek decision trace">
-            <span class="case-video-overlay" aria-hidden="true">
-              <span class="case-video-play">▶</span>
-              <span class="case-video-copy"><small>Live arena demo · 05:40</small><strong>Human vs DeepSeek</strong><span>Interactive play, verified agent execution, and strict replay</span></span>
-            </span>
-          </button>
-        </div>
-
-        <div class="case-media-options case-media-options--single" role="group" aria-label="Agentic Chess Arena recording">
-          <button class="case-media-option active" type="button" data-video-select data-video-src="https://drive.google.com/file/d/1pXMhHVK6eFssR-CbYxRp3Iwd1ngk0piN/preview" data-video-poster="{{ '/assets/img/portfolio/agentic-chess-arena/human-vs-deepseek.webp' | relative_url }}" data-video-alt="Agentic Chess Arena interface with an authoritative chessboard and public DeepSeek decision trace" data-video-label="Play the Human vs DeepSeek Agentic Chess Arena demo" data-video-kicker="Live arena demo · 05:40" data-video-title="Human vs DeepSeek" data-video-description="Interactive play, verified agent execution, and strict replay" aria-pressed="true">
-            <img src="{{ '/assets/img/portfolio/agentic-chess-arena/human-vs-deepseek.webp' | relative_url }}" alt="">
-            <span><strong>Human vs DeepSeek</strong><small>11 committed plies · 13 logical calls</small></span>
-          </button>
-        </div>
-      </section>
+      {% assign video_config = site.data.portfolio.projects | where: 'slug', 'agentic-chess-arena' | first %}
+      {% include portfolio/videos.html project=video_config %}
 
       <div class="dialog-grid">
         <section><h3>Challenge</h3><p>Agent demos can mix model output, application state, tool results, and hidden recovery logic. That makes it difficult to tell whether an agent followed its protocol or whether the application silently repaired the result.</p></section>
@@ -545,6 +498,9 @@ RETURN count(m) AS NumberOfMovies</code></pre>
           <p class="cypher-note">Both questions produced this query. It was run once in Neo4j to get the count shown above.</p>
         </div>
       </section>
+
+      {% assign video_config = site.data.portfolio.projects | where: 'slug', 'bilingual-text-to-cypher' | first %}
+      {% include portfolio/videos.html project=video_config %}
 
       <section class="cypher-results" aria-labelledby="cypher-results-title">
         <p class="cypher-eyebrow">Test completed · 1 October 2026</p>
@@ -628,6 +584,9 @@ RETURN count(m) AS NumberOfMovies</code></pre>
         </div>
       </section>
 
+      {% assign video_config = site.data.portfolio.projects | where: 'slug', 'book-recommender' | first %}
+      {% include portfolio/videos.html project=video_config %}
+
       <section class="book-results" aria-labelledby="book-recommender-results-title">
         <h3 id="book-recommender-results-title">Cosine found more targets in the top ten</h3>
         <p>Selected results from two development splits. The hybrid model used by the app is not part of this comparison.</p>
@@ -680,6 +639,9 @@ RETURN count(m) AS NumberOfMovies</code></pre>
       <div class="dialog-overline"><span>Project 07</span><span>Data Science · 2026</span></div>
       <h2 id="segmentation-title">Customer Segmentation</h2>
       <p class="dialog-lead">A customer-analytics workflow that treats cancellations and returns as business signals rather than simply discarding them.</p>
+      {% assign video_config = site.data.portfolio.projects | where: 'slug', 'customer-segmentation' | first %}
+      {% include portfolio/videos.html project=video_config %}
+
       <div class="dialog-grid">
         <section><h3>Challenge</h3><p>Raw retail data contains missing customer IDs, cancellations, negative quantities, and customers whose gross spend hides a high return value.</p></section>
         <section><h3>Approach</h3><p>I converted transactions into richer customer profiles, including recency, frequency, net monetary value, activity, product variety, and return ratios.</p></section>
@@ -736,6 +698,9 @@ RETURN count(m) AS NumberOfMovies</code></pre>
           <li><strong>Support healthier habits</strong><p>Turn those insights into greater awareness of everyday choices.</p></li>
         </ul>
       </section>
+
+      {% assign video_config = site.data.portfolio.projects | where: 'slug', 'soothemate' | first %}
+      {% include portfolio/videos.html project=video_config %}
 
       <div class="dialog-grid">
         <section><h3>Challenge</h3><p>Understanding stress requires more than a single reading. Users need a simple way to record relevant personal inputs and revisit how their estimated stress changes over time.</p></section>
@@ -825,11 +790,18 @@ RETURN count(m) AS NumberOfMovies</code></pre>
           <p class="sq-note">Input is limited to 128 tokens; longer reviews are truncated. Scores are not calibrated. Performance on new domains has not been tested.</p>
         </div>
       </section>
+      {% assign video_config = site.data.portfolio.projects | where: 'slug', 'sentiment-quest' | first %}
+      {% include portfolio/videos.html project=video_config %}
+
       <details class="sq-detail">
         <summary>Why the original question changed</summary>
         <p>The initial goal was to select 100 negative reviews for inspection. Sorting by lowest rating already found 100 out of 100 on the validation batch, so the project shifted to comparing text classifiers. The higher F1 does not establish a practical benefit over sorting by rating.</p>
       </details>
       <div class="dialog-tags" aria-label="Technology stack"><span>Python</span><span>PyTorch</span><span>Transformers</span><span>scikit-learn</span><span>Gradio</span></div>
     </dialog>
+    {% for extra_project in extra_projects %}
+      {% assign extra_index = forloop.index0 | plus: 8 %}
+      {% include portfolio/dialog.html project=extra_project index=extra_index %}
+    {% endfor %}
   </body>
 </html>
