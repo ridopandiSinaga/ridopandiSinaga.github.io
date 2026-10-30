@@ -1,8 +1,8 @@
 ---
-layout: page
+layout: portfolio-guide
 title: Mengelola portofolio
 permalink: /PANDUAN-PORTOFOLIO/
-toc: true
+sitemap: false
 ---
 
 Video dan proyek baru bisa ditambahkan melalui [editor portofolio](https://ridopandisinaga.github.io/portfolio-editor/). Kamu mengisi formulir, mengunduh satu file, lalu mengunggahnya ke GitHub. Langkah ini tidak memerlukan Codex atau pemasangan aplikasi coding.

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>{{ page.title | escape }} — Rido</title>
+    <link rel="stylesheet" href="{{ '/assets/css/portfolio-editor.css' | relative_url }}">
+    <style>
+      .guide-shell { max-width: 920px; margin: auto; padding: 36px 28px 64px; }
+      .guide-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; margin-bottom: 32px; }
+      .guide-nav .wordmark { margin: 0; }
+      .guide-content h2 { margin: 42px 0 16px; padding-top: 20px; border-top: 1px solid var(--line); }
+      .guide-content p, .guide-content li { line-height: 1.75; }
+      .guide-content li { margin-bottom: 12px; }
+      .guide-content ul, .guide-content ol { padding-left: 24px; }
+      .guide-content pre { padding: 18px; overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+      .guide-content table { display: block; overflow-x: auto; width: 100%; border-collapse: collapse; margin: 22px 0; font-size: .94rem; }
+      .guide-content th, .guide-content td { padding: 14px; text-align: left; vertical-align: top; border: 1px solid var(--line); }
+      .guide-content th { background: var(--paper); }
+      .guide-content td:first-child { min-width: 150px; }
+      .guide-content a { overflow-wrap: anywhere; }
+      @media (max-width: 600px) { .guide-shell { padding: 24px 18px 40px; } }
+    </style>
+  </head>
+  <body>
+    <main class="guide-shell">
+      <nav class="guide-nav" aria-label="Navigasi panduan">
+        <a class="wordmark" href="{{ '/portfolio/' | relative_url }}">Rido.</a>
+        <a href="{{ '/portfolio-editor/' | relative_url }}">Buka editor portofolio ↗</a>
+      </nav>
+      <h1>{{ page.title | escape }}</h1>
+      <article class="guide-content">{{ content }}</article>
+    </main>
+  </body>
+</html>
