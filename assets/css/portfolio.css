@@ -2287,6 +2287,7 @@ body.dialog-open {
 }
 .portfolio-videos .case-media-option--text { grid-template-columns: 1fr; }
 .portfolio-videos .case-video-launch > img[hidden] { display: none; }
+.portfolio-videos .case-video-copy :is(small, span):empty { display: none; }
 .project-card--custom { display: flex; flex-direction: column; }
 .project-card--custom .project-header { flex-wrap: wrap; gap: 10px; }
 .project-card--custom .status-pill { max-width: 100%; white-space: normal; }

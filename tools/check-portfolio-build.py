@@ -19,6 +19,7 @@ class Page(HTMLParser):
         self.dots = []
         self.videos = []
         self.scripts = []
+        self.images = []
         self.feed(source)
 
     def handle_starttag(self, tag, attrs):
@@ -34,6 +35,8 @@ class Page(HTMLParser):
             self.videos.append(attrs)
         if tag == "script" and attrs.get("src"):
             self.scripts.append(attrs["src"])
+        if tag == "img":
+            self.images.append(attrs)
 
 
 def check_output(destination, config):
@@ -46,6 +49,7 @@ def check_output(destination, config):
     assert {p["data-dialog"] for p in page.cards} == {p["id"] for p in page.dialogs}
     assert [int(p["data-slide"]) for p in page.dots] == list(range(len(visible)))
     assert len(page.videos) == sum(bool(p.get("videos")) for p in visible)
+    assert all(image.get("src") or "hidden" in image for image in page.images), "Empty image source rendered"
     assert page.scripts.index("/assets/js/portfolio-data.js") < page.scripts.index("/assets/js/portfolio.js")
     assert json.loads((destination / "portfolio-data.json").read_text(encoding="utf8")) == config
     assert (destination / "portfolio-editor/index.html").is_file()

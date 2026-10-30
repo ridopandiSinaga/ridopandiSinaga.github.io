@@ -1,15 +1,15 @@
 {% assign card_project = include.project %}
 {% assign card_number = include.index | plus: 1 %}
-<article class="project-card project-card--custom{% if card_project.poster == blank %} project-card--text{% endif %}" data-project="{{ include.index }}" data-dialog="project-{{ card_project.slug | escape }}-dialog" data-project-slug="{{ card_project.slug | escape }}" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="project-{{ card_project.slug | escape }}-dialog" aria-label="Open {{ card_project.title | escape }} case study">
+<article class="project-card project-card--custom{% if card_project.poster.size == 0 %} project-card--text{% endif %}" data-project="{{ include.index }}" data-dialog="project-{{ card_project.slug | escape }}-dialog" data-project-slug="{{ card_project.slug | escape }}" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="project-{{ card_project.slug | escape }}-dialog" aria-label="Open {{ card_project.title | escape }} case study">
   <header class="project-header">
     <p class="project-number">Project {% if card_number < 10 %}0{% endif %}{{ card_number }}</p>
-    {% if card_project.category != blank %}<p class="status-pill"><span aria-hidden="true"></span>{{ card_project.category | escape }}</p>{% endif %}
+    {% if card_project.category.size > 0 %}<p class="status-pill"><span aria-hidden="true"></span>{{ card_project.category | escape }}</p>{% endif %}
   </header>
   <div class="project-intro">
     <h3>{{ card_project.title | escape }}</h3>
-    {% if card_project.summary != blank %}<p>{{ card_project.summary | escape }}</p>{% endif %}
+    {% if card_project.summary.size > 0 %}<p>{{ card_project.summary | escape }}</p>{% endif %}
   </div>
-  {% if card_project.poster != blank %}
+  {% if card_project.poster.size > 0 %}
   <div class="project-preview project-preview--custom">
     <img src="{% assign card_project_poster_start = card_project.poster | slice: 0, 1 %}{% if card_project_poster_start == '/' %}{{ card_project.poster | relative_url | escape }}{% else %}{{ card_project.poster | escape }}{% endif %}" alt="{{ card_project.poster_alt | default: card_project.title | escape }}" loading="lazy" decoding="async">
   </div>
@@ -17,7 +17,7 @@
   {% if card_project.metrics.size > 0 %}
   <dl class="project-metrics project-metrics--custom">
     {% for metric in card_project.metrics limit: 3 %}
-    <div><dt>{{ metric.label | escape }}</dt><dd>{{ metric.value | escape }}</dd>{% if metric.note != blank %}<small>{{ metric.note | escape }}</small>{% endif %}</div>
+    <div><dt>{{ metric.label | escape }}</dt><dd>{{ metric.value | escape }}</dd>{% if metric.note.size > 0 %}<small>{{ metric.note | escape }}</small>{% endif %}</div>
     {% endfor %}
   </dl>
   {% endif %}

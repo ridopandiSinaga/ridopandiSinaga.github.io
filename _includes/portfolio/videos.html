@@ -6,14 +6,14 @@
 <section class="case-media portfolio-videos" data-video-gallery aria-labelledby="{{ video_project.slug | escape }}-video-title">
   <div class="case-media-heading">
     <div>
-      {% if video_project.video_kicker != blank %}<p class="case-media-kicker">{{ video_project.video_kicker | escape }}</p>{% endif %}
+      {% if video_project.video_kicker.size > 0 %}<p class="case-media-kicker">{{ video_project.video_kicker | escape }}</p>{% endif %}
       <h3 id="{{ video_project.slug | escape }}-video-title">{{ video_project.video_heading | default: 'Video walkthrough' | escape }}</h3>
     </div>
-    {% if video_project.video_description != blank %}<p>{{ video_project.video_description | escape }}</p>{% endif %}
+    {% if video_project.video_description.size > 0 %}<p>{{ video_project.video_description | escape }}</p>{% endif %}
   </div>
   <div class="case-media-stage">
     <button class="case-video-launch" type="button" data-video-launch data-video-src="{{ first_video.url | escape }}" aria-label="{{ first_video.play_label | default: first_video.title | escape }}">
-      <img{% if first_poster != blank %} src="{% assign first_poster_start = first_poster | slice: 0, 1 %}{% if first_poster_start == '/' %}{{ first_poster | relative_url | escape }}{% else %}{{ first_poster | escape }}{% endif %}"{% else %} hidden{% endif %} alt="{{ first_alt | escape }}" loading="lazy" decoding="async">
+      <img{% if first_poster.size > 0 %} src="{% assign first_poster_start = first_poster | slice: 0, 1 %}{% if first_poster_start == '/' %}{{ first_poster | relative_url | escape }}{% else %}{{ first_poster | escape }}{% endif %}"{% else %} hidden{% endif %} alt="{{ first_alt | escape }}" loading="lazy" decoding="async">
       <span class="case-video-overlay" aria-hidden="true">
         <span class="case-video-play">▶</span>
         <span class="case-video-copy"><small>{{ first_video.kicker | escape }}</small><strong>{{ first_video.title | escape }}</strong><span>{{ first_video.description | escape }}</span></span>
@@ -24,9 +24,9 @@
   <div class="case-media-options{% if video_project.videos.size == 1 %} case-media-options--single{% endif %}" role="group" aria-label="Choose a {{ video_project.title | escape }} video">
     {% for video in video_project.videos %}
     {% assign video_poster = video.poster | default: video_project.poster %}
-    <button class="case-media-option{% if forloop.first %} active{% endif %}{% if video_poster == blank %} case-media-option--text{% endif %}" type="button" data-video-select data-video-src="{{ video.url | escape }}" data-video-poster="{% if video_poster != blank %}{% assign video_poster_start = video_poster | slice: 0, 1 %}{% if video_poster_start == '/' %}{{ video_poster | relative_url | escape }}{% else %}{{ video_poster | escape }}{% endif %}{% endif %}" data-video-alt="{{ video.poster_alt | default: video.title | escape }}" data-video-label="{{ video.play_label | default: video.title | escape }}" data-video-kicker="{{ video.kicker | escape }}" data-video-title="{{ video.title | escape }}" data-video-description="{{ video.description | escape }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
-      {% if video_poster != blank %}<img src="{% assign video_poster_start = video_poster | slice: 0, 1 %}{% if video_poster_start == '/' %}{{ video_poster | relative_url | escape }}{% else %}{{ video_poster | escape }}{% endif %}" alt="" loading="lazy" decoding="async">{% endif %}
-      <span><strong>{{ video.title | escape }}</strong>{% assign video_option_description = video.option_description | default: video.description %}{% if video_option_description != blank %}<small>{{ video_option_description | escape }}</small>{% endif %}</span>
+    <button class="case-media-option{% if forloop.first %} active{% endif %}{% if video_poster.size == 0 %} case-media-option--text{% endif %}" type="button" data-video-select data-video-src="{{ video.url | escape }}" data-video-poster="{% if video_poster.size > 0 %}{% assign video_poster_start = video_poster | slice: 0, 1 %}{% if video_poster_start == '/' %}{{ video_poster | relative_url | escape }}{% else %}{{ video_poster | escape }}{% endif %}{% endif %}" data-video-alt="{{ video.poster_alt | default: video.title | escape }}" data-video-label="{{ video.play_label | default: video.title | escape }}" data-video-kicker="{{ video.kicker | escape }}" data-video-title="{{ video.title | escape }}" data-video-description="{{ video.description | escape }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
+      {% if video_poster.size > 0 %}<img src="{% assign video_poster_start = video_poster | slice: 0, 1 %}{% if video_poster_start == '/' %}{{ video_poster | relative_url | escape }}{% else %}{{ video_poster | escape }}{% endif %}" alt="" loading="lazy" decoding="async">{% endif %}
+      <span><strong>{{ video.title | escape }}</strong>{% assign video_option_description = video.option_description | default: video.description %}{% if video_option_description.size > 0 %}<small>{{ video_option_description | escape }}</small>{% endif %}</span>
     </button>
     {% endfor %}
   </div>
