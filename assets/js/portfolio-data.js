@@ -77,6 +77,10 @@
       const name = `Proyek ${index + 1}${filled(project?.title) ? ` (${project.title})` : ""}`;
       if (!object(project)) { errors.push(`${name}: format tidak valid.`); return; }
       if (typeof project.builtin !== "boolean") errors.push(`${name}: builtin harus true atau false.`);
+      const fields = project.builtin ? ["title", "slug", "poster"] : ["title", "slug", "category", "summary", "poster", "poster_alt"];
+      fields.forEach(key => { if (typeof project[key] !== "string") errors.push(`${name}: ${key} harus berupa teks, boleh kosong untuk draf.`); });
+      const arrays = project.builtin ? ["videos"] : ["videos", "links", "sections", "metrics", "tags"];
+      arrays.forEach(key => { if (!Array.isArray(project[key])) errors.push(`${name}: ${key} harus berupa daftar, boleh kosong [].`); });
       const required = project.builtin || project.published === true;
       if (!project.builtin && typeof project.published !== "boolean") errors.push(`${name}: published harus true atau false.`);
       checkText(project.slug, `${name} / slug`, required);
@@ -120,6 +124,7 @@
       if (project.tags !== undefined && (!Array.isArray(project.tags) || project.tags.some(tag => !filled(tag)))) errors.push(`${name}: setiap teknologi harus berupa teks yang terisi.`);
     });
     builtinSlugs.forEach(slug => { if (!builtins.has(slug)) errors.push(`Proyek bawaan ${slug} hilang dari file.`); });
+    if (builtinSlugs.some((slug, index) => data.projects[index]?.slug !== slug || data.projects[index]?.builtin !== true)) errors.push("Urutan delapan proyek bawaan harus tetap sama; letakkan proyek baru setelahnya.");
     return errors;
   }
   return { validate, videoEmbedUrl, builtinSlugs };

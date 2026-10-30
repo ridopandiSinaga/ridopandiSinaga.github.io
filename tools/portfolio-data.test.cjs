@@ -22,7 +22,7 @@ test("unsupported and deceptive URLs cannot enter an iframe", () => {
 
 test("current data and unfinished drafts remain downloadable", () => {
   const data = source();
-  data.projects.push({ builtin: false, published: false, slug: "", title: "", summary: "", poster: "", poster_alt: "", sections: [] });
+  data.projects.push({ builtin: false, published: false, slug: "", title: "", category: "", summary: "", poster: "", poster_alt: "", sections: [], links: [], metrics: [], videos: [], tags: [] });
   assert.deepEqual(validate(data), []);
   data.projects.at(-1).published = true;
   assert.ok(validate(data).some(error => error.includes("ringkasan")));
@@ -36,6 +36,12 @@ test("imports cannot remove built-in projects or reuse their URLs", () => {
   assert.ok(validate(data).some(error => error.includes("book-recommender hilang")));
   assert.ok(validate({ projects: [] }).length);
   assert.ok(validate(null).length);
+  const reordered = source();
+  [reordered.projects[0], reordered.projects[1]] = [reordered.projects[1], reordered.projects[0]];
+  assert.ok(validate(reordered).some(error => error.includes("Urutan")));
+  const missingLists = source();
+  delete missingLists.projects[0].videos;
+  assert.ok(validate(missingLists).some(error => error.includes("videos harus berupa daftar")));
 });
 
 test("missing images block deployment with the file name", () => {

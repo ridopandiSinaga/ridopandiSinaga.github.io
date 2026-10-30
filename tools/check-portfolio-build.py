@@ -58,8 +58,10 @@ def main():
     current = json.loads(original)
     check_output(ROOT / "_site", current)
     sample = copy.deepcopy(current)
+    sample["projects"][6]["videos"] = [{"title": "No-poster example", "url": "https://youtu.be/7cjVj1ZyzyE"}]
     sample["projects"].append({
-        "builtin": False, "published": False, "slug": "validation-hidden-draft", "title": "Draft is hidden"
+        "builtin": False, "published": False, "slug": "validation-hidden-draft", "title": "Draft is hidden",
+        "category": "", "summary": "", "poster": "", "poster_alt": "", "videos": [], "links": [], "sections": [], "metrics": [], "tags": []
     })
     sample["projects"].append({
         "builtin": False, "published": True, "slug": "validation-new-project", "title": "Rendering test",
