@@ -18,70 +18,210 @@
 .project-metrics.cypher-card-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .cypher-card-metrics small { white-space: normal; line-height: 1.4; }
 
-#text-to-cypher-dialog { width: min(1180px, calc(100vw - 36px)); max-height: calc(100svh - 28px); }
-#text-to-cypher-dialog .dialog-lead { max-width: 850px; }
-#text-to-cypher-dialog h3 { margin: 0 0 13px; font-size: clamp(21px, 2.4vw, 28px); letter-spacing: -.035em; line-height: 1.2; }
-#text-to-cypher-dialog p { color: var(--muted); line-height: 1.65; }
-#text-to-cypher-dialog .cypher-eyebrow { margin: 0 0 14px; font-size: 10px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
-#text-to-cypher-dialog .cypher-note { font-size: 13px; }
+/* Keep the case study close to an ordinary, readable article. */
+#text-to-cypher-dialog {
+  width: min(880px, calc(100vw - 36px));
+  max-height: calc(100svh - 28px);
+  padding: 36px 40px;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: normal;
+}
+
+#text-to-cypher-dialog .dialog-overline {
+  gap: 8px 20px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+#text-to-cypher-dialog h2 {
+  margin: 24px 0 12px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: normal;
+}
+
+#text-to-cypher-dialog h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+
+#text-to-cypher-dialog p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#text-to-cypher-dialog .dialog-lead { max-width: none; }
+#text-to-cypher-dialog .cypher-eyebrow {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+#text-to-cypher-dialog .cypher-note { font-size: 14px; }
 #text-to-cypher-dialog code { font-size: .9em; }
-#text-to-cypher-dialog a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+#text-to-cypher-dialog :is(a, summary):focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
 
-.cypher-example { display: grid; grid-template-columns: 1fr 1fr; margin-top: 32px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
-.cypher-example-input, .cypher-example-output { min-width: 0; padding: 27px; }
-.cypher-example-input { background: var(--soft); }
-.cypher-example-output { display: flex; flex-direction: column; justify-content: center; color: #f6f5ed; background: #243f32; }
-#text-to-cypher-dialog .cypher-example-output p { color: #dce7df; }
-.cypher-example-output pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 15px; line-height: 1.8; }
-.cypher-questions { margin: 20px 0; }
-.cypher-questions > div + div { margin-top: 18px; }
-.cypher-questions dt { margin-bottom: 6px; color: var(--muted); font-size: 11px; }
-.cypher-questions dd { margin: 0; font-size: 17px; line-height: 1.5; }
-.cypher-count { margin: 25px 0 12px; padding-top: 18px; border-top: 1px solid #53715f; }
-.cypher-count dt { color: #c8d9ce; font-family: ui-monospace, monospace; font-size: 12px; }
-.cypher-count dd { margin: 6px 0 0; color: #ecdfb8; font-size: 58px; line-height: 1; }
-.cypher-example p:last-child { margin-bottom: 0; }
+#text-to-cypher-dialog .dialog-actions { gap: 8px 20px; margin-top: 20px; }
+#text-to-cypher-dialog a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#text-to-cypher-dialog .dialog-actions a {
+  gap: 5px;
+  padding: 0;
+  border: 0;
+  font-size: 15px;
+  font-weight: 400;
+}
+#text-to-cypher-dialog .dialog-actions a span { transition: none; transform: none; }
 
-.cypher-results, .cypher-failure { margin-top: 38px; padding-top: 30px; border-top: 1px solid var(--line); }
-.cypher-results > p, .cypher-failure p { font-size: 15px; }
-.cypher-results-table { width: 100%; margin: 24px 0 14px; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-.cypher-results-table caption { margin-bottom: 13px; color: var(--muted); font-size: 12px; text-align: left; }
-.cypher-results-table th, .cypher-results-table td { padding: 17px 20px; border-bottom: 1px solid var(--line); text-align: left; }
-.cypher-results-table th { font-size: 13px; font-weight: 600; }
-.cypher-results-table thead { background: var(--soft); }
-.cypher-results-table td:last-child { background: var(--soft); }
-.cypher-results-table td strong { display: block; font-size: clamp(23px, 3.3vw, 36px); letter-spacing: -.045em; }
-.cypher-results-table td span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
-#text-to-cypher-dialog .cypher-limit { margin: 24px 0 0; padding-left: 18px; border-left: 3px solid #c7755c; font-size: 14px; }
-.cypher-limit strong { display: block; margin-bottom: 7px; color: var(--ink); }
-.cypher-failure { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: start; }
-.cypher-failure figure { min-width: 0; margin: 0; }
-.cypher-failure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
-.cypher-failure figcaption { margin-top: 10px; color: var(--muted); font-size: 12px; line-height: 1.6; }
-.cypher-failure figcaption a, .cypher-sources a { text-decoration: underline; text-underline-offset: 3px; }
-.cypher-sources { margin-top: 32px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 13px; }
-.cypher-sources summary { cursor: pointer; font-size: 14px; font-weight: 600; }
-.cypher-sources h4 { margin: 24px 0 8px; font-size: 15px; }
-.cypher-sources ul { padding-left: 20px; line-height: 1.8; }
-.cypher-sources li + li { margin-top: 8px; }
+#text-to-cypher-dialog .cypher-example {
+  display: block;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+#text-to-cypher-dialog .cypher-example-input,
+#text-to-cypher-dialog .cypher-example-output { min-width: 0; }
+#text-to-cypher-dialog .cypher-example-output { margin-top: 24px; }
+#text-to-cypher-dialog .cypher-example-output pre {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  background: var(--soft);
+  font-size: 15px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+#text-to-cypher-dialog .cypher-questions { margin: 16px 0; }
+#text-to-cypher-dialog .cypher-questions > div + div { margin-top: 14px; }
+#text-to-cypher-dialog .cypher-questions dt {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 14px;
+}
+#text-to-cypher-dialog .cypher-questions dd { margin: 0; font-size: 16px; }
+#text-to-cypher-dialog .cypher-count {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 12px;
+  margin: 14px 0;
+}
+#text-to-cypher-dialog .cypher-count dt {
+  color: var(--muted);
+  font-family: ui-monospace, monospace;
+  font-size: 14px;
+}
+#text-to-cypher-dialog .cypher-count dd { margin: 0; font-size: 16px; }
+#text-to-cypher-dialog .cypher-example p:last-child { margin-bottom: 0; }
+
+#text-to-cypher-dialog .cypher-results,
+#text-to-cypher-dialog .cypher-failure {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+#text-to-cypher-dialog .cypher-results-table {
+  width: 100%;
+  margin: 20px 0 14px;
+  border-collapse: collapse;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+#text-to-cypher-dialog .cypher-results-table caption {
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: left;
+}
+#text-to-cypher-dialog .cypher-results-table th,
+#text-to-cypher-dialog .cypher-results-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+#text-to-cypher-dialog .cypher-results-table th { font-size: 14px; font-weight: 600; }
+#text-to-cypher-dialog .cypher-results-table td strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+#text-to-cypher-dialog .cypher-results-table td span {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 14px;
+}
+#text-to-cypher-dialog .cypher-limit { margin: 20px 0 0; font-size: 14px; }
+#text-to-cypher-dialog .cypher-limit strong { color: var(--ink); font-weight: 600; }
+
+#text-to-cypher-dialog .cypher-failure figure { max-width: 565px; margin: 20px 0 0; }
+#text-to-cypher-dialog .cypher-failure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+#text-to-cypher-dialog .cypher-failure figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+#text-to-cypher-dialog .cypher-sources {
+  margin-top: 28px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+}
+#text-to-cypher-dialog .cypher-sources summary { cursor: pointer; font-size: 16px; font-weight: 600; }
+#text-to-cypher-dialog .cypher-sources h4 { margin: 24px 0 8px; font-size: 16px; font-weight: 600; }
+#text-to-cypher-dialog .cypher-sources ul { padding-left: 20px; }
+#text-to-cypher-dialog .cypher-sources li + li { margin-top: 8px; }
+#text-to-cypher-dialog .dialog-tags { gap: 8px 16px; margin-top: 20px; }
+#text-to-cypher-dialog .dialog-tags span {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  font-size: 14px;
+}
 
 @media (max-width: 700px) {
-  #text-to-cypher-dialog { width: calc(100vw - 20px); }
   .project-preview--cypher { padding: 20px; }
   .cypher-preview-question { font-size: 17px; }
   .project-preview--cypher pre { padding: 10px; font-size: 10.5px; }
-  .cypher-example, .cypher-failure { grid-template-columns: 1fr; }
-  .cypher-failure { gap: 26px; }
-  .cypher-example-input, .cypher-example-output { padding: 22px; }
-  .cypher-example-output pre { font-size: 12px; }
-  .cypher-results-table th, .cypher-results-table td { padding: 14px 7px; }
-  .cypher-results-table th { font-size: 11px; }
-  .cypher-results-table td strong { font-size: 25px; }
-  .cypher-failure figure { max-width: 565px; margin-inline: auto; }
+
+  #text-to-cypher-dialog { width: calc(100vw - 20px); padding: 28px 20px; }
+  #text-to-cypher-dialog .cypher-example-output pre { padding: 12px; font-size: 14px; }
+  #text-to-cypher-dialog .cypher-results-table th,
+  #text-to-cypher-dialog .cypher-results-table td { padding: 10px 6px; }
 }
 
 @media (max-width: 380px) {
-  .cypher-results-table { table-layout: fixed; }
-  .cypher-results-table th, .cypher-results-table td { padding-inline: 4px; }
-  .cypher-results-table td strong { font-size: 20px; }
+  #text-to-cypher-dialog .cypher-results-table { table-layout: fixed; }
+  #text-to-cypher-dialog .cypher-results-table th { font-size: 13px; overflow-wrap: anywhere; }
+  #text-to-cypher-dialog .cypher-results-table th,
+  #text-to-cypher-dialog .cypher-results-table td { padding-inline: 4px; }
 }
