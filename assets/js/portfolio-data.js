@@ -35,7 +35,11 @@
     } else if (host === "drive.google.com") {
       if (parts[0] === "file" && parts[1] === "d" && parts.length >= 3 && parts.length <= 4 && (!parts[3] || ["view", "preview", "edit"].includes(parts[3]))) id = parts[2];
       else if (url.pathname === "/open") id = url.searchParams.get("id");
-      return /^[A-Za-z0-9_-]{10,}$/.test(id || "") ? `https://drive.google.com/file/d/${id}/preview` : null;
+      if (!/^[A-Za-z0-9_-]{10,}$/.test(id || "")) return null;
+      const preview = new URL(`https://drive.google.com/file/d/${id}/preview`);
+      const resourceKey = url.searchParams.get("resourcekey");
+      if (resourceKey) preview.searchParams.set("resourcekey", resourceKey);
+      return preview.href;
     }
     if (!/^[A-Za-z0-9_-]{11}$/.test(id || "")) return null;
     const embed = new URL(`https://www.youtube-nocookie.com/embed/${id}`);

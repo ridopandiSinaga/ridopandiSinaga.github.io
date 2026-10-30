@@ -12,6 +12,7 @@ test("shared YouTube and Drive links become playable embed URLs", () => {
   }
   assert.equal(videoEmbedUrl("https://youtu.be/7cjVj1ZyzyE?t=1m30s"), "https://www.youtube-nocookie.com/embed/7cjVj1ZyzyE?start=90");
   assert.equal(videoEmbedUrl("https://drive.google.com/file/d/1CurLILNcrjWqYlsKbJa-mzsdxVzhvn0I/view?usp=sharing"), "https://drive.google.com/file/d/1CurLILNcrjWqYlsKbJa-mzsdxVzhvn0I/preview");
+  assert.equal(videoEmbedUrl("https://drive.google.com/file/d/1CurLILNcrjWqYlsKbJa-mzsdxVzhvn0I/view?resourcekey=0-test-key&usp=sharing"), "https://drive.google.com/file/d/1CurLILNcrjWqYlsKbJa-mzsdxVzhvn0I/preview?resourcekey=0-test-key");
 });
 
 test("unsupported and deceptive URLs cannot enter an iframe", () => {
