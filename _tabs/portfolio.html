@@ -519,11 +519,11 @@ RETURN count(m) AS NumberOfMovies</code></pre>
       <form method="dialog"><button class="dialog-close" aria-label="Close case study">×</button></form>
       <div class="dialog-overline"><span>LLM fine-tuning · 2026</span><span>Research prototype</span></div>
       <h2 id="text-to-cypher-title">Bilingual Text-to-Cypher</h2>
-      <p class="dialog-lead">The model takes a question in English or Indonesian and uses the database structure to write a Cypher query. The query can then be checked and run in Neo4j.</p>
+      <p class="dialog-lead">The model turns English or Indonesian questions into queries for a Neo4j movie database. It writes them in Cypher, Neo4j’s query language.</p>
       <div class="dialog-actions">
         <a href="https://huggingface.co/Ridopandi/qwen3-4b-text2cypher-en-id-qlora" target="_blank" rel="noopener noreferrer">View model <span aria-hidden="true">↗</span></a>
         <a href="https://huggingface.co/datasets/Ridopandi/movies-text2cypher-en-id-v3" target="_blank" rel="noopener noreferrer">View dataset <span aria-hidden="true">↗</span></a>
-        <a href="{{ '/assets/docs/text-to-cypher/portfolio-text-to-cypher.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Project walkthrough · PDF in Indonesian <span aria-hidden="true">↗</span></a>
+        <a href="{{ '/assets/docs/text-to-cypher/portfolio-text-to-cypher.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Project PDF (Indonesian) <span aria-hidden="true">↗</span></a>
       </div>
 
       <section class="cypher-example" aria-labelledby="cypher-example-title">
@@ -534,69 +534,60 @@ RETURN count(m) AS NumberOfMovies</code></pre>
             <div><dt>English</dt><dd>How many movies are in the graph? Return the count.</dd></div>
             <div><dt>Indonesian</dt><dd lang="id">Berapa jumlah film dalam graph? Tampilkan jumlahnya.</dd></div>
           </dl>
-          <p class="cypher-note">The prompt also includes the graph schema: the available node types, properties, and relationships.</p>
+          <p class="cypher-note">Input: a question and the database structure.</p>
         </div>
         <div class="cypher-example-output">
           <p class="cypher-eyebrow">Generated Cypher</p>
           <pre><code>MATCH (m:Movie)
 RETURN count(m) AS NumberOfMovies</code></pre>
           <dl class="cypher-count"><dt>NumberOfMovies</dt><dd>38</dd></dl>
-          <p class="cypher-note">Both questions generated this query. One recorded Neo4j execution returned the count above. This demonstration is separate from the test results.</p>
+          <p class="cypher-note">Both questions produced this query. It was run once in Neo4j to get the count shown above.</p>
         </div>
       </section>
 
-      <div class="cypher-columns">
-        <section>
-          <h3>Why this project</h3>
-          <p>People may know what they want to find without knowing Cypher, the query language for graph databases. The task is to turn that request into a query that preserves its meaning and uses the right relationships.</p>
-        </section>
-        <section>
-          <h3>What was trained</h3>
-          <p>Qwen3-4B was fine-tuned with QLoRA on a Tesla T4. A small adapter was trained while the base model weights stayed fixed. Training used 600 question pairs: 1,200 rows across English and Indonesian. Each pair stayed together when splitting the data.</p>
-        </section>
-      </div>
-
       <section class="cypher-results" aria-labelledby="cypher-results-title">
         <p class="cypher-eyebrow">Test completed · 1 October 2026</p>
-        <h3 id="cypher-results-title">Fine-tuning improved both languages</h3>
-        <p>Both versions used the same prepared Qwen3-4B base and generation settings. Each was tested on 82 question pairs, with one English and one Indonesian version per pair.</p>
+        <h3 id="cypher-results-title">More correct queries after training</h3>
+        <p>Qwen3-4B was trained further using examples of questions and Cypher queries. Both versions were tested on the same 82 questions, each in English and Indonesian.</p>
         <table class="cypher-results-table">
-          <caption>Queries passing all six checks · percentages rounded to one decimal</caption>
-          <thead><tr><th scope="col">Language</th><th scope="col">Without adapter</th><th scope="col">With adapter</th></tr></thead>
+          <caption>Correct queries · percentages rounded to one decimal</caption>
+          <thead><tr><th scope="col">Language</th><th scope="col">Base model</th><th scope="col">Fine-tuned model</th></tr></thead>
           <tbody>
             <tr><th scope="row">English</th><td><strong>18.3%</strong><span>15 / 82</span></td><td><strong>63.4%</strong><span>52 / 82</span></td></tr>
             <tr><th scope="row">Indonesian</th><td><strong>13.4%</strong><span>11 / 82</span></td><td><strong>59.8%</strong><span>49 / 82</span></td></tr>
           </tbody>
         </table>
-        <p class="cypher-note">A correct query had to be read-only, use valid syntax, execute successfully, follow the schema, preserve the question’s meaning, and match the reference result.</p>
-        <p class="cypher-limit"><strong>The 75% target was not reached in either language.</strong> Results cover one Movies graph and one seed. English and Indonesian questions are paired. Development and semantic review were AI-assisted, with no independent human review.</p>
-      </section>
-
-      <section class="cypher-decision" aria-labelledby="cypher-decision-title">
-        <h3 id="cypher-decision-title">Why the earlier checkpoint was kept</h3>
-        <p>Selection prioritized the weaker language’s validation score. The chosen checkpoint answered 21 of 37 validation questions correctly in each language. More training and a lower learning rate did not improve that selection criterion, so the checkpoint was retained.</p>
-        <p class="cypher-note">Validation was reused during development. Those later experiments did not lead to a new final test; the table above reports the 1 October test.</p>
+        <p class="cypher-note">To count as correct, a query must run successfully, preserve the question’s meaning, and match the reference result.</p>
+        <p class="cypher-limit"><strong>Both languages remained below the 75% target.</strong> Results cover one graph and one seed. Meaning checks were AI-assisted, with no independent human review.</p>
       </section>
 
       <section class="cypher-failure" aria-labelledby="cypher-failure-title">
         <div>
           <p class="cypher-eyebrow">Saved validation example</p>
-          <h3 id="cypher-failure-title">A query can run and still answer the wrong question</h3>
-          <p>The question asks for <strong>all youngest actors</strong> with a known birth year, sorted by name. The generated query uses <code>LIMIT 1</code>, which returns only one row and can omit actors who share the youngest birth year.</p>
-          <p>On this graph, its output matched the reference result. It still failed the meaning check. The query also lacked duplicate removal and sorting by name.</p>
-          <p class="cypher-note">The screenshot shows the saved evaluation in Indonesian. The checks and result come from the selected adapter’s validation output.</p>
+          <h3 id="cypher-failure-title">The model returned only one actor</h3>
+          <p>The question asks for <strong>all youngest actors</strong>. The model adds <code>LIMIT 1</code>, so the query returns at most one row.</p>
+          <p>That matched the expected result on this graph. The query was still marked wrong because it could leave out actors sharing the same birth year.</p>
         </div>
         <figure>
           <a href="{{ '/assets/img/portfolio/text-to-cypher/validation-example.png' | relative_url }}" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size Text-to-Cypher validation screenshot in a new tab">
             <img src="{{ '/assets/img/portfolio/text-to-cypher/validation-example.png' | relative_url }}" width="565" height="660" alt="Saved validation: a query with LIMIT 1 returns Jonathan Lipnicki, born in 1996. Five checks pass, but meaning fails." loading="lazy" decoding="async">
           </a>
-          <figcaption>Actual evaluation screenshot · <a href="{{ '/assets/img/portfolio/text-to-cypher/validation-example.png' | relative_url }}" target="_blank" rel="noopener noreferrer">View full size <span aria-hidden="true">↗</span></a></figcaption>
+          <figcaption>Saved validation output · <a href="{{ '/assets/img/portfolio/text-to-cypher/validation-example.png' | relative_url }}" target="_blank" rel="noopener noreferrer">View full size <span aria-hidden="true">↗</span></a></figcaption>
         </figure>
       </section>
 
       <details class="cypher-sources">
-        <summary>Evaluation data and sources</summary>
-        <p>The model card describes the method and limitations. The dataset contains the paired English and Indonesian questions. Selected result files are also included below for checking the numbers and examples on this page.</p>
+        <summary>Training, evaluation, and sources</summary>
+        <h4>What was trained</h4>
+        <p>Qwen3-4B was fine-tuned with QLoRA on a Tesla T4. A small adapter was trained while the base model weights stayed fixed. Training used 600 question pairs: 1,200 rows across English and Indonesian. Each pair stayed together when splitting the data.</p>
+        <p>The model receives the question and the graph schema: node types, properties, and relationships. The recorded count example shows two model generations and one database execution; it is separate from the scored test.</p>
+        <h4>Why this checkpoint was kept</h4>
+        <p>Selection prioritized the weaker language’s validation score. The chosen checkpoint answered 21 of 37 validation questions correctly in each language. More training and a lower learning rate did not improve that selection criterion, so the checkpoint was retained.</p>
+        <p>Validation was reused during development. Those later experiments did not lead to a new final test. The table above reports the 1 October test.</p>
+        <h4>How queries were judged</h4>
+        <p>Both test variants used the same prepared base model and generation settings. A correct query had to pass all six checks: read-only behavior, syntax, execution, schema, meaning, and result agreement. Development and semantic review were AI-assisted; there was no independent human review.</p>
+        <p>The youngest-actor example also asks for known birth years, unique actors, and alphabetical order. Besides using LIMIT 1, the query omitted duplicate removal and sorting by name.</p>
+        <h4>Source results</h4>
         <ul>
           <li><a href="{{ '/assets/docs/text-to-cypher/test-comparison.json' | relative_url }}" target="_blank" rel="noopener noreferrer">Test comparison · original JSON</a></li>
           <li><a href="{{ '/assets/docs/text-to-cypher/web-evidence.json' | relative_url }}" target="_blank" rel="noopener noreferrer">Example queries, selection results, and source references · JSON</a></li>
