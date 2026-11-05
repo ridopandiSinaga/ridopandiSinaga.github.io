@@ -1,4 +1,5 @@
 ---
+published: false
 title: "Buku Apa Lagi, Ya?"
 date: 2026-07-15
 categories: [Machine Learning, Recommender System]
