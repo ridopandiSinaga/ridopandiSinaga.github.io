@@ -54,7 +54,7 @@ description: Selected AI engineering, machine learning, and data science work by
           </button>
 
           <div class="project-track" id="project-track" tabindex="0" aria-label="Project carousel">
-            <article class="project-card" data-project="0" data-dialog="agentic-dialog" data-project-slug="agentic-customer-service" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="agentic-dialog" aria-label="Open Agentic Customer Service case study">
+            <article class="project-card project-card--no-metrics project-card--visual" data-project="0" data-dialog="agentic-dialog" data-project-slug="agentic-customer-service" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="agentic-dialog" aria-label="Open Agentic Customer Service case study">
               <header class="project-header">
                 <p class="project-number">Project 01</p>
                 <p class="status-pill"><span aria-hidden="true"></span>Client project</p>
@@ -65,28 +65,9 @@ description: Selected AI engineering, machine learning, and data science work by
                 <p>An AI customer-service agent that understands context, retrieves grounded knowledge, and completes sales workflows.</p>
               </div>
 
-              <div class="project-preview project-preview--agent" aria-label="Stylized preview of the customer-service agent interface">
-                <div class="preview-statement">
-                  <p class="preview-title">Resolve more.<br>Respond with context.</p>
-                  <p class="preview-copy">A tool-using assistant for product search, orders, payments, and human handoff.</p>
-                  <div class="preview-tags" aria-hidden="true">
-                    <span>Multi-turn</span><span>RAG</span><span>Tool use</span>
-                  </div>
-                </div>
-                <div class="chat-window" aria-hidden="true">
-                  <div class="chat-heading"><span class="chat-avatar">R</span><span>Rido Support<small>AI Agent</small></span></div>
-                  <div class="chat-bubble chat-bubble--agent">Hi! What can I help you find?</div>
-                  <div class="chat-bubble chat-bubble--user">I need glasses for -2.5.</div>
-                  <div class="chat-bubble chat-bubble--agent">I found three suitable frames. Shall I show them?</div>
-                  <div class="chat-input">Message Rido Support… <span>↑</span></div>
-                </div>
+              <div class="project-preview project-preview--card-image project-preview--customer-service">
+                <img src="{{ '/assets/img/portfolio/agentic-customer-service/chat-staff-approval.webp' | relative_url }}" alt="Optik 150 K customer chat and frame recommendations alongside the staff approval panel with Approve and Reject controls" width="1536" height="1024" decoding="async">
               </div>
-
-              <dl class="project-metrics">
-                <div><dt>Context Recall</dt><dd>85.6%</dd><small>↑ from 73.6%</small></div>
-                <div><dt>Answer Relevancy</dt><dd>92.16%</dd><small>RAGAS evaluation</small></div>
-                <div><dt>Product Catalog</dt><dd>200</dd><small>Unique frames</small></div>
-              </dl>
 
               <span class="case-study-link" aria-hidden="true">
                 Open full case study <span aria-hidden="true">→</span>
@@ -120,7 +101,7 @@ description: Selected AI engineering, machine learning, and data science work by
               </span>
             </article>
 
-            <article class="project-card" data-project="2" data-dialog="text-to-cypher-dialog" data-project-slug="bilingual-text-to-cypher" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="text-to-cypher-dialog" aria-label="Open Bilingual Text-to-Cypher case study">
+            <article class="project-card project-card--no-metrics project-card--visual" data-project="2" data-dialog="text-to-cypher-dialog" data-project-slug="bilingual-text-to-cypher" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="text-to-cypher-dialog" aria-label="Open Bilingual Text-to-Cypher case study">
               <header class="project-header">
                 <p class="project-number">Project 03</p>
                 <p class="status-pill"><span aria-hidden="true"></span>LLM fine-tuning</p>
@@ -129,17 +110,9 @@ description: Selected AI engineering, machine learning, and data science work by
                 <h3>Bilingual Text-to-Cypher</h3>
                 <p>Converts English and Indonesian questions into Cypher queries for a Neo4j movie database.</p>
               </div>
-              <div class="project-preview project-preview--cypher">
-                <p class="cypher-preview-label">Recorded example</p>
-                <p class="cypher-preview-question" lang="id">“Berapa jumlah film dalam graph? Tampilkan jumlahnya.”</p>
-                <pre><code>MATCH (m:Movie)
-RETURN count(m) AS NumberOfMovies</code></pre>
-                <p class="cypher-preview-result"><strong>38</strong> movies counted in Neo4j</p>
+              <div class="project-preview project-preview--card-image project-preview--knowledge-graph">
+                <img src="{{ '/assets/img/portfolio/text-to-cypher/knowledge-graph.png' | relative_url }}" alt="Neo4j movie knowledge graph connecting actors to films, with Max von Sydow and his ACTED_IN relationships highlighted" width="725" height="511" loading="lazy" decoding="async">
               </div>
-              <dl class="project-metrics cypher-card-metrics" aria-label="Correct queries on the test set, with the selected adapter">
-                <div><dt>English · test</dt><dd>63.4%</dd><small>52 of 82 queries correct</small></div>
-                <div><dt>Indonesian · test</dt><dd>59.8%</dd><small>49 of 82 queries correct</small></div>
-              </dl>
               <span class="case-study-link" aria-hidden="true">Open full case study <span aria-hidden="true">→</span></span>
             </article>
 
