@@ -369,7 +369,7 @@ a {
 }
 
 .project-preview--knowledge-graph {
-  background: #fbfcf8;
+  background: #fff;
 }
 
 .project-preview--agent {
@@ -1974,17 +1974,20 @@ body.dialog-open {
     min-height: 280px;
   }
 
-  /* Let the full service collage set its own height on narrow cards. */
-  .project-card[data-project-slug="agentic-customer-service"] {
+  /* Let the full collages set their own height on narrow cards. */
+  .project-card[data-project-slug="agentic-customer-service"],
+  .project-card[data-project-slug="bilingual-text-to-cypher"] {
     grid-template-rows: auto auto auto auto;
     min-height: 0;
   }
 
-  .project-preview--customer-service {
+  .project-preview--customer-service,
+  .project-preview--knowledge-graph {
     min-height: 0;
   }
 
-  .project-preview--customer-service > img {
+  .project-preview--customer-service > img,
+  .project-preview--knowledge-graph > img {
     position: static;
     height: auto;
   }
