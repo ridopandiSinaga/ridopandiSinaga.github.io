@@ -365,7 +365,7 @@ a {
 }
 
 .project-preview--customer-service {
-  background: #f4f1e9;
+  background: #fff;
 }
 
 .project-preview--knowledge-graph {
@@ -1972,6 +1972,21 @@ body.dialog-open {
 
   .project-preview {
     min-height: 280px;
+  }
+
+  /* Let the full service collage set its own height on narrow cards. */
+  .project-card[data-project-slug="agentic-customer-service"] {
+    grid-template-rows: auto auto auto auto;
+    min-height: 0;
+  }
+
+  .project-preview--customer-service {
+    min-height: 0;
+  }
+
+  .project-preview--customer-service > img {
+    position: static;
+    height: auto;
   }
 
   .project-preview--agent,
